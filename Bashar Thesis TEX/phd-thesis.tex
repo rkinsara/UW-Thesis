@@ -1,0 +1,501 @@
+% N.B. The "pdftex" program allows graphics in the following formats to be
+% included with the "\includegraphics" command: PNG, PDF, JPEG, TIFF
+% Tip 1: Generate your figures and photos in the size you want them to appear
+% in your thesis, rather than scaling them with \includegraphics options.
+% Tip 2: Any drawings you do should be in scalable vector graphic formats:
+% SVG, PNG, WMF, EPS and then converted to PNG or PDF, so they are scalable in
+% the final PDF as well.
+% Tip 3: Photographs should be cropped and compressed so as not to be too large.
+
+% To create a PDF output that is optimized for double-sided printing:
+%
+% 1) comment-out the \documentclass statement in the preamble below, and
+% un-comment the second \documentclass line.
+%
+% 2) change the value assigned below to the boolean variable
+% "PrintVersion" from "false" to "true".
+
+% --------------------- Start of Document Preamble -----------------------
+
+% For hyperlinked PDF, suitable for viewing on a computer, use this:
+
+\documentclass[letterpaper,12pt,titlepage,oneside,final]{book}
+
+% For PDF, suitable for double-sided printing, change the PrintVersion variable below
+% to "true" and use this \documentclass line instead of the one above:
+%\documentclass[letterpaper,12pt,titlepage,openright,twoside,final]{book}
+
+% Some LaTeX commands I define for my own nomenclature.
+% If you have to, it's better to change nomenclature once here than in a
+% million places throughout your thesis!
+
+\newcommand{\package}[1]{\textbf{#1}} % package names in bold text
+\newcommand{\cmmd}[1]{\textbackslash\texttt{#1}} % command name in tt font
+\newcommand{\href}[1]{#1} % does nothing, but defines the command so the
+    % print-optimized version will ignore \href tags (redefined by hyperref pkg).
+%\newcommand{\texorpdfstring}[2]{#1} % does nothing, but defines the command
+% Anything defined here may be redefined by packages added below...
+
+% This package allows if-then-else control structures.
+
+\usepackage{ifthen}
+\newboolean{PrintVersion}
+\setboolean{PrintVersion}{false}
+% CHANGE THIS VALUE TO "true" as necessary, to improve printed results for hard copies
+% by overriding some options of the hyperref package below.
+
+%\usepackage{nomencl} % For a nomenclature (optional; available from ctan.org)
+\usepackage{amsmath,amssymb,amstext,natbib} % Lots of math symbols and environments
+\usepackage[pdftex]{graphicx} % For including graphics N.B. pdftex graphics driver
+\usepackage[usenames,dvipsnames]{color}
+
+\usepackage{amsthm, amsfonts, latexsym}
+\usepackage{subfigure, multirow, array, enumerate, setspace, longtable}
+\usepackage{multicol, stfloats}
+\usepackage[center]{caption}
+
+% Hyperlinks make it very easy to navigate an electronic document.
+% In addition, this is where you should specify the thesis title
+% and author as they appear in the properties of the PDF document.
+% Use the "hyperref" package
+% N.B. HYPERREF MUST BE THE LAST PACKAGE LOADED; ADD ADDITIONAL PKGS ABOVE
+\usepackage[pdftex,letterpaper=true,pagebackref=true]{hyperref} % with basic options
+		% N.B. pagebackref=true provides links back from the References to the body text. This can cause trouble for printing.
+\hypersetup{
+    plainpages=false,       % needed if Roman numbers in frontpages
+    pdfpagelabels=true,     % adds page number as label in Acrobat's page count
+    bookmarks=true,         % show bookmarks bar?
+    unicode=false,          % non-Latin characters in Acrobat’s bookmarks
+    pdftoolbar=true,        % show Acrobat’s toolbar?
+    pdfmenubar=true,        % show Acrobat’s menu?
+    pdffitwindow=false,     % window fit to page when opened
+    pdfstartview={FitH},    % fits the width of the page to the window
+    pdftitle={Fuzzy Preferences in the Graph Model for Conflict Resolution},    % title
+    pdfauthor={Md. Abul Bashar},    % author
+    pdfsubject={Systems Design Engineering - PhD Thesis},  % subject
+  %  pdfkeywords={Graph Model} {Fuzzy Preference} {Fuzzy Satisficing Threshold} {Fuzzy Unilateral Improvement} {Fuzzy Stability} {Coalition Fuzzy Stability} {Fuzzy Option Prioritization}, % list of keywords, and uncomment this line if desired
+    pdfnewwindow=true,      % links in new window
+    colorlinks=true,        % false: boxed links; true: colored links
+    linkcolor=BrickRed,         % color of internal links
+    citecolor=BlueViolet,        % color of links to bibliography
+    filecolor=Magenta,      % color of file links
+    urlcolor=cyan           % color of external links
+}
+
+\ifthenelse{\boolean{PrintVersion}}{   % for improved print quality, change some hyperref options
+\hypersetup{	% override some previously defined hyperref options
+%    colorlinks,%
+    citecolor=black,%
+    filecolor=black,%
+    linkcolor=black,%
+    urlcolor=black}
+}{} % end of ifthenelse (no else)
+
+
+% Setting up the page margins... uWaterloo thesis requirements specify a minimum of 1 inch (72pt) margin at the top, bottom, and outside page edges and a 1.125 in. (81pt) gutter margin (on binding side). While this is not an issue for electronic viewing, a PDF may be printed, and so we have the same page layout for both printed and electronic versions, we leave the gutter margin in. Set margins to minimum permitted by uWaterloo thesis regulations:
+\setlength{\marginparwidth}{0pt} % width of margin notes
+
+% N.B. If margin notes are used, you must adjust \textwidth, \marginparwidth and \marginparsep so that the space left between the margin notes and page edge is less than 15 mm (0.6 in.)
+
+\setlength{\marginparsep}{0pt} % width of space between body text and margin notes
+\setlength{\evensidemargin}{0.125in} % Adds 1/8 in. to binding side of all even-numbered pages when the "twoside" printing option is selected
+\setlength{\oddsidemargin}{0.125in} % Adds 1/8 in. to the left of all pages when "oneside" printing is selected, and to the left of all odd-numbered pages when "twoside" printing is selected
+
+\setlength{\textwidth}{6.375in} % assuming US letter paper (8.5 in. x 11 in.) and side margins as above
+\raggedbottom
+
+%The following statement specifies the amount of space between paragraphs. Other reasonable specifications are \bigskipamount and \smallskipamount.
+
+\setlength{\parskip}{\medskipamount}
+
+% The following statement controls the line spacing.  The default spacing corresponds to good typographic conventions and only slight changes (e.g., perhaps "1.2"), if any, should be made.
+
+\setcounter{secnumdepth}{3} % for subsubsection numbering
+\setcounter{tocdepth}{3} % to include subsubsection in the table of contents
+
+
+\newcolumntype{x}[1]{>{\centering\arraybackslash}p{#1}}
+
+\renewcommand{\multirowsetup}{\centering}
+\renewcommand{\baselinestretch}{1.55} % this is the default line space setting
+
+\newtheorem{lemma}{Lemma}[section]
+\newtheorem{theorem}[lemma]{Theorem}
+\newtheorem{corollary}[lemma]{Corollary}
+\newtheorem{conjecture}[lemma]{Conjecture}
+\newtheorem{proposition}[lemma]{Proposition}
+\newtheorem{remark}[lemma]{Remark}
+\newtheorem{definition}[lemma]{Definition}
+\newtheorem{example}[lemma]{Example}
+
+% By default, each chapter will start on a recto (right-hand side) page.  We also force each section of the front pages to start on a recto page by inserting \cleardoublepage commands. In many cases, this will require that the verso page be blank and, while it should be counted, a page number should not be printed.  The following statements ensure a page number is not printed on an otherwise blank verso page.
+
+\let\origdoublepage\cleardoublepage
+\newcommand{\clearemptydoublepage}{%
+  \clearpage{\pagestyle{empty}\origdoublepage}}
+\let\cleardoublepage\clearemptydoublepage
+
+%======================================================================
+%   L O G I C A L    D O C U M E N T -- the content of your thesis
+%======================================================================
+
+\begin{document}
+
+
+\input{phd-thesis-frontpgs}
+\input{chapter1}
+%\cleardoublepage
+\input{chapter2}
+\input{chapter3}
+\input{chapter4}
+\input{chapter5}
+\input{chapter6}
+\input{chapter7}
+
+
+\cleardoublepage
+\phantomsection
+\addcontentsline{toc}{chapter}{Bibliography}
+
+\begin{thebibliography}{}
+
+\bibitem[Al-Mutairi et al.(2008)]{Al-Mutairi-et-al2008}
+Al-Mutairi, M.S., Hipel, K.W., and Kamel, M.S., 2008. ``Fuzzy preferences in conflicts," \emph{Journal of Systems Science and Systems Engineering}, {\bf 17}, 257-276.
+
+\bibitem[Alonso et al.(2009)]{Alonso-et-al2009}
+Alonso, S., Cabrerizo, F.J., Chiclana, F., Herrera, F., and Herrera-Viedma, E., 2009. ``Group decision making with incomplete fuzzy linguistic preference relations," \emph{International Journal of Intelligent Systems}, {\bf 24}, 201-222.
+
+\bibitem[Banerjee(1994)]{Banerjee1994}
+Banerjee, A., 1994. ``Fuzzy preferences and Arrow-type problems," \emph{Social Choice and Welfare}, {\bf 11}(2), 121-130.
+
+\bibitem[Bartholomew-Biggs(2008)]{Bartholomew-Biggs2008}
+Bartholomew-Biggs, M.C., 2008. \emph{Nonlinear Optimization with Engineering Applications}, in P.M. Pardalos and D.-Z. Du Eds. series: Springer Optimization and its Applications, Vol. 19, New York: Springer.
+
+\bibitem[Bashar et al.(2009a)]{Bashar-et-al2009a}
+Bashar, M.A., Hipel, K.W, and Kilgour, D.M., 2009a. ``Fuzzy preferences in conflict resolution," \emph{Proceedings of the 2009 IEEE International Conference on Systems, Man, and Cybernetics}, San Antonio, Texas, USA, October 11-14, 2009, pp 2332-2337.
+
+\bibitem[Bashar et al.(2010a)]{Bashar-et-al2010a}
+Bashar, M.A., Hipel, K.W., and Kilgour, D.M., 2010a. ``Fuzzy preferences in a two-decision maker graph model," \emph{Proceedings of the 2010 IEEE International Conference on Systems, Man, and Cybernetics}, Istanbul, Turkey, October 10-13, 2010, pp 2964-2970.
+
+\bibitem[Bashar et al.(2012a)]{Bashar-et-al2012a}
+Bashar, M.A., Hipel, K.W., and Kilgour, D.M., 2012a. ``Coalition fuzzy stability analysis of the Elmira groundwater contamination dispute," refereed extended abstract, \emph{Proceedings of the 2012 International Conference on Group Decision and Negotiation}, Recife, Brazil, May 20-24, 2012.
+
+\bibitem[Bashar et al.(2009b)]{Bashar-et-al2009b}
+Bashar, M.A., Kilgour, D.M., and Hipel, K.W., 2009b. ``A perspective on fuzzy preferences in conflict resolution," refereed extended abstract, \emph{Proceedings of the 2009 International Conference on Group Decision and Negotiation}, Toronto, Ontario, Canada, June 14-17, 2009, pp. 19-21.
+
+\bibitem[Bashar et al.(2010b)]{Bashar-et-al2010b}
+Bashar, M.A., Kilgour, D.M., and Hipel, K.W., 2010b. ``Fuzzy preferences in the negotiation of brownfield redevelopment conflicts," refereed extended abstract, \emph{Proceedings of the 2010 International Conference on Group Decision and Negotiation}, Delft, The Netherlands, June 21-23, 2010.
+
+\bibitem[Bashar et al.(2010c)]{Bashar-et-al2010c}
+Bashar, M.A., Kilgour, D.M., and Hipel, K.W., 2010c. ``Fuzzy preferences in brownfield redevelopment conflicts," \emph{Proceedings of Water 2010: Hydrology, Hydraulics and Water Resources in an Uncertain Environment -- 10th International Symposium on Stochastic Hydraulics and 5th International Conference on Water Resources and Environment Research}, Quebec City, Quebec, Canada, July 5-7, 2010, 8 pages.
+
+\bibitem[Bashar et al.(2011)]{Bashar-et-al2011}
+Bashar, M.A., Kilgour, D.M., and Hipel, K.W., 2011. ``Fuzzy preferences in the sustainable development conflict," \emph{Proceedings of the 2011 IEEE International Conference on Systems, Man, and Cybernetics}, Anchorage, Alaska, USA, October 9-12, 2011, pp 3483-3488.
+
+\bibitem[Bashar et al.(2012b)]{Bashar-et-al2012b}
+Bashar, M.A., Kilgour, D.M., and Hipel, K.W., 2012b. ``Fuzzy preferences in the graph model for conflict resolution," \emph{IEEE Transactions on Fuzzy Systems}, {\bf 20}(4), 760-770.
+
+\bibitem[Bashar et al.(2012c)]{Bashar-et-al2012c}
+Bashar, M.A., Kilgour, D.M., and Hipel, K.W., 2012c. ``Fuzzy truth values in option prioritization for preference elicitation in the graph model," accepted for presentation and publication in the \emph{Proceedings of the 2012 IEEE International Conference on Systems, Man, and Cybernetics}, to be held at COEX in Seoul, South Korea, from October 14-17, 2012.
+
+\bibitem[Bellman and Zadeh(1970)]{Bellman&Zadeh1970}
+Bellman, R. and Zadeh, L.A., 1970. ``Decision-making in a fuzzy environment," \emph{Management Science}, {\bf 17}, 141-164.
+
+\bibitem[Bojadziev and Bojadziev(2007)]{Bojadziev&Bojadziev2007}
+Bojadziev, G. and Bojadziev, M., 2007. \emph{Fuzzy Logic for Business, Finance, and Management}, 2nd Edition, in: K. Hirota, G.J. Klir, E. Sanchez, P.-Z. Wang, and R.R. Yager Eds. series: Advances in Fuzzy Systems--Applications and Theory, Vol. 23, World Scientific Publishing Co. Pte. Ltd.
+
+\bibitem[Brundtland Report(1987)]{Brundtland1987}
+Brundtland Report (Report of the United Nations World Commission on Environment and Development): Our Common Future, 1987, United Nations General Assembly, August 4, 1987.
+
+\bibitem[Center for Biological Diversity(2011)]{Cntr-Biol-Diversity2011}
+Center for Biological Diversity, 2011. ``Catastrophe in the Gulf of Mexico: Devastation Persists One Year After Spill", cited at http://www.biologicaldiversity.org/programs/public\_lands/energy/dirty\_energy\_develop
+\\ment/oil\_and\_gas/gulf\_oil\_spill/index.html on April 24, 2011.
+
+\bibitem[Chang(1996)]{Chang1996}
+Chang, D.Y., 1996. ``Applications of the extent analysis method on fuzzy AHP," \emph{European Journal of Operational Research}, {\bf 95}, 649-655.
+
+\bibitem[Chang(2010)]{Chang2010}
+Chang, N.-B., 2010. \emph{Systems Analysis for Sustainable Engineering: Theory and Applications}, McGraw-Hill Publishing.
+
+\bibitem[Chiclana et al.(1998)]{Chiclana-et-al1998}
+Chiclana, F., Herrera, F., and Herrera-Viedma, E., 1998. ``Integrating three representation models in fuzzy multipurpose decision making based on fuzzy preference relations," \emph{Fuzzy Sets and Systems}, {\bf 97}, 33-48.
+
+\bibitem[Chiclana et al.(2001)]{Chiclana-et-al2001}
+Chiclana, F., Herrera, F., and Herrera-Viedma, E., 2001. ``Integrating multiplicative preference relations in a multipurpose decision-making model based on fuzzy preference relations," \emph{Fuzzy Sets and Systems}, {\bf 122}, 277-291.
+
+\bibitem[Chiswell and Hodges(2007)]{Chiswell&Hodges2007}
+Chiswell, I. and Hodges, W., 2007. \emph{Mathematical Logic}, Oxford University Press Inc., New York.
+
+\bibitem[Conestoga-Rovers and Associates(1999)]{Conestoga1999}
+Conestoga-Rovers and Associates, 1999. Uniroyal groundwater clean-up and treatment, Elmira. \emph{Canadian Consulting Engineer Magazine}, Oct/Nov, 1999. [Available online] http://www.canadianconsultingengineer.com/news/uniroyal-groundwater-clean-up-and-treatment-elmira/1000106557/?type=Print\%20Archives, sited on February 17, 2012.
+
+\bibitem[De Wilde(2004)]{De-Wilde2004}
+De Wilde, P., 2004. ``Fuzzy utility and equilibria," \emph{IEEE Transactions on Systems, Man, and Cybernetics, Part B: Cybernetics}, {\bf 34}(4), 1774-1785.
+
+\bibitem[Dutta(1987)]{Dutta1987}
+Dutta, B., 1987. ``Fuzzy preferences and social choice," \emph{Mathematical Social Sciences}, {\bf 13}(3), 215-229.
+
+\bibitem[Fang et al.(1993)]{Fang-et-al1993}
+Fang, L., Hipel, K.W., and Kilgour, D.M., 1993. \emph{Interactive Decision Making: The Graph Model for Conflict Resolution}. Wiley, New York.
+
+\bibitem[Fang et al.(2003)]{Fang-et-al2003}
+Fang, L., Hipel, K.W., Kilgour, D.M., and Peng, X., 2003. ``A decision support system for interactive decision making--Part I: model formulation," \emph{IEEE Transactions on Systems, Man, and Cybernetics, Part C: Applications and Reviews}, {\bf 33}(1), 42-55.
+
+\bibitem[Feller(1968)]{Feller1968}
+Feller, W., 1968. \emph{An Introduction to Probability Theory and its Applications, Vol. 1}. Wiley, New York.
+
+\bibitem[Feller(1971)]{Feller1971}
+Feller, W., 1971. \emph{An Introduction to Probability Theory and its Applications, Vol. 2}. Wiley, New York.
+
+\bibitem[Figueira et al.(2005)]{Figueira-et-al2005}
+Figueira, J., Greco, S., and Ehrgott, M., 2005. \emph{Multiple Criteria Decision Analysis: State of the Art Surveys}, New York: Springer.
+
+\bibitem[Fraser(1993)]{Fraser1993}
+Fraser, N.M., 1993. ``Applications of preference trees," \emph{Proceedings of the 1993 IEEE International Conference on Systems, Man, and Cybernetics}, Le Touquet, France, October 17-20, 1993, pp 132-136.
+
+\bibitem[Fraser(1994)]{Fraser1994}
+Fraser, N.M., 1994. ``Ordinal preference representations," \emph{Theory and Decision}, {\bf 36}(1), 45-67.
+
+\bibitem[Fraser and Hipel(1984)]{Fraser&Hipel1984}
+Fraser, N. M. and Hipel K.W., 1984. \emph{Conflict Analysis: Models and Resolutions}. New York: NorthHolland.
+
+\bibitem[Fraser and Hipel(1988)]{Fraser&Hipel1988}
+Fraser, N.M. and Hipel, K.W., 1988. ``Decision support systems for conflict analysis," invited plenary address in Managerial Decision Support Systems. In: M.G. Singh, K. Hindi, and D. Salassa Eds. \emph{Proceedings of the 1987 IMACS/IFORS First International Colloquium on Managerial Decision Support Systems and Knowledge-based Systems}, North Holland, Amsterdam, pp 13-21.
+
+\bibitem[Fraser and Kilgour(1986)]{Fraser&Kilgour1986}
+Fraser, N.M. and Kilgour, D.M., 1986. ``Nonstrict ordinal $2 \times 2$ games: a comprehensive computer-assisted analysis of the 726 possibilities," \emph{Theory and Decision}, {\bf 20}(2), 99-121.
+
+\bibitem[Garcia-Lapresta and Montero(2006)]{Garcia&Montero2006}
+Garcia-Lapresta, J.L. and Montero, J., 2006. ``Consistency in preference modeling," in B. Bouchon-Meunier, G. Coletti and R.R. Yager, Eds. \emph{Modern Information Processing: From Theory to Applications}.
+
+\bibitem[Goetschel and Voxman(1986)]{Goetschel&Voxman86}
+Goetschel, R. and Voxman, W., 1986. ``Elementary fuzzy calculus," {\em Fuzzy Sets and Systems}, {\bf 18}, 3l-43.
+
+\bibitem[Gore(2006a)]{Gore2006a}
+Gore, Al, 2006a. \emph{An Inconvenient Truth: The Planetary Emergency of Global Warming and What We Can Do About It}, Rodale Press, Emmaus, Pennsylvania, USA.
+
+\bibitem[Gore(2006b)]{Gore2006b}
+Gore, Al, 2006b. ``An Inconvenient Truth," a Documentary Feature Film directed by Davis Guggenheim, won the 2007 Academy Awards for Best Documentary Feature and Best Original Song.
+
+\bibitem[Hamouda et al.(2004)]{Hamouda-et-al2004}
+Hamouda, L., Kilgour, D.M., and Hipel, K.W., 2004. ``Strength of preferences in the graph model for conflict resolution," \emph{Group Decision and Negotiation}, {\bf 13}, 449-462.
+
+\bibitem[Hamouda et al.(2006)]{Hamouda-et-al2006}
+Hamouda, L., Kilgour, D.M., and Hipel, K.W., 2006. ``Strength of preference in graph models for multiple decision-maker conflicts," \emph{Applied Mathematics and Computation}, {\bf 179}, 314-327.
+
+\bibitem[Harker(1987)]{Harker1987}
+Harker, P.T., 1987. ``Alternative modes of questioning in the analytic hierarchy process," \emph{Mathematical Modeling}, {\bf 9}, 353-360.
+
+\bibitem[Herrera and Herrera-Viedma(2000)]{Herrera&Herrera-Viedma2000}
+Herrera F. and Herrera-Viedma, E., 2000. ``Linguistic decision analysis: Steps for solving decision problems under linguistic information," \emph{Fuzzy Sets and Systems}, {\bf 115}, 67-82.
+
+\bibitem[Herrera et al.(2001)]{Herrera-et-al2001}
+Herrera, F., Herrera-Viedma, E. and Chiclana, F., 2001. ``Multiperson decision-making based on multiplicative preference relations," \emph{European Journal of Operational Research}, {\bf 129}, 372-385.
+
+\bibitem[Herrera-Viedma et al.(2007)]{Herrera-Viedma-et-al2007}
+Herrera-Viedma, E., Chiclana, F., Herrera, F., and Alonso, S., 2007. ``A group decision-making model with incomplete fuzzy preference relations based on additive consistency," \emph{IEEE Transactions on Systems, Man, and Cybernetics, Part B}, {\bf 37}, 176-189.
+
+\bibitem[Hipel(2002)]{Hipel2002}
+Hipel, K.W., 2002. ``Conflict resolution: Theme overview paper in conflict resolution," in \emph{Encyclopedia of Life Support Systems (EOLSS)}. Oxford, U.K.: EOLSS Publishers.
+
+\bibitem[Hipel(2009a)]{Hipel2009a}
+Hipel, K.W. (Editor), 2009a. \emph{Conflict Resolution, Volume 1}, Eolss Publishers, Oxford, United Kingdom (ISBN-978-1-84826-120-4 (Adobe e-Book), ISBN-978-1-84826-570-7 Library Edition (Hard Cover)).
+
+\bibitem[Hipel(2009b)]{Hipel2009b}
+Hipel, K.W. (Editor), 2009b. \emph{Conflict Resolution, Volume 2}, Eolss Publishers, Oxford, United Kingdom (ISBN-978-1-84826-121-1 (Adobe e-Book), ISBN-978-1-84826-571-4 Library Edition (Hard Cover)).
+
+\bibitem[Hipel and Bernath Walker(2010)]{Hipel&Walker2010}
+Hipel, K.W. and Bernath Walker, S., 2010. ``Conflict analysis in environmental management," \emph{Environmetrics}, {\bf 21}, 1-21.
+
+\bibitem[Hipel et al.(2008a)]{Hipel-et-al2008a}
+Hipel, K.W., Fang, L., and Kilgour, D.M., 2008a. ``Decision support systems in water resources and environmental management," \emph{Journal of Hydrologic Engineering}, {\bf 13}(9), 761-770.
+
+\bibitem[Hipel et al.(1993a)]{Hipel-et-al1993a}
+Hipel, K.W., Fang, L., Kilgour, D.M., and Haight, M., 1993a. ``Environmental conflict resolution using the graph model," \emph{Proceedings IEEE SMC International Conference}, Le Touquet, France, I, 153-158.
+
+\bibitem[Hipel et al.(2011)]{Hipel-et-al2011}
+Hipel, K.W., Kilgour, D.M., and Bashar, M.A., 2011. ``Fuzzy preferences in multiple participant decision making," \emph{Scientia Iranica, Transactions D: Computer Science \& Engineering and Electrical Engineering}, special publication dedicated to the lifelong achievements of Professor Lotfi A. Zadeh, {\bf 18}(3)(D1), 627-638.
+
+\bibitem[Hipel et al.(1997)]{Hipel-et-al1997}
+Hipel, K.W., Kilgour, D.M., Fang, L., and Peng, J., 1997. ``The decision support system GMCR in environmental conflict management," \emph{Applied Mathematics and Computation}, {\bf 83}(2,3), 117-152.
+
+\bibitem[Hipel et al.(1999)]{Hipel-et-al1999}
+Hipel, K.W., Kilgour, D.M., Fang, L., and Peng, X., 1999. ``The decision support system GMCR II in negotiations over groundwater contamination," \emph{Proceedings of the 1999 IEEE International Conference on Systems, Man, and Cybernetics}, Tokyo, Japan, October 12-15, 1999, pp 942-948.
+
+\bibitem[Hipel et al.(2001)]{Hipel-et-al2001}
+Hipel, K.W., Kilgour, D.M., Fang, L., and Peng, X., 2001. ``Strategic decision support for the services industry," \emph{IEEE Transactions on Engineering Management}, {\bf 48}(3), 358-369.
+
+\bibitem[Hipel and Meister(1994)]{Hipel&Meister1994}
+Hipel, K.W. and Meister, D.B., 1994. ``Conflict analysis methodology for modeling coalitions in multilateral negotiations," \emph{Information and Decision Technologies}, {\bf 19}(2), 85-103.
+
+\bibitem[Hipel and Obeidi(2005)]{Hipel&Obeidi2005}
+Hipel, K.W. and Obeidi, A., 2005. ``Trade versus the Environment: Strategic settlement from a systems engineering perspective," \emph{Systems Engineering}, {\bf 8}(3), 211-233.
+
+\bibitem[Hipel et al.(2008b)]{Hipel-et-al2008b}
+Hipel, K.W., Obeidi, A., Fang, L., and Kilgour, D.M., 2008b. ``Adaptive systems thinking in integrated water resources management with insights into conflicts over water exports," \emph{INFOR}, {\bf 46}(1), 51-69.
+
+\bibitem[Hipel et al.(1993b)]{Hipel-et-al1993}
+Hipel, K.W., Radford, K.J. and Fang, L., 1993b. ``Multiple participant-multiple criteria decision making," \emph{IEEE Transactions on Systems, Man, and Cybernetics}, {\bf 23}(4), 1184-1189.
+
+\bibitem[Howard(1971)]{Howard1971}
+Howard, N., 1971. \emph{Paradoxes of Rationality: Theory of Metagames and Political Behavior}. Cambridge, MA: MIT press.
+
+\bibitem[Howard(1999)]{Howard1999}
+Howard, N., 1999. ``Confrontation Analysis: How to Win Operations Other Than War," DoD C4ISR Cooperation Research Program, The Pentagon, Washington, D.C.
+
+\bibitem[Inohara and Hipel(2008a)]{Inohara&Hipel2008a}
+Inohara, T. and Hipel, K.W., 2008a. ``Coalition analysis in the graph model for conflict resolution," \emph{Systems Engineering}, {\bf 11}(4), 343-359.
+
+\bibitem[Inohara and Hipel(2008b)]{Inohara&Hipel2008b}
+Inohara, T. and Hipel, K.W., 2008b. ``Interrelationships among noncooperative and coalition stability concepts," \emph{Journal of Systems Science and Systems Engineering}, {\bf 17}(1), 1-29.
+
+\bibitem[Islam et al.(1997)]{Islam-et-al1997}
+Islam, R., Biswal, M.P., and Alam, S.S., 1997. ``Preference programming and inconsistent interval judgments," \emph{European Journal of Operational Research}, {\bf 97}, 53-62.
+
+\bibitem[Jiang(2007)]{Jiang2007}
+Jiang, Y., 2007. ``An approach to group decision making based on interval fuzzy preference relations," \emph{Journal of Systems Science and System Engineering}, {bf 16}, 113-120.
+
+\bibitem[Kacprzyk(1986)]{Kacprzyk1986}
+Kacprzyk, J., 1986. ``Group decision making with a fuzzy linguistic majority," \emph{Fuzzy Sets and Systems}, {\bf 18}, 105-118.
+
+%\bibitem[Kilgour(1995)]{Kilgour1995}
+%Kilgour, D.M., 1995. ``Book Review: Theory of Moves," \emph{Group Decision and Negotiation}, {\bf 4}, 283–284.
+
+\bibitem[Kilgour(1997)]{Kilgour1997}
+Kilgour, D.M., 1997. ``Separable and Non-Separable Preferences in Multiple Referenda," \emph{Public Choice Society}, San Francisco, CA, USA.
+
+\bibitem[Kilgour and Eden(2010)]{Kilgour&Eden2010}
+Kilgour, D.M. and Eden, C. (Editors), 2010. \emph{Handbook of Group Decision and Negotiation}, Springer.
+
+\bibitem[Kilgour and Fraser(1988)]{Kilgour&Fraser1988}
+Kilgour, D.M. and Fraser, N.M., 1988. ``A taxonomy of all ordinal $2 \times 2$ games," \emph{Theory and Decision}, {\bf 24}(2), 99-117.
+
+\bibitem[Kilgour and Hipel(2005)]{Kilgour&Hipel2005}
+Kilgour, D.M. and Hipel, K.W., 2005. ``The graph model for conflict resolution: past, present, and future," \emph{Group Decision and Negotiation}, {\bf 14}(6), 441-460.
+
+\bibitem[Kilgour et al.(1987)]{Kilgour-et-al1987}
+Kilgour, D.M., Hipel, K.W., and Fang, L., 1987. ``The graph model for conflicts," \emph{Automatica}, {\bf 23}(1), 41-55.
+
+\bibitem[Kilgour et al.(2001)]{Kilgour-et-al2001}
+Kilgour, D.M., Hipel, K.W., Fang, L., and Peng, X., 2001. ``Coalition analysis in group decision support," \emph{Group Decision and Negotiation}, {\bf 10}(2), 159-175.
+
+\bibitem[Klir and Yuan(1995)]{Klir&Yuan95}
+Klir, G.J. and Yuan, B., 1995. \emph{Fuzzy Sets and Fuzzy Logic: Theory and Applications}," Prentice-Hall, Inc., Englewood Cliffs, N.J., U.S.A.
+
+\bibitem[Kuhn et al.(1983)]{Kuhn-et-al1983}
+Kuhn, J.R.D., Hipel, K.W., \& Fraser, N.M. (1983). ``A coalition analysis algorithm with application to the Zimbabwe conflict," \emph{IEEE Transactions on Systems, Man, and Cybernetics}, {\bf 13}(3), 338-352.
+
+\bibitem[Li et al.(2004a)]{Li-et-al2004a}
+Li, K.W., Hipel, K.W., Kilgour, D.M., and Fang, L., 2004a. ``Preference uncertainty in the graph model for conflict resolution," \emph{IEEE Transactions on Systems, Man, and Cybernetics--Part A: Systems and Humans}, {\bf 34}(4), 507-520.
+
+\bibitem[Li et al.(2005a)]{Li-et-al2005a}
+Li, K.W., Hipel, K.W., Kilgour, D.M., and Noakes, D.J., 2005a. ``Integrating uncertain preferences into status quo analysis with applications to an environmental conflict," {\em Group Decision and Negotiation}, {\bf 14}, 461-479.
+
+\bibitem[Li et al.(2004b)]{Li-et-al2004b}
+Li, K.W., Kilgour, D.M., and Hipel, K.W., 2004b. ``Status quo analysis of the Flathead River conflict," {\em Water Resources Research}, {\bf 40}, W05S03.
+
+\bibitem[Li et al.(2005b)]{Li-et-al2005b}
+Li, K.W., Kilgour, D.M., and Hipel, K.W., 2005b. ``Status quo analysis in the graph model for conflict resolution," {\em Journal of the Operational Research Society}, {\bf 56}(6), 699-707.
+
+\bibitem[Mikhailov(2003)]{Mikhailov2003}
+Mikhailov, L., 2003. ``Deriving priorities from fuzzy pairwise comparison judgments," \emph{Fuzzy Sets and Systems}, {\bf 134}, 365-385.
+
+\bibitem[Nakamura(1986)]{Nakamura1986}
+Nakamura, K., 1986. ``Preference relations on a set of fuzzy utilities as a basis for decision making," \emph{Fuzzy Sets and Systems}, {\bf 20}, 147-162.
+
+\bibitem[Nash(1950)]{Nash1950}
+Nash, J.F., 1950. ``Equilibrium points in n-person games," in Proc. \emph{Nat. Acad. Sci.}, {\bf 36}, 48-49.
+
+\bibitem[Nash(1951)]{Nash1951}
+Nash, J.F., 1951. ``Non-cooperative games," \emph{Annals Math.}, {\bf 54}, 286-295.
+
+\bibitem[Nishizawa(1997)]{Nishizawa1997}
+Nishizawa, K., 1997. ``A method to find elements of cycles in an incomplete directed graph and its applications to binary AHP and Petri nets," \emph{Computers and Mathematics with Applications}, {\bf 33}, 33-46.
+
+\bibitem[Orlovsky(1978)]{Orlovsky1978}
+Orlovsky, S.A., 1978. ``Decision making with a fuzzy preference relation," \emph{Fuzzy Sets and Systems}, {\bf 1}, 155-167.
+
+\bibitem[Peng(1999)]{Peng1999}
+Peng, X., 1999. \emph{A decision support system for conflict resolution}, Ph.D. dissertation, Depertment of Systems Design Engineering, University of Waterloo, Waterloo, Ontario, Canada.
+
+\bibitem[Peng et al.(1997)]{Peng-et-al1997}
+Peng, X., Hipel, K.W., Kilgour, D.M., and Fang, L., 1997. ``Representing ordinal preferences in the decision support system GMCR II," in: \emph{Proceedings of the 1997 IEEE International Conference on Systems, Man, and Cybernetics}, pp 809-814.
+
+\bibitem[Rapoport et al.(1976)]{Rapoport-et-al1976}
+Rapoport, A., Guyer, M.J., and Gordon, D.G., 1976. \emph{The 2 x 2 Game}, Ann Arbor: University of Michigan Press.
+
+\bibitem[Richardson(1998)]{Richardson1998}
+Richardson, G., 1998. ``The structure of fuzzy preferences: Social choice implications," \emph{Social Choice and Welfare}, {\bf 15}(3), 359-369.
+
+\bibitem[Ross(2010)]{Ross2010}
+Ross, T.J., 2010. \emph{Fuzzy Logic with Engineering Applications}, Third Edition, Wiley.
+
+\bibitem[Saaty(1980)]{Saaty1980}
+Saaty, T.L., 1980. \emph{The Analytic Hierarchy Process}, New York, NY: McGraw-Hill.
+
+\bibitem[Sanderson et al.(1995)]{Sanderson-et-al1995}
+Sanderson, M., Karrow, P. F., Greenhouse, J. P., Paloschi, G. V. R., Schneider, G. Mulamoottil, G., Mason, C., McBean, E. A., Fitzpatrick, P. N., Mitchell, B., Shrubsole, D., and Child, E., 1995. ``Groundwater contamination in the Kitchener-Waterloo area, Ontario," \emph{Canadian Water Resources Journal}, {\bf 20}(3), 145-160.
+
+\bibitem[Shapiro(2001)]{Shapiro2001}
+Shapiro, J., 2001. \emph{Mao's War Against Nature: Politics and the Environment in Revolutionary China}, Cambridge University Press.
+
+\bibitem[Taha(1971)]{Taha1971}
+Taha, H.A., 1971. \emph{Operations Research}, New York: Macmillan.
+
+\bibitem[Tanino(1984)]{Tanino1984}
+Tanino, T., 1984. ``Fuzzy preference orderings in group decision making," \emph{Fuzzy Sets and Systems}, {\bf 12}, 117-131.
+
+\bibitem[Tanino(1988)]{Tanino1988}
+Tanino, T., 1988. ``Fuzzy preference relations in group decision making," in J. Kacprzyk and M. Roubens, Eds. \emph{Non-Conventional Preference Relations in Decision Making}, Berlin: Springer-Verlag, 54-71.
+
+\bibitem[The New York Times(2010)]{TNY-times2010}
+The New York Times, 2010. News: ``Search Continues After Oil Rig Blast" by Campbell Robertson, published on April 21, 2010, cited at http://www.nytimes.com/2010/04/22/us/22rig.html?scp=1\&sq=oil+rig+explosion\&st=nyt on April 24, 2011.
+
+\bibitem[von Neumann and Morgenstern(1944)]{VonNeumann&Morgenstern1944}
+von Neumann, J. and Morgenstern, O., 1944. \emph{Theory of Games and Economic Behavior}, Princeton: University Press.
+
+\bibitem[Xu(2002)]{Xu2002}
+Xu, Z.S., 2002. ``A method for priorities of triangular fuzzy number complementary judgment matrices," \emph{Fuzzy Systems and Mathematics}, {\bf 16}, 47-50.
+
+\bibitem[Xu(2004a)]{Xu2004a}
+Xu, Z.S., 2004a. ``A method based on linguistic aggregation operators for group decision making with linguistic preference relations," \emph{Information Sciences}, {\bf 166}, 19-30.
+
+\bibitem[Xu(2004b)]{Xu2004b}
+Xu, Z.S., 2004b. ``On compatibility of interval fuzzy preference matrices," \emph{Fuzzy Optimization and Decision Making}, {bf 3}, 217-225.
+
+\bibitem[Xu(2005a)]{Xu2005a}
+Xu, Z.S., 2005a. ``On method for uncertain multiple attribute decision making problems with uncertain preference information on alternatives," \emph{Fuzzy Optimization and Decision Making}, {\bf 4}, 131-139.
+
+\bibitem[Xu(2005b)]{Xu2005b}
+Xu, Z.S., 2005b. ``A procedure for decision making based on incomplete fuzzy preference relation," \emph{Fuzzy Optimization and Decision Making}, {\bf 4}, 175-189.
+
+\bibitem[Xu(2005c)]{Xu2005c}
+Xu, Z.S., 2005c. ``An approach to group decision making based on incomplete linguistic preference relations," \emph{International Journal of Information Technology and Decision Making}, {\bf 4}, 153-160.
+
+\bibitem[Xu(2006)]{Xu2006}
+Xu, Z.S., 2006. ``Method for group decision making with various types of incomplete judgment matrices," \emph{Control and Decision}, {\bf 21}, 28-33.
+
+\bibitem[Xu(2007)]{Xu2007}
+Xu, Z.S., 2007. ``A survey of preference relations," \emph{International Journal of General Systems}, {\bf 36}, 179-203.
+
+\bibitem[Xu et al.(2009a)]{Xu-et-al2009a}
+Xu, H., Hipel, K.W., and Kilgour, D.M., 2009a. ``Matrix representation of solution concepts in multiple decision maker graph models," \emph{IEEE Transactions on Systems, Man, and Cybernetics, Part A: Systems and Humans}, {\bf 39}(1), 96-108.
+
+\bibitem[Xu et al.(2011)]{Xu-et-al2011}
+Xu, H., Kilgour, D.M., and Hipel, K.W., 2011. ``Matrix representation of conflict resolution in multiple-decision-maker graph models with preference uncertainty," \emph{Group Decision and Negotiation}, {\bf 20}(6), 755-779.
+
+\bibitem[Xu et al.(2009b)]{Xu-et-al2009b}
+Xu, H., Li, K.W., Hipel, K.W., and Kilgour, D.M., 2009b. ``A matrix approach to status quo analysis in the graph model for conflict resolution," \emph{Applied Mathematics and Computation} {\bf 212}(2), 470-480.
+
+\bibitem[Yager(1988)]{Yager1988}
+Yager, R.R., 1988. ``On ordered weighted averaging aggregation operators in multicriteria decision making," \emph{IEEE Transactions on Systems, Man, and Cybernetics}, {\bf 18}(1), 183-190.
+
+\bibitem[Zadeh(1965)]{Zadeh1965}
+Zadeh, L.A., 1965. ``Fuzzy sets," \emph{Information and Control}, {\bf 8}, 338-353.
+
+\bibitem[Zadeh(1973)]{Zadeh1973}
+Zadeh, L.A., 1973. ``Outline of a new approach to the analysis of complex systems and decision processes," \emph{IEEE Transactions on Systems, Man, and Cybernetics}, {\bf 3}(1), 28-44.
+
+\end{thebibliography}
+
+\end{document}

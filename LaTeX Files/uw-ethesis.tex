@@ -417,7 +417,7 @@ The reason behind choosing the Graph Model for Conflict Resolution (GMCR) as a f
 It is simple to determine the DMs involved in a conflict and their respective options. However, it is not as easy to determine the preference ranking for each DM \citep{kilgour1996negotiation}. In order to overcome this difficulty in GMCR, a methodology presented in this proposal helps negotiators identify possible preference rankings leading to a desired resolution. A number of water conflicts involving a third party in the Middle East were studied recently. The studies emphasize the effects of third party intervention in bringing about a resolution \citep{HipelRami}. The regular GMCR was used to model and analyze the conflicts before and after third party intervention. The yielded outcomes were significantly different. The applications provided the motivation to seek a more generalized approach to formally model Third Party intervention within the framework of GMCR.
 
 
-\section{Proposal Organization}
+\section{Thesis Organization}
 
 The following diagram in Figure \ref{fig:proposal} illustrates the organization of this proposal.
 
@@ -693,6 +693,7 @@ Every real world conflict has a starting point from which the conflict evolves. 
 
 \section{Decision Support System for GMCR}
 
+\subsection{Review of Existing Decision Support Systems}
 
 
 %%%%%%%%%%%%%%%%%%%%%
@@ -957,7 +958,7 @@ It is clear that the conflict along the Euphrates River is indeed a complex one.
 \chapter{Modeling Third Party Intervention in Conflict Resolution}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\section{Introduction}
+\section{Models and Approaches}
 
 In order to formally model third party intervention in conflicts, three areas will be investigated, as follows:
 \begin{enumerate}
@@ -967,10 +968,13 @@ In order to formally model third party intervention in conflicts, three areas wi
 
 \end{enumerate}
 
+\section{Prediction vs. Negotiation}
+
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\section{Inverse Approach to GMCR}
-\subsection{Overview and Objective}
+\chapter{Inverse GMCR}
+\section{Overview and Objective}
 
 The Graph Model for Conflict Resolution (GMCR) forms an ideal framework to model and analyze conflicts; however, there are challenges to its application, especially in estimating the relative preferences of DMs involved in the conflict. In order to address this problem, the inverse approach to GMCR allows the mediator to determine how a desired resolution to the conflict can arise by generating all possible preferences that achieve it.
 
@@ -989,7 +993,7 @@ In contrast, the current GMCR methodology informs the user only about the possib
 
 
 
-\subsection{Procedure and Implementation}
+\section{Basic Implementation}
 
 The main difference between the inverse approach and the standard GMCR procedure is in the order of steps. The diagram in Figure \ref{fig:procedure_or} illustrates the current procedure for applying GMCR in the real world. A modified version of the graph, shown in Figure \ref{fig:procedure_inv}, illustrates how to apply the inverse approach to GMCR. The original procedure requires the following inputs for the conflict to be analyzed: (1) decision makers (DMs), (2) options for each DM, and (3) preference rankings of the states for each DM \citep{Fang1989,fang1993}. On the other hand, the inverse approach will not require the ranking of states for all DMs. Its requirements are: (1) DMs, (2) options for each DM, (3) desired equilibrium, and (4) stability definition. The result will be a list of possible state rankings that will make the desired resolution stable under the selected stability definition.
 
@@ -1059,10 +1063,13 @@ The \emph{inverse problem} for a desired equilibrium state $s_E \in S$ is to fin
 A more formal definition according to each solution concept will follow.
 
 
-\subsection{Algorithms}
+\subsection{Algorithm}
 
 In order to implement the inverse approach, two approaches were investigated. The first one was the brute-force method. As the name suggests, this method tests each possible preference profile for each DM against the desired equilibrium. Since the number of possible preference rankings is fairly large, a decision support system was designed to test the concept. The number of iterations required for a model, assuming strict ordinal preferences, is given by $(m!)^{n}$ where $m$ is the number of feasible states and $n$ is the number of DMs.  If the combination of preference vectors for all DMs (i.e. preference profile) achieves the desired equilibrium, it will be saved into a list. The second algorithm was designed after observing the pattern produced by the brute-force method. It was clear that results followed certain rules which can be defined more formally, as outlined in the following subsections. %The pseudo-codes for both algorithms will be given in the decision support system section below.%
 
+\section{Advanced Implementation}
+
+\subsection{Patterns}
 
 
 \subsection{Inverse Nash Equilibrium}
@@ -1159,8 +1166,11 @@ $i \in N$
 %\end{definition}
 
 
+\section{Inverse GMCR Coalitions}
 
-\subsection{Example}
+\section{Inverse GMCR Goals Technique}
+
+\section{Example}
 
 In order to illustrate the inverse approach, the example in section \ref{sec:example1} will now be analyzed using the inverse approach. A desired state is chosen to be the resolution of the conflict. The desired state is state 2, in which both Syria and Iraq stop escalating and water is released to Iraq (Table \ref{tbl:t2}). Because the mediator is aiming to influence Syria, the preference ranking for Iraq will be considered fixed (Table \ref{tbl:t5}). The objective is to assist the third party at influencing Syria and choosing the best strategy to achieve the desired resolution. For this example, the decision support system was used to execute the inverse approach. The findings indicate that 240 possible preference profiles can achieve the desired resolution. After analyzing these results, two meaningful patterns were identified that lead the conflict to the desired equilibrium:
 \begin{itemize}
@@ -1181,32 +1191,102 @@ The introduction of the inverse approach makes the need for a decision support s
 The matrix approach to GMCR allows for faster processing \citep{xu2007matrix,xu2009}. The last decision support system, GMCR II, was developed by Xiaoyoung (John) Peng back in 1999 \citep{peng1999decision}. Until recently, no significant update was made to the decision support system, even though, the program had issues that sometimes caused it to crash or display error messages.
 A project to combine both the logical and matrix approaches into a more robust and flexible decision support system was initiated by Oskar Petersons and Rami Kinsara under the supervision of Prof. Keith Hipel and Prof. D. Marc Kilgour. The objective of this system is to overcome the limitations in the previous version and also add new extensions and capabilities that it did not support. A main objective of the new system is to include the inverse approach methodology. An important feature of the software is the ability to narrate the output results. More extensions and features are planned.
 
+\section{Conflict Specification}
+
+\subsection{Option Objects}
+
+\subsubsection{Option Name}
+
+\subsubsection{Reversibility}
+
+\subsection{Condition Objects}
+
+
+\subsection{Infeasible Conditions}
+
+\subsection{DM Objects}
+
+\subsubsection{DM Name}
+
+\subsubsection{Options Controlled}
+
+\subsubsection{Preference}
+
+
+\section{Conflict Data Processing}
+
+\subsection{Removing Infeasible States}
+
+\subsection{Preference Prioritization}
+
+\subsection{Direct Ranking Handling}
+
+
+\subsection{Reachability Matrix}
+
+\section{Analysis Engines and Output}
+\subsubsection{Logical Solution}
+
+\subsubsection{Inverse GMCR}
+
+
+
+
+
+\section{Current Interface}
+
+\subsection{Decision Makers and Options}
+
+\subsection{Infeasible States}
+
+\subsection{Irreversible Moves}
+
+
+\subsection{Preferences}
+
+
+\subsubsection{Preferred Conditions}
+
+\subsubsection{Direct Ranking}
+
+
+\subsection{Equilibria}
+
+\subsection{Inverse Approach}
+
+\section{Presentation and Post Analysis Tools}
+
+\subsection{Graphical Representation}
+\subsection{Tree Diagrams (or status quo analysis)}
+
+\section{Case Study}
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 
 
 %======================================================================
-\chapter{Future Work and Timeline}
+\chapter{Conclusions}
 In addition to the methodologies presented in this proposal, several important topics are outlined in the following sections and will be investigated. These topics fall within third party modeling in conflict resolution.
-\section{Third Party Strategy Recommendations}
+%\section{Third Party Strategy Recommendations}
 Various third party roles and strategies are investigated and presented in Chapter 2 of this proposal. A methodology is needed to determine the best role and strategy that a mediator should undertake in any particular conflict situation. The motivation to introduce such a methodology is to operationalize the notion of third party intervention.
 
-\section{Enhance the Inverse Approach Methodology}
+%\section{Enhance the Inverse Approach Methodology}
 Although basic features of the inverse approach are outlined in this proposal, further enhancements are planned to extend the capability and usefulness of the methodology. One area being studied is the development of a cost and payoff extension to the inverse approach to GMCR. This feature will allow for narrowing down the list of possible profiles and will allow for more relevant and meaningful results.
 
-\section{Inverse Status Quo Analysis}
+%\section{Inverse Status Quo Analysis}
 An inverse approach to determine the required starting points in order to attain desired equilibria will be investigated. This will be achieved by tracking the evolution of the conflict backward from a desired equilibrium to the status quo states.
 
 
-\section{In-Depth Sensitivity Analysis}
+%\section{In-Depth Sensitivity Analysis}
 As mentioned earlier, with the introduction of the inverse approach, a more in-depth model for sensitivity analysis that determines the robustness of any equilibrium by outlining the range of preference profiles in a conflict will be put forward. 
 
-\section{Decision Support System}
+%\section{Decision Support System}
 Work has already started on a new decision support system using both the logical and matrix approaches for GMCR calculations. The new decision support system has the capability to perform basic inverse approach calculations using the definitions presented herein. In addition, the software will have the capability to perform regular and inverse status quo analysis. It should be noted that extensions made to the graph model for conflict resolution can be easily embedded into the new decision support system.
 
-\section{Application to Real World Conflicts}
+%\section{Application to Real World Conflicts}
 In order to better understand and appreciate the insights of the proposed methodologies, real world examples will be analyzed and investigated. The intention is to apply the methodologies to different conflict types, including political, environmental, and business conflicts.
-\section{Timeline}
+%\section{Timeline}
 The research goals and approximate completion dates are summarized and outlined in Table \ref{tbl:milestones} below.
 \begin{table}[H]
 \centering

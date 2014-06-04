@@ -1,0 +1,465 @@
+\chapter{Coalition Fuzzy Stability Analysis}\label{chap-cfsa}
+
+\section{Introduction}
+
+The fuzzy stability definitions introduced in Sections~\ref{sec-fuz-stabl-2dm} and \ref{sec-fuz-stabl-ndm} are based solely on the non-cooperative behavior of DMs; that is, each DM identifies his or her favorable states based only on his or her own interests. However, in reality, people may cooperate with each other to see if they can do even better compared to what they can achieve individually.
+
+As mentioned in the Subsection \ref{subsec-coal-stabl-anal}, a coalitional form of stability definitions for Nash, \emph{GMR}, \emph{SMR}, and \emph{SEQ} within the (crisp) graph model structure are developed in \citep{Kilgour-et-al2001, Inohara&Hipel2008a, Inohara&Hipel2008b}. In this chapter, necessary tools, such as coalition fuzzy improvements and class coalitional fuzzy improvements, are introduced to facilitate the coalitional form of fuzzy stability analysis. Next, the four basic coalitional fuzzy stability definitions, such as coalition fuzzy Nash stability, coalition fuzzy general metarationality, coalition fuzzy symmetric metarationality, and coalition fuzzy sequential stability are developed.
+
+The coalition fuzzy stability definitions introduced in this chapter are applied to a model of the groundwater contamination dispute in Elmira, described in Section \ref{sec-stabl-appl-elmira}, demonstrating how these new concepts can be conveniently applied to practical problems in order to identify a likely outcome. This application also reveals a comparison between cooperative and non-cooperative form of fuzzy stabilities, and provides valuable strategic insights. The research in this chapter was initiated in the paper by \citet{Bashar-et-al2012a}.
+
+\section{Fuzzy Improvements by Coalitions}\label{sec-fi-coals}
+
+In the fuzzy stability definitions given in Sections \ref{sec-fuz-stabl-2dm} and \ref{sec-fuz-stabl-ndm}, the focal DM is a single DM; therefore, to determine states that are advantageous for the DM to move to, one needs to find the FUI list for each individual DM. However, the coalition fuzzy stabilities are primarily defined for a coalition of DMs. Note that the concept of a coalition fuzzy stability is an extension of the notion of a fuzzy stability for an individual DM. Thus, the coalition fuzzy stabilities will be characterized based on whether a coalition is better off to stay at the current state or to move to a reachable state. Hence, one needs to identify states that benefit the members of the coalition.
+
+Recall that $H \subseteq N$ represents a coalition of DMs in $N$, and $\mathcal{P}(N)$, the class of all coalitions of DMs in $N$. Also, recall that if $H=\{1, 2, ..., p\}$ then $\gamma_H=(\gamma_1, \gamma_2, ..., \gamma_p)$.
+
+\begin{definition}\label{def-cfi}
+\rm {\bf (Coalition Fuzzy Improvement):} A state $s_i \in S$ is a \emph{coalition fuzzy improvement} (CFI) from a state $s \in S$ by a coalition $H \subseteq N$ if $s_i \in R_H(s)$ and $\alpha^k(s_i, s) \geq \gamma_k$ for all $k \in H$.
+\end{definition}
+
+\begin{definition}\label{def-cfil}
+\rm  {\bf (Coalition Fuzzy Improvement List):} The \emph{coalition fuzzy improvement list} (CFIL) from state $s$ by coalition $H$ is the collection of all CFIs from $s$ by the coalition $H$, denoted $\widetilde{R}_{H, \gamma_H}^{++}(s)$.
+\end{definition}
+
+\noindent In summary,
+$$s_i \in \widetilde{R}_{H, \gamma_H}^{++}(s) \text{ if and only if } s_i \in R_H(s) \text{ and } \alpha^k(s_i, s) \geq \gamma_k \text{ for all } k \in H.$$
+For simplicity, one writes $\widetilde{R}_H^{++}(s)=\widetilde{R}_{H, \gamma_H}^{++}(s)$.
+
+For coalitional form of \emph{FR} stability, one needs to identify states from which a coalition does not have an incentive to move to another state. The criteria given by Definitions \ref{def-cfi} and \ref{def-cfil} are sufficient to find these states. However, to define coalitional forms of \emph{FGMR}, \emph{FSMR} and \emph{FSEQ} stabilities, one needs to consider possible sanctions by the coalitions of the opponent DMs. Accordingly, the concept of class coalitional fuzzy improvements is provided below. Note that the notion of class coalitional moves is given by Definition \ref{def-ccm}.
+
+\begin{definition}\label{def-ccfil}
+\rm {\bf (Class Coalitional Fuzzy Improvement):} Let $s \in S $ and $\mathcal{C} \subseteq \mathcal{P}(N)$. Let $\bigcup_{H \in \mathcal{C}}H=\{1, 2, ..., \eta\}$ and define $\gamma_\mathcal{C}=(\gamma_1, \gamma_2, ..., \gamma_\eta)$. The \emph{class fuzzy improvement list}  or \emph{class coalitional fuzzy improvement list} (CCFIL) from state $s$ by class $\mathcal{C}$, denoted $\widetilde{R}_{\mathcal{C}, \gamma_\mathcal{C}}^{++}(s)$, is defined inductively as follows:
+\begin{enumerate}[(1)]
+\item If $H \in \mathcal{C}$ and $s_1 \in \widetilde{R}_H^{++}(s)$, then $s_1 \in \widetilde{R}_{\mathcal{C}, \gamma_\mathcal{C}}^{++}(s)$.
+\item If $s_1 \in \widetilde{R}_{\mathcal{C}, \gamma_\mathcal{C}}^{++}(s)$ and $H \in \mathcal{C}$, and $s_2 \in \widetilde{R}_H^{++}(s_1)$, then $s_2 \in \widetilde{R}_{\mathcal{C}, \gamma_\mathcal{C}}^{++}(s)$.
+\end{enumerate}
+A \emph{class coalitional fuzzy improvement} (CCFI) from $s$ by the class $\mathcal{C}$ is any member of $\widetilde{R}_{\mathcal{C}, \gamma_\mathcal{C}}^{++}(s)$. As in Definition \ref{def-ccm}, this definition ensures that no DM in any coalition in $\mathcal{C}$ may move twice consecutively. For simplicity, one writes $\widetilde{R}_\mathcal{C}^{++}(s)=\widetilde{R}_{\mathcal{C}, \gamma_\mathcal{C}}^{++}(s)$.
+\end{definition}
+
+\section{Coalition Fuzzy Stabilities}\label{sec-cfs}
+
+\begin{definition}\label{def-cfr-coal}
+\rm {\bf (Coalition Fuzzy Nash Stability or Coalition Fuzzy Rationality for a Coalition):} Let $H$ be a coalition of DMs in $N$ and $s \in S$. State $s$ is \emph{coalition fuzzy Nash stable} or \emph{coalition fuzzy rational} (\emph{CFR}) for coalition $H$ if and only if $\widetilde{R}_H^{++}(s)=\varnothing$.
+\end{definition}
+
+It is clear from this definition that state $s$ is a \emph{CFR} for a coalition if and only if there is no state that is a CFI from $s$ by the coalition. Note that \emph{CFR} stability is a natural generalization of the \emph{FR} stability given in Definition~\ref{def-fr}.
+
+\begin{definition}\label{def-cfr-dm}
+\rm {\bf (Coalition Fuzzy Nash Stability or Coalition Fuzzy Rationality for a DM):} Let $k \in N$ and $s \in S$. State $s$ is \emph{coalition fuzzy Nash stable} or \emph{coalition fuzzy rational} (\emph{CFR}) for DM $k$ if and only if $s$ is \emph{CFR} for all coalitions $H \in \mathcal{P}(N)$ such that $k \in H$.
+\end{definition}
+
+In the following definitions, $\mathcal{P}(N-H)$ represents the class of coalitions of DMs in $N$ other than those in $H$.
+
+\begin{definition}\label{def-cfgmr-coal}
+\rm {\bf (Coalition Fuzzy General Metarationality for a Coalition):}
+Let $H \in \mathcal{P}(N)$ and $s \in S$. State $s$ is \emph{coalition fuzzy general metarational} (\emph{CFGMR}) for coalition $H$ if and only if for every $s_1 \in \widetilde{R}_H^{++}(s)$ there exists a CCM $s_2 \in R_{\mathcal{P}(N-H)}(s_1)$ such that $\alpha^k(s_2, s)<\gamma_k$ for some $k \in H$.
+\end{definition}
+
+Under \emph{CFGMR}, each of the initial coalition $H$'s CFIs is sanctioned by a subsequent coalitional move by some or all of the sanctioning coalitions such that no DM in any sanctioning coalition may move twice consecutively. Keep in mind that, as in the case of \emph{CFR} stability, \emph{CFGMR} stability generalizes the concept of \emph{FGMR} stability provided in Definition~\ref{def-fgmr-ndm}.
+
+\begin{definition}\label{def-cfgmr-dm}
+\rm {\bf (Coalition Fuzzy General Metarationality for a DM):} Let $k \in N$ and $s \in S$. State $s$ is \emph{coalition fuzzy general metarational} (\emph{CFGMR}) for DM $k$ if and only if $s$ is \emph{CFGMR} for all coalitions $H \in \mathcal{P}(N)$ such that $k \in H$.
+\end{definition}
+
+\begin{definition}\label{def-cfsmr-coal}
+\rm {\bf (Coalition Fuzzy Symmetric Metarationality for a Coalition):} Let $H \in \mathcal{P}(N)$ and $s \in S$. State $s$ is \emph{coalition fuzzy symmetric metarational} (\emph{CFSMR}) for coalition $H$ if and only if for every $s_1 \in \widetilde{R}_H^{++}(s)$ there exists a CCM $s_2 \in R_{\mathcal{P}(N-H)}(s_1)$ such that $\alpha^k(s_2, s)<\gamma_k$ for some $k \in H$, and for every $s_3 \in R_H(s_2)$, $\alpha^l(s_3, s)<\gamma_l$ for some $l \in H$.
+\end{definition}
+
+\emph{CFSMR} describes the stability of states by looking one more step ahead compared to the \emph{CFGMR} by checking whether the initial coalition $H$ can escape sanctions, if any, caused by the subsequent coalitional moves against each of $H$'s CFIs. If $H$ cannot escape the sanction using a coalitional move, the state is \emph{CFSMR} stable. As before, the \emph{CFSMR} stability constitutes an intuitive extension of the \emph{FSMR} stability furnished in Definition~\ref{def-fsmr-ndm}.
+
+\begin{definition}\label{def-cfsmr-dm}
+\rm {\bf (Coalition Fuzzy Symmetric Metarationality for a DM):} Let $k \in N$ and $s \in S$. State $s$ is \emph{coalition fuzzy symmetric metarational} (\emph{CFSMR}) for DM $k$ if and only if $s$ is \emph{CFSMR} for all coalitions $H \in \mathcal{P}(N)$ such that $k \in H$.
+\end{definition}
+
+\begin{definition}\label{def-cfseq-coal}
+\rm {\bf (Coalition Fuzzy Sequential Stability for a Coalition):}
+Let $H \in \mathcal{P}(N)$ and $s \in S$. State $s$ is \emph{coalition fuzzy sequentially stable} (\emph{CFSEQ}) for coalition $H$ if and only if for every $s_1 \in \widetilde{R}_H^{++}(s)$ there exists a CCFI $s_2 \in \widetilde{R}_{\mathcal{P}(N-H)}^{++}(s_1)$ such that $\alpha^k(s_2, s)<\gamma_k$ for some $k \in H$.
+\end{definition}
+
+\emph{CFSEQ} is the same as \emph{CFGMR} except that while considering sanctions of the initial coalition $H$'s CFIs, $H$ takes into account only subsequent coalitional fuzzy improvements rather than coalitional moves. Like other coalition fuzzy stabilities, \emph{CFSEQ} stability is a natural generalization of the \emph{FSEQ} stability given in Definition~\ref{def-fseq-ndm}.
+
+\begin{definition}\label{def-cfseq-dm}
+\rm {\bf (Coalition Fuzzy Sequential Stability for a DM):}
+Let $k \in N$ and $s \in S$. State $s$ is \emph{coalition fuzzy sequentially stable} (\emph{CFSEQ}) for DM $k$ if and only if $s$ is \emph{CFSEQ} for all coalitions $H \in \mathcal{P}(N)$ such that $k \in H$.
+\end{definition}
+
+\begin{definition}\label{def-cfe}
+\rm {\bf (Coalition Fuzzy Equilibrium):} A state $s \in S$ is a \emph{coalition fuzzy equilibrium} (\emph{CFE}) under a specific coalition fuzzy stability concept if and only if $s$ is coalition fuzzy stable for all DMs under that coalition fuzzy stability notion. For instance, state $s$ is coalition fuzzy Nash equilibrium or \emph{CFR} equilibrium if and only if it is \emph{CFR} stable for all DMs in $N$.
+\end{definition}
+
+\begin{remark}\label{rmk-fuz-coal}
+\rm If the FST of each DM in $N$ is $1.0$, the definitions of coalition fuzzy stabilities and associated coalition fuzzy equilibrium developed in this section coincide with the definitions of the corresponding coalition stabilities and associated coalition equilibrium provided in Subsection \ref{subsec-coal-stabl-anal}.
+\end{remark}
+
+\noindent The following theorem is due to Remark \ref{rmk-fuz-coal}.
+
+\begin{theorem}
+\rm Coalition fuzzy stability concepts of the FGM are generalizations of (crisp) coalition stability notions of the GMCR.
+\end{theorem}
+
+\section{Application of Coalition Fuzzy Stabilities to the \\Elmira Groundwater Contamination Conflict}\label{sec-cfs-appl}
+
+To clearly understand the coalition fuzzy stability concepts as well as the associated definitions, and to demonstrate how they can be applied to practical decision problems, the methodology is applied to an actual dispute over the contamination of the groundwater aquifer supplying the town of Elmira, Canada, which is described in detail in Section \ref{sec-stabl-appl-elmira}. Note that a crisp graph model coalition analysis of the Elmira conflict was initiated by \citet{Kilgour-et-al2001} while an extensive coalition analysis was done by \citet{Inohara&Hipel2008a}.
+
+To study the impacts of DMs' satisficing behavior in the coalition fuzzy stability analysis of the Elmira dispute, four sets of FSTs---(i) $\gamma_\text{M}=1.0, \gamma_\text{U}=0.4, \gamma_\text{L}=0.2$; (ii) $\gamma_\text{M}=1.0, \gamma_\text{U}=0.4, \gamma_\text{L}=0.3$; (iii) $\gamma_\text{M}=1.0, \gamma_\text{U}=0.6, \gamma_\text{L}=0.2$; and (iv) $\gamma_\text{M}=1.0, \gamma_\text{U}=0.6, \gamma_\text{L}=0.3$---are considered, which are the same as in Section \ref{sec-stabl-appl-elmira}. The reason for choosing the same set of FSTs as in Section \ref{sec-stabl-appl-elmira} is to compare the outcomes of the present analysis with the results obtained in Section \ref{sec-stabl-appl-elmira} using non-cooperative fuzzy stabilities.
+
+\begin{table}[h!]
+\centering \caption{Reachable Lists of Coalitions}
+\footnotesize
+\setlength{\tabcolsep}{3pt}
+\renewcommand{\arraystretch}{1.3}
+\begin{tabular}{c|x{10mm}|x{10mm}|x{10mm}|x{20mm}|x{20mm}|x{20mm}|x{40mm}}
+
+\noalign{\hrule height 1.3pt}
+
+\multirow{2}{10mm}{States ($s$)} & \multicolumn{7}{c}{Reachable Lists $R_H(s)$ by Coalitions $H \subseteq N$} \\\cline{2-8}
+  & M & U & L & MU & ML & UL & MUL \\
+
+\noalign{\hrule height 1.3pt}
+
+ $s_1$ & $s_2$ & $s_3, s_9$ & $s_5$ & $s_2, s_3, s_4, s_9$ & $s_2, s_5, s_6$
+       & $s_3, s_5, s_7, s_9$ & $s_2, s_3, s_4, s_5, s_6, s_7, s_8, s_9$     \\\hline
+ $s_2$ &       & $s_4, s_9$ & $s_6$ & $ s_4, s_9$          &      $s_6$
+       & $s_4, s_6, s_8, s_9$ & $s_4, s_6, s_8, s_9$                         \\\hline
+ $s_3$ & $s_4$ & $s_9$      & $s_7$ & $s_4, s_9$           & $s_4, s_7, s_8$
+       & $s_7, s_9$           & $s_4, s_7, s_8, s_9$                         \\\hline
+ $s_4$ &       & $s_9$      & $s_8$ & $s_9$                & $s_8$
+       & $s_8, s_9$           & $s_8, s_9$                                   \\\hline
+ $s_5$ & $s_6$ & $s_7, s_9$ & $s_1$ & $s_6, s_7, s_8, s_9$ & $s_1, s_2, s_6$
+       & $s_1, s_3, s_7, s_9$ & $s_1, s_2, s_3, s_4, s_6, s_7, s_8, s_9$     \\\hline
+ $s_6$ &       & $s_8, s_9$ & $s_2$ & $s_8, s_9$           & $s_2$
+       & $s_2, s_4, s_8, s_9$ & $s_2, s_4, s_8, s_9$                         \\\hline
+ $s_7$ & $s_8$ & $s_9$      & $s_3$ & $s_8, s_9$           & $s_3, s_4, s_8$
+       & $s_3, s_9$           & $s_3, s_4, s_8, s_9$                         \\\hline
+ $s_8$ &       & $s_9$      & $s_4$ & $s_9$                & $s_4$
+       & $s_4, s_9$           & $s_4, s_9$                                   \\\hline
+ $s_9$ &       &            &       &                      &
+       &                      &                                              \\\hline
+
+\noalign{\hrule height 1.3pt}
+\end{tabular}
+\label{reach-list-coal}
+\end{table}
+
+Recall that the set of DMs in the conflict is $N$ = \{M, U, L\} and the set of feasible states, $S=\{s_1, s_2, ..., s_9\}$. Hence, all possible coalitions of DMs are \{M\}, \{U\}, \{L\}, \{M, U\}, \{M, L\}, \{U, L\}, and \{M, U, L\}. For simplicity, these coalitions are written as M, U, L, MU, ML, UL, and MUL, respectively; hence $\mathcal{P}(N)$ = \{M, U, L, MU, ML, UL, MUL\}. The reachable lists for all coalitions of DMs are calculated by using Definition~\ref{reach-coalition}, and are presented in Table~\ref{reach-list-coal}. Next, for each coalition $H \in \mathcal{P}(N)$, Definitions~\ref{def-cfil} and \ref{def-ccfil} are employed to calculate CFILs $\widetilde{R}_H^{++}(s)$ and CCFILs $\widetilde{R}_{\mathcal{P}(N-H)}^{++}(s)$, respectively, from each state $s$ for each of the four sets of FSTs. To save space in the thesis, $\widetilde{R}_H^{++}(s)$ and $\widetilde{R}_{\mathcal{P}(N-H)}^{++}(s)$ are presented in Tables~\ref{coal-fuz-impv-tbl} and \ref{clas-coal-fuz-impv-tbl}, respectively, for only the FSTs $\gamma_\text{M}=1.0, \gamma_\text{U}=0.4$, and $\gamma_\text{L}=0.2$. In particular, one can see from Table~\ref{coal-fuz-impv-tbl} that state $s_8$ is a CFI of coalition MU from state $s_5$, since $s_8 \in R_\text{MU}(s_5)$, and $\alpha^\text{M}(s_8, s_5)=1.0-0=1.0=\gamma_\text{M}$ and $\alpha^\text{U}(s_8, s_5)=0.9-0.1=0.8>0.4=\gamma_\text{U}$. From Table~\ref{clas-coal-fuz-impv-tbl}, state $s_9$ is a CCFI from state $s_1$ by the class of coalitions of the opponents of M (that is, of the class of coalitions \{U, L, UL\}), since $s_9$ is a CFI from state $s_5$ by U and $s_5$ is a CFI from state $s_1$ by L.
+
+\begin{table}[h!]
+\centering
+\caption{Coalition Fuzzy Improvement Lists for Fuzzy Satisficing Thresholds (FSTs): $\gamma_\text{M}=1.0, \gamma_\text{U}=0.4, \gamma_\text{L}=0.2$}
+\footnotesize
+\setlength{\tabcolsep}{3pt}
+\renewcommand{\arraystretch}{1.3}
+\begin{tabular}{c|x{18mm}|x{18mm}|x{18mm}|x{18mm}|x{18mm}|x{18mm}|x{18mm}}
+
+\noalign{\hrule height 1.3pt}
+
+\multirow{2}{12mm}{States ($s$)} & \multicolumn{7}{c}{Coalition Fuzzy Improvement Lists $\widetilde{R}_H^{++}(s)$ for Coalitions $H \subseteq N$} \\\cline{2-8}
+  & M & U & L & MU & ML & UL & MUL \\
+
+\noalign{\hrule height 1.3pt}
+
+ $s_1$ & &            & $s_5$ &       & $s_5$ &            &            \\\hline
+ $s_2$ & & $s_4, s_9$ & $s_6$ & $s_4$ &       & $s_4, s_8$ & $s_4, s_8$ \\\hline
+ $s_3$ & & $s_9$      &       &       &       &            &            \\\hline
+ $s_4$ & &            &       &       &       &            &            \\\hline
+ $s_5$ & & $s_9$      &       & $s_8$ &       &            &            \\\hline
+ $s_6$ & & $s_8, s_9$ &       & $s_8$ &       & $s_4, s_8$ & $s_4, s_8$ \\\hline
+ $s_7$ & & $s_9$      & $s_3$ &       &       & $s_3$      &            \\\hline
+ $s_8$ & &            & $s_4$ &       & $s_4$ & $s_4$      & $s_4$      \\\hline
+ $s_9$ & &            &       &       &       &            &            \\
+
+\noalign{\hrule height 1.3pt}
+\end{tabular}
+\label{coal-fuz-impv-tbl}
+\end{table}
+
+\begin{table}[h!]
+\centering
+\caption{Class Coalitional Fuzzy Improvement Lists for Fuzzy Satisficing Thresholds (FSTs): $\gamma_\text{M}=1.0, \gamma_\text{U}=0.4, \gamma_\text{L}=0.2$}
+\footnotesize
+\setlength{\tabcolsep}{3pt}
+\renewcommand{\arraystretch}{1.3}
+\begin{tabular}{c|x{18mm}|x{18mm}|x{18mm}|x{18mm}|x{18mm}|x{18mm}|x{18mm}}
+
+\noalign{\hrule height 1.3pt}
+
+\multirow{2}{12mm}{States $(s)$} & \multicolumn{7}{c}{Class Coalitional Fuzzy Improvement Lists $\widetilde{R}_{\mathcal{P}(N-H)}^{++}(s)$ for Coalitions $H \subseteq N$} \\\cline{2-8}
+  & M & U & L & MU & ML & UL & MUL \\
+
+\noalign{\hrule height 1.3pt}
+
+ $s_1$&$s_5, s_9$          &$s_5$&          &$s_5$&          & & \\\hline
+ $s_2$&$s_4, s_6, s_8, s_9$&$s_6$&$s_4, s_9$&$s_6$&$s_4, s_9$& & \\\hline
+ $s_3$&$s_9$               &     &$s_9$     &     &$s_9$     & & \\\hline
+ $s_4$&                    &     &          &     &          & & \\\hline
+ $s_5$&$s_9$               &     &$s_8, s_9$&     &$s_9$     & & \\\hline
+ $s_6$&$s_4, s_8, s_9$     &     &$s_8, s_9$&     &$s_8, s_9$& & \\\hline
+ $s_7$&$s_3, s_9$          &$s_3$&$s_9$     &$s_3$&$s_9$     & & \\\hline
+ $s_8$&$s_4$               &$s_4$&          &$s_4$&          & & \\\hline
+ $s_9$&                    &     &          &     &          & & \\
+
+\noalign{\hrule height 1.3pt}
+\end{tabular}
+\label{clas-coal-fuz-impv-tbl}
+\end{table}
+
+Although four different coalition fuzzy stability definitions are introduced to include varied human behavior under conflict within the FGM, it is reasonable to assume that \emph{CFR} and \emph{CFSEQ} stability represent a majority of the DMs' behavioral patterns, since DMs levying sanctions will not hurt themselves when sanctioning by moving to a less preferred state. Hence, a coalition fuzzy stability analysis for \emph{CFR} and \emph{CFSEQ} are presented here for the dispute over the groundwater contamination in Elmira. Note from Definitions~\ref{def-cfr-dm}, \ref{def-cfgmr-dm}, \ref{def-cfsmr-dm}, and \ref{def-cfseq-dm} that the coalition fuzzy stability for an individual DM depends on the coalition fuzzy stability results for all possible coalitions in which that DM is a member. In particular, in the Elmira conflict, a state is \emph{CFR} stable for DM M if it is \emph{CFR} stable for coalitions M, MU, ML, and MUL. The \emph{CFR} and \emph{CFSEQ} stability results for DM M for FSTs $\gamma_M=1.0, \gamma_U=0.4,{\rm and} \gamma_L=0.2$ are presented in Table~\ref{coal-fuz-nash-seq-rslt-M-tbl}. One can notice from Table~\ref{coal-fuz-nash-seq-rslt-M-tbl} that state $s_4$ is \emph{CFR} for DM M since it is \emph{CFR} for each of the four coalitions M, MU, ML and MUL, while state $s_5$ is not \emph{CFR} for DM M because it is not \emph{CFR} for coalition MU, although it is for the other three coalitions M, ML and MUL.
+
+\begin{table}[h!]
+\centering \caption{Coalition Fuzzy Nash (\emph{CFR}) and Sequential (\emph{CFSEQ}) Stability Results for the Ontario Ministry of the Environment (M) for Fuzzy Satisficing Thresholds (FSTs): $\gamma_\text{M}=1.0, \gamma_\text{U}=0.4, \gamma_\text{L}=0.2$}
+\footnotesize
+\setlength{\tabcolsep}{3pt}
+\renewcommand{\arraystretch}{1.3}
+\begin{tabular}{c|x{10mm}|x{10mm}|x{10mm}|x{10mm}|c|x{10mm}|x{10mm}|x{10mm}|x{10mm}|c}
+
+\noalign{\hrule height 1.3pt}
+
+\multirow{2}{12mm}{States $(s)$} & \multicolumn{4}{c|}{\emph{CFR} for Coalition $H \subseteq N$} & \multirow{2}{17mm}{\emph{CFR} for DM M} & \multicolumn{4}{c|}{\emph{CFSEQ} for Coalition $H \subseteq N$} & \multirow{2}{17mm}{\emph{CFSEQ} for DM M} \\ \cline{2-5}\cline{7-10}
+ & M & MU & ML & MUL &  & M & MU & ML & MUL &  \\
+
+\noalign{\hrule height 1.3pt}
+
+ $s_1$&$\surd$&$\surd$&       &$\surd$&       &$\surd$&$\surd$&$\surd$&$\surd$&$\surd$ \\\hline
+ $s_2$&$\surd$&       &$\surd$&       &       &$\surd$&       &$\surd$&       &        \\\hline
+ $s_3$&$\surd$&$\surd$&$\surd$&$\surd$&$\surd$&$\surd$&$\surd$&$\surd$&$\surd$&$\surd$ \\\hline
+ $s_4$&$\surd$&$\surd$&$\surd$&$\surd$&$\surd$&$\surd$&$\surd$&$\surd$&$\surd$&$\surd$ \\\hline
+ $s_5$&$\surd$&       &$\surd$&$\surd$&       &$\surd$&       &$\surd$&$\surd$&        \\\hline
+ $s_6$&$\surd$&       &$\surd$&       &       &$\surd$&       &$\surd$&       &        \\\hline
+ $s_7$&$\surd$&$\surd$&$\surd$&$\surd$&$\surd$&$\surd$&$\surd$&$\surd$&$\surd$&$\surd$ \\\hline
+ $s_8$&$\surd$&$\surd$&       &       &       &$\surd$&$\surd$&       &       &        \\\hline
+ $s_9$&$\surd$&$\surd$&$\surd$&$\surd$&$\surd$&$\surd$&$\surd$&$\surd$&$\surd$&$\surd$ \\[1mm]
+
+\noalign{\hrule height 1.3pt}
+
+\end{tabular}
+\label{coal-fuz-nash-seq-rslt-M-tbl}
+\end{table}
+
+The overall stability results, that is, the \emph{CFR} and \emph{CFSEQ} stability findings for M, U and L as well as the corresponding \emph{CFE} for all four sets of FSTs, are presented in Table~\ref{coal-fuz-stab-reslt-tbl}. It can be seen from Table~\ref{coal-fuz-stab-reslt-tbl} that the most consistent \emph{CFE} are states $s_4$ and $s_9$, as they appear to be \emph{CFE} under both \emph{CFR} and \emph{CFSEQ} stability concepts for all four sets of FSTs. If L requires more certainty of improvements, that is, if L wants to gain more in identifying its FUIs, then state $s_8$ joins the \emph{CFE} list. Notice that for smaller FST of U, state $s_1$ is not \emph{CFE} under \emph{CFR} but it is under \emph{CFSEQ}. The reason for this is that there is a CFI $s_5$ from state $s_1$ by each of the coalitions L and ML that is sanctioned by the subsequent CCFI(s) of the class of coalitions of the opponents of each of L and ML. In particular, the CFI $s_5$ of coalition ML from $s_1$ is sanctioned by the subsequent CCFI $s_9$ of the class \{U\} of coalitions of the opponent(s) of ML, making state $s_1$ to be \emph{CFSEQ} stable for ML. However, for increased FST of U, CFI $s_5$ from $s_1$ by coalition ML becomes unsanctioned, so that $s_1$ can no longer be \emph{CFE} under \emph{CFSEQ}.
+
+\begin{table}[h!]
+\centering \caption{Coalition Fuzzy Stability Results of the Elmira Conflict}
+\scriptsize
+\setlength{\tabcolsep}{3pt}
+\renewcommand{\arraystretch}{1.32}
+\begin{tabular}{c|c!{\vrule width 1.3pt}x{12mm}|x{12mm}|x{12mm}|x{12mm}!{\vrule width 1.3pt}x{12mm}|x{12mm}|x{12mm}|x{12mm}}
+
+\noalign{\hrule height 1.3pt}
+
+\multirow{2}{*}{FSTs} & \multirow{2}{12mm}{States $(s)$} & \multicolumn{4}{c!{\vrule width 1.3pt}}{\emph{CFR}} & \multicolumn{4}{c}{\emph{CFSEQ}} \\ \cline{3-10}
+ &  & M & U & L & \emph{CFE} & M & U & L & \emph{CFE} \\
+
+\noalign{\hrule height 1.3pt}
+
+\multirow{9}{1.5cm}{$\gamma_\text{M}=1.0$ $\gamma_\text{U}=0.4$ $\gamma_\text{L}=0.2$}
+
+ &$s_1$&       &$\surd$&       &       &$\surd$&$\surd$&$\surd$&$\surd$ \\\cline{2-10}
+ &$s_2$&       &       &       &       &       &       &       &        \\\cline{2-10}
+ &$s_3$&$\surd$&       &$\surd$&       &$\surd$&       &$\surd$&        \\\cline{2-10}
+ &$s_4$&$\surd$&$\surd$&$\surd$&$\surd$&$\surd$&$\surd$&$\surd$&$\surd$ \\\cline{2-10}
+ &$s_5$&       &       &$\surd$&       &       &       &$\surd$&        \\\cline{2-10}
+ &$s_6$&       &       &       &       &       &       &       &        \\\cline{2-10}
+ &$s_7$&$\surd$&       &       &       &$\surd$&       &       &        \\\cline{2-10}
+ &$s_8$&       &       &       &       &       &       &       &        \\\cline{2-10}
+ &$s_9$&$\surd$&$\surd$&$\surd$&$\surd$&$\surd$&$\surd$&$\surd$&$\surd$ \\[1mm]
+
+\noalign{\hrule height 1.3pt}
+
+\multirow{9}{1.5cm}{$\gamma_\text{M}=1.0$ $\gamma_\text{U}=0.4$ $\gamma_\text{L}=0.3$}
+
+ &$s_1$&       &$\surd$&       &       &$\surd$&$\surd$&$\surd$&$\surd$ \\\cline{2-10}
+ &$s_2$&       &       &       &       &       &       &       &        \\\cline{2-10}
+ &$s_3$&$\surd$&       &$\surd$&       &$\surd$&       &$\surd$&        \\\cline{2-10}
+ &$s_4$&$\surd$&$\surd$&$\surd$&$\surd$&$\surd$&$\surd$&$\surd$&$\surd$ \\\cline{2-10}
+ &$s_5$&       &       &$\surd$&       &       &       &$\surd$&        \\\cline{2-10}
+ &$s_6$&       &       &       &       &       &       &       &        \\\cline{2-10}
+ &$s_7$&$\surd$&       &       &       &$\surd$&       &       &        \\\cline{2-10}
+ &$s_8$&$\surd$&$\surd$&$\surd$&$\surd$&$\surd$&$\surd$&$\surd$&$\surd$ \\\cline{2-10}
+ &$s_9$&$\surd$&$\surd$&$\surd$&$\surd$&$\surd$&$\surd$&$\surd$&$\surd$ \\[1mm]
+
+\noalign{\hrule height 1.3pt}
+
+\multirow{9}{1.5cm}{$\gamma_\text{M}=1.0$ $\gamma_\text{U}=0.6$ $\gamma_\text{L}=0.2$}
+
+ &$s_1$&       &$\surd$&       &       &       &$\surd$&       &        \\\cline{2-10}
+ &$s_2$&       &       &       &       &       &       &       &        \\\cline{2-10}
+ &$s_3$&$\surd$&       &$\surd$&       &$\surd$&       &$\surd$&        \\\cline{2-10}
+ &$s_4$&$\surd$&$\surd$&$\surd$&$\surd$&$\surd$&$\surd$&$\surd$&$\surd$ \\\cline{2-10}
+ &$s_5$&       &       &$\surd$&       &       &       &$\surd$&        \\\cline{2-10}
+ &$s_6$&       &       &       &       &       &       &       &        \\\cline{2-10}
+ &$s_7$&$\surd$&       &       &       &$\surd$&       &       &        \\\cline{2-10}
+ &$s_8$&       &       &       &       &       &       &       &        \\\cline{2-10}
+ &$s_9$&$\surd$&$\surd$&$\surd$&$\surd$&$\surd$&$\surd$&$\surd$&$\surd$ \\[1mm]
+
+\noalign{\hrule height 1.3pt}
+
+\multirow{9}{1.5cm}{$\gamma_\text{M}=1.0$ $\gamma_\text{U}=0.6$ $\gamma_\text{L}=0.3$}
+
+ &$s_1$&       &$\surd$&       &       &       &$\surd$&       &        \\\cline{2-10}
+ &$s_2$&       &       &       &       &       &       &       &        \\\cline{2-10}
+ &$s_3$&$\surd$&       &$\surd$&       &$\surd$&       &$\surd$&        \\\cline{2-10}
+ &$s_4$&$\surd$&$\surd$&$\surd$&$\surd$&$\surd$&$\surd$&$\surd$&$\surd$ \\\cline{2-10}
+ &$s_5$&       &       &$\surd$&       &       &       &$\surd$&        \\\cline{2-10}
+ &$s_6$&       &       &       &       &       &       &       &        \\\cline{2-10}
+ &$s_7$&$\surd$&       &       &       &$\surd$&       &       &        \\\cline{2-10}
+ &$s_8$&$\surd$&$\surd$&$\surd$&$\surd$&$\surd$&$\surd$&$\surd$&$\surd$ \\\cline{2-10}
+ &$s_9$&$\surd$&$\surd$&$\surd$&$\surd$&$\surd$&$\surd$&$\surd$&$\surd$ \\[1mm]
+
+\noalign{\hrule height 1.3pt}
+\end{tabular}
+\label{coal-fuz-stab-reslt-tbl}
+\end{table}
+
+Now, these findings can be compared with the non-cooperative form of fuzzy stability results of the Elmira conflict found in Section \ref{sec-stabl-appl-elmira} (given in Table \ref{tbl-fsa}). For this purpose, Table \ref{fsr-tbl-fr-fseq} is reproduced from Table~\ref{tbl-fsa}, representing only \emph{FR} and \emph{FSEQ} stability results. From Tables \ref{coal-fuz-stab-reslt-tbl} and \ref{fsr-tbl-fr-fseq}, one can find that, the non-cooperative form of \emph{FE} state $s_5$ is no longer a \emph{FE} when DMs coordinate their moves. This is because the coalition MU has a CFI $s_8$ from $s_5$ that cannot be sanctioned by any subsequent CCFI of the class of coalitions of the opponents of MU. Hence, state $s_5$ is not \emph{CFR} or \emph{CFSEQ} stable for any of the DMs M and U. This means that M and U can find a better outcome than $s_5$ if they form a coalition; accordingly, $s_5$ is not a good choice as a resolution. Thus, the coalition fuzzy stability analysis can help narrow down the list of possible resolution(s).
+
+\begin{table}[!h]
+\centering
+\caption{Non-cooperative Form of Fuzzy Nash (\emph{FR}) and Sequential (\emph{FSEQ}) Stability Results of the Elmira Conflict (reproduced from Table \ref{tbl-fsa})}
+\scriptsize
+\setlength{\tabcolsep}{3pt}
+\renewcommand{\arraystretch}{1.3}
+\begin{tabular}{c|c!{\vrule width 1.3pt}x{12mm}|x{12mm}|x{12mm}|x{12mm}!{\vrule width 1.3pt}x{12mm}|x{12mm}|x{12mm}|x{12mm}}
+
+\noalign{\hrule height 1.3pt}
+
+\multirow{2}{*}{FSTs} & \multirow{2}{12mm}{States $(s)$} & \multicolumn{4}{c!{\vrule width 1.3pt}}{\emph{FR}} & \multicolumn{4}{c}{\emph{FSEQ}} \\ \cline{3-10}
+
+ &  & M & U & L & \emph{FE} & M & U & L & \emph{FE} \\
+
+\noalign{\hrule height 1.3pt}
+
+\multirow{9}{1.5cm}{$\gamma_\text{M}=1.0$ $\gamma_\text{U}=0.4$ $\gamma_\text{L}=0.2$}
+
+ &$s_1$&$\surd$&$\surd$&       &       &$\surd$&$\surd$&$\surd$&$\surd$ \\\cline{2-10}
+ &$s_2$&$\surd$&       &       &       &$\surd$&       &$\surd$&        \\\cline{2-10}
+ &$s_3$&$\surd$&       &$\surd$&       &$\surd$&       &$\surd$&        \\\cline{2-10}
+ &$s_4$&$\surd$&$\surd$&$\surd$&$\surd$&$\surd$&$\surd$&$\surd$&$\surd$ \\\cline{2-10}
+ &$s_5$&$\surd$&       &$\surd$&       &$\surd$&       &$\surd$&        \\\cline{2-10}
+ &$s_6$&$\surd$&       &$\surd$&       &$\surd$&       &$\surd$&        \\\cline{2-10}
+ &$s_7$&$\surd$&       &       &       &$\surd$&       &$\surd$&        \\\cline{2-10}
+ &$s_8$&$\surd$&$\surd$&       &       &$\surd$&$\surd$&       &        \\\cline{2-10}
+ &$s_9$&$\surd$&$\surd$&$\surd$&$\surd$&$\surd$&$\surd$&$\surd$&$\surd$ \\[1mm]
+
+\noalign{\hrule height 1.3pt}
+
+\multirow{9}{1.5cm}{$\gamma_\text{M}=1.0$ $\gamma_\text{U}=0.4$ $\gamma_\text{L}=0.3$}
+
+ &$s_1$&$\surd$&$\surd$&       &       &$\surd$&$\surd$&$\surd$&$\surd$ \\\cline{2-10}
+ &$s_2$&$\surd$&       &       &       &$\surd$&       &$\surd$&        \\\cline{2-10}
+ &$s_3$&$\surd$&       &$\surd$&       &$\surd$&       &$\surd$&        \\\cline{2-10}
+ &$s_4$&$\surd$&$\surd$&$\surd$&$\surd$&$\surd$&$\surd$&$\surd$&$\surd$ \\\cline{2-10}
+ &$s_5$&$\surd$&       &$\surd$&       &$\surd$&       &$\surd$&        \\\cline{2-10}
+ &$s_6$&$\surd$&       &$\surd$&       &$\surd$&       &$\surd$&        \\\cline{2-10}
+ &$s_7$&$\surd$&       &       &       &$\surd$&       &$\surd$&        \\\cline{2-10}
+ &$s_8$&$\surd$&$\surd$&$\surd$&$\surd$&$\surd$&$\surd$&$\surd$&$\surd$ \\\cline{2-10}
+ &$s_9$&$\surd$&$\surd$&$\surd$&$\surd$&$\surd$&$\surd$&$\surd$&$\surd$ \\[1mm]
+
+\noalign{\hrule height 1.3pt}
+
+\multirow{9}{1.5cm}{$\gamma_\text{M}=1.0$ $\gamma_\text{U}=0.6$ $\gamma_\text{L}=0.2$}
+
+ &$s_1$&$\surd$&$\surd$&       &       &$\surd$&$\surd$&       &        \\\cline{2-10}
+ &$s_2$&$\surd$&       &       &       &$\surd$&       &$\surd$&        \\\cline{2-10}
+ &$s_3$&$\surd$&       &$\surd$&       &$\surd$&       &$\surd$&        \\\cline{2-10}
+ &$s_4$&$\surd$&$\surd$&$\surd$&$\surd$&$\surd$&$\surd$&$\surd$&$\surd$ \\\cline{2-10}
+ &$s_5$&$\surd$&$\surd$&$\surd$&$\surd$&$\surd$&$\surd$&$\surd$&$\surd$ \\\cline{2-10}
+ &$s_6$&$\surd$&       &$\surd$&       &$\surd$&       &$\surd$&        \\\cline{2-10}
+ &$s_7$&$\surd$&       &       &       &$\surd$&       &$\surd$&        \\\cline{2-10}
+ &$s_8$&$\surd$&$\surd$&       &       &$\surd$&$\surd$&       &        \\\cline{2-10}
+ &$s_9$&$\surd$&$\surd$&$\surd$&$\surd$&$\surd$&$\surd$&$\surd$&$\surd$ \\[1mm]
+
+\noalign{\hrule height 1.3pt}
+
+\multirow{9}{1.5cm}{$\gamma_\text{M}=1.0$ $\gamma_\text{U}=0.6$ $\gamma_\text{L}=0.3$}
+
+ &$s_1$&$\surd$&$\surd$&       &       &$\surd$&$\surd$&       &        \\\cline{2-10}
+ &$s_2$&$\surd$&       &       &       &$\surd$&       &$\surd$&        \\\cline{2-10}
+ &$s_3$&$\surd$&       &$\surd$&       &$\surd$&       &$\surd$&        \\\cline{2-10}
+ &$s_4$&$\surd$&$\surd$&$\surd$&$\surd$&$\surd$&$\surd$&$\surd$&$\surd$ \\\cline{2-10}
+ &$s_5$&$\surd$&$\surd$&$\surd$&$\surd$&$\surd$&$\surd$&$\surd$&$\surd$ \\\cline{2-10}
+ &$s_6$&$\surd$&       &$\surd$&       &$\surd$&       &$\surd$&        \\\cline{2-10}
+ &$s_7$&$\surd$&       &       &       &$\surd$&       &$\surd$&        \\\cline{2-10}
+ &$s_8$&$\surd$&$\surd$&$\surd$&$\surd$&$\surd$&$\surd$&$\surd$&$\surd$ \\\cline{2-10}
+ &$s_9$&$\surd$&$\surd$&$\surd$&$\surd$&$\surd$&$\surd$&$\surd$&$\surd$ \\[1mm]
+
+\noalign{\hrule height 1.3pt}
+\end{tabular}
+\label{fsr-tbl-fr-fseq}
+\end{table}
+
+Although there are no other differences between the \emph{FE} and \emph{CFE} results, there is a substantial amount of difference in individual level fuzzy stability findings between the non-cooperative and coalitional fuzzy stability concepts. For example, when considering the non-cooperative form, M does not envision an FUI from any of the states, thereby making each feasible state \emph{FR} as well as \emph{FSEQ} stable. However, if it decides to cooperate with others, some states become fuzzy stable, but not all. For instance, for FSTs $\gamma_\text{M}=1.0, \gamma_\text{U}=0.4$, and $\gamma_\text{L}=0.2$, states $s_1, s_3, s_4, s_7, {\rm and} s_9$ are \emph{CFSEQ} stable for M. This means that M can join in some coalitions for each of which there are some CFIs that cannot be sanctioned by any subsequent CCFIs of the class of coalitions of the opponents of the initial coalition. Hence, M now has a shorter list of states from which it cannot do any better. This fact is very important to come up with a suitable resolution. Even if this does not change the equilibrium list at this time, the DM may reconsider its preferences to see how outcomes are influenced.
+
+\begin{table}[h]
+\centering
+\caption{Evolution from the Status Quo State to the Coalition Fuzzy Equilibrium (\emph{CFE}), $s_4$, in the Elmira Conflict (when $\gamma_\text{L}=0.2$)}
+\footnotesize
+\setlength{\tabcolsep}{3pt}
+\renewcommand{\arraystretch}{1.2}
+\begin{tabular}[t]{lcx{10mm}x{10mm}x{10mm}x{10mm}x{10mm}x{10mm}}
+
+\noalign{\hrule height 1.3pt}
+              & Status Quo & \multicolumn{5}{c}{Intermediate Cooperative Moves} & \emph{CFE}\\
+\noalign{\hrule height 1.3pt}
+
+   {\bf M}    &   &                   &   &                   &   &  &   \\\cline{1-1}
+   1. Modify  & N &                   & N & $\longrightarrow$ & Y &  & Y \\\cline{1-1}
+   {\bf U}    &   &                   &   &                   &   &  &   \\\cline{1-1}
+   2. Delay   & Y &                   & Y & $\longrightarrow$ & N &  & N \\
+   3. Accept  & N &                   & N & $\longrightarrow$ & Y &  & Y \\
+   4. Abandon & N &                   & N &                   & N &  & N \\\cline{1-1}
+   {\bf L}    &   &                   &   &                   &   &  &   \\\cline{1-1}
+   5. Insist  & N & $\longrightarrow$ & Y &                   & Y & $\longrightarrow$ & N \\[0.5mm]
+
+\noalign{\hrule height 1.3pt}
+   States     & $s_1$ &  & $s_5$ &  & $s_8$ &  & $s_4$                      \\[0.5mm]
+\noalign{\hrule height 1.3pt}
+
+\end{tabular}
+\label{evol-s4}
+\end{table}
+
+\begin{table}[h]
+\centering
+\caption{Evolution from the Status Quo State to the Coalition Fuzzy Equilibrium (\emph{CFE}), $s_8$, in the Elmira Conflict (when $\gamma_\text{L}=0.3$)}
+\footnotesize
+\setlength{\tabcolsep}{3pt}
+\renewcommand{\arraystretch}{1.2}
+\begin{tabular}[t]{lcx{17mm}x{16mm}x{16mm}x{15mm}}
+
+\noalign{\hrule height 1.3pt}
+              & Status Quo & \multicolumn{3}{c}{Intermediate Cooperative Moves} & \emph{CFE}\\
+\noalign{\hrule height 1.3pt}
+
+   {\bf M}    &   &                   &   &                   &    \\\cline{1-1}
+   1. Modify  & N &                   & N & $\longrightarrow$ & Y  \\\cline{1-1}
+   {\bf U}    &   &                   &   &                   &    \\\cline{1-1}
+   2. Delay   & Y &                   & Y & $\longrightarrow$ & N  \\
+   3. Accept  & N &                   & N & $\longrightarrow$ & Y  \\
+   4. Abandon & N &                   & N &                   & N  \\\cline{1-1}
+   {\bf L}    &   &                   &   &                   &    \\\cline{1-1}
+   5. Insist  & N & $\longrightarrow$ & Y &                   & Y  \\[0.5mm]
+
+\noalign{\hrule height 1.3pt}
+   States     & $s_1$ &  & $s_5$ &  & $s_8$                        \\[0.5mm]
+\noalign{\hrule height 1.3pt}
+
+\end{tabular}
+\label{evol-s8}
+\end{table}
+
+From Table~\ref{coal-fuz-stab-reslt-tbl}, one can see that any of states $s_4$, $s_8$ and $s_9$ can be a final resolution. From Table~\ref{coal-fuz-impv-tbl}, states $s_4$ and $s_8$ can only be CFIs if all three DMs join in a coalition. Because the final outcome should to be a state that is favorable to all DMs, state $s_9$ cannot be a suitable choice. If the status quo state is considered to be $s_1$, L can take the conflict from $s_1$ to $s_5$, which is an FUI for L. Then, the coalition MU can take the conflict from state $s_5$ to $s_8$, which is a coalitional fuzzy improvement. If the FST of L is small such that a move is not highly restricted, it can join the coalition MU to make the final move from state $s_8$ to $s_4$, which is a CFI for the coalition MUL, and hence, the final outcome will be $s_4$. If L is too strict to make a move, then $s_8$ will remain as the final outcome. The possible evolutions of this conflict from the status quo state $s_1$ to the \emph{CFE} states $s_4$ and $s_8$ are exhibited in Tables \ref{evol-s4} and \ref{evol-s8}, respectively.
+
+\section{Summary}
+
+The coalition fuzzy stability definitions for Nash, general metarational, symmetric metarational, and sequential stability concepts of the GMCR are developed so that they constitute a natural generalization of the individual level \emph{FR}, \emph{FGMR}, \emph{FSMR} and \emph{FSEQ} stabilities. By employing these definitions, each state can be investigated for not only how preferable it is for an individual DM, but also how desirable it is for the DM as a potential coalition member. Specifically, coalition fuzzy stability for a DM identifies states from which neither the DM himself or herself, nor any of the coalitions that he or she can join, would like to move away. A DM can first assess how well he or she can do by acting on his own and then ascertain whether he can fare even better by cooperating within a coalition in the face of high uncertainty.
+
+When applied to the Elmira groundwater contamination conflict, the methodology identifies some states that were fuzzy stable for M with respect to the non-cooperative fuzzy stability definitions developed in Chapters \ref{chap-fuz-pref-2dm} and \ref{chap-fp-ndm-gm}, but fail to be coalition fuzzy stable for DM M. Hence, the coalition fuzzy stability analysis may narrow down the list of individual-level fuzzy stabilities, thereby providing the analyst with valuable strategic insights into the conflict under study. Furthermore, the possible evolution of a conflict from a status quo state to a final outcome can be conveniently explained using CFILs. Therefore, as an analysis tool to augment non-cooperative fuzzy stabilities, coalition fuzzy stability analysis constitutes an important addition to the FGM.
+
+%When applied to the Elmira groundwater contamination conflict, DM M finds that it may
+
+%Coalition fuzzy stability definitions can be applied to a Graph Model with crisp preference information by assigning an FST of $1.0$ to each DM, making them more general coalition analysis tools within the Graph Model for Conflict Resolution structure. Accordingly, the four coalition fuzzy stability definitions---\emph{CFR}, \emph{CFGMR}, \emph{CFSMR}, and \emph{CFSEQ}---form a strong solution methodology for strategic conflicts with both certain and uncertain preference information.
+
+% Keeping in mind that the final outcome should be a state such that it is desirable to each DM,
+
+%Bashar, M.A., Hipel, K.W., and Kilgour, D.M., ``Coalition fuzzy stability analysis in the Graph Model for Conflict Resolution." Submitted to \emph{Fuzzy Sets and Systems}, February, 2012.

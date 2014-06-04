@@ -1,0 +1,455 @@
+\chapter{Background and Literature Review}\label{chap-back-lit}
+
+\section{Introduction}
+
+Among the four categories of decision making techniques mentioned in Chapter \ref{chap-intro}, multiple participant-multiple objective decision making is the most complicated. This research is intended to develop an appropriate solution methodology for it, especially for the case in which the participants or DMs have uncertain preferences over the states or alternatives. The GMCR, a variant of classical game theory, is a novel methodology for modeling and analyzing disputes occurring in multiple participant-multiple objective decision problems. The key difference between the GMCR and classical game theory is that the preference structure of GMCR is binary, and not based on utility theory. Accordingly, the preference inputs for GMCR do not need to be transitive. Furthermore, in a Graph Model, the order in which DMs choose to move, or not to move, need not be specified in advance.
+
+In this chapter, related literature on the crisp GMCR and fuzzy preferences are reviewed. More specifically, the components as well as the structure of a crisp graph model are described and the four basic crisp stability definitions are presented. Moreover, the literatures on a number of approaches for modeling uncertain preferences, including fuzzy preferences, are reviewed. Next, the notions of a fuzzy set, fuzzy number and fuzzy relation are presented as bases of a fuzzy preference. Then the concept of a fuzzy preference and its properties are introduced.
+
+% Additionally, the concepts of status quo analysis and crisp coalition stability analysis
+
+\section{Literature Review of the Graph Model for \\Conflict Resolution}
+
+The GMCR is a methodology for modelling, analyzing, and understanding strategic conflicts, which is common in multiple participant-multiple objective decision makings. The main motivation for developing the GMCR was the demand for a comprehensive method to understand conflict decision-making and conflict resolution as existing methods were cumbersome and often failed to provide the needed analysis and advice \citep{Kilgour&Hipel2005}. The graph model is designed to be simple and flexible, as well as to have minimal information requirements. The original idea of the graph model was introduced by Kilgour, Hipel, and Fang in \citep{Kilgour-et-al1987}, while the first comprehensive representation was furnished by Fang, Hipel, and Kilgour as \citep{Fang-et-al1993}.
+
+The application of the GMCR begins with the representation of a real-world conflict problem. By careful examination of the conflict, the DMs who have direct impact on the conflict and interest in its outcomes are identified. Taking the available options or courses of actions of these DMs into account, a set of feasible states are generated. Note that a state is a combination of options chosen by the participating DMs; the set of feasible states is a subset of all possible states, and can be thought of as the set of all feasible combinations of the options. A DM's possible moves among states are determined by allowable state transitions, and are identified by fixing all other DMs' options. Investigating historical data or information supplied directly by the DMs, the preference relation between any two feasible states (pairwise preferences, or relative preferences) for each DM are determined. After these steps have been completed, stability of each feasible state is investigated for various stability definitions including \emph{R}, \emph{GMR}, \emph{SMR}, and \emph{SEQ} for each DM. Using these stability results, states that are stable under a suitable stability definition for every participating DM are identified and interpreted as equilibrium states or possible resolutions of the conflict \citep{Fang-et-al1993}.
+
+A stability concept prescribes what a DM can do when acting independently in a conflict, based on his or her own interests. To further develop insights into the conflict, a coalition analysis is carried out. A coalition consists of two or more DMs who may act as a group if they can do better together than individually. A recent development in the graph model is status quo analysis, which investigates equilibria that are more likely to occur in a conflict situation, to help analysts identify likely resolutions.
+
+\subsection{The Structure of the Graph Model for Conflict Resolution}
+
+A graph model of a conflict is represented mathematically by a set of DMs, a set of states, each DM's directed graph indicating movements controlled by the DM, and each DM's preference relation over the states. The nodes in the DMs' graphs are common, referred to as the feasible states, whereas the (directed) arcs of a DM's graph are the possible state-to-state moves controlled by that DM. Note that moves may or may not be reversible. As mentioned earlier, in a crisp graph model, DMs' preferences are given by binary relations on the set of feasible states \citep{Fang-et-al1993, Kilgour-et-al1987}.
+
+In a graph model, each state or scenario is often defined as a combination of a number of options that reflect the participating DMs' strategies to achieve their objectives. In a model, available options are uniquely represented by $O_1, O_2, ...$. In a state, a particular option may or may not be selected by the DM controlling it; if the option is selected, it is given by a ``Y" or ``1" and if the option is not chosen, it is represented by an ``N" or ``0". Hence, a state is an ordered tuple of Ys and Ns or of 1s and 0s, usually written as a column in which the number of entries is the same as the total number of options in the model. Accordingly, if the number of options in a model is $\lambda$, then there are $2^\lambda$ mathematically possible states; however, only a portion of them may be feasible in practice because of various option constraints \citep{Fang-et-al1993, Peng1999, Fang-et-al2003}.
+
+Note that in a graph model, there may be a group of formally ``distinct" but practically ``indistinguishable" states. Such a group is represented as one state using ``--"s against appropriate options, indicating that it is the same whether Ys or Ns are chosen for those options. A state of this type is called a composite state \citep{Fang-et-al1993, Peng1999, Fang-et-al2003}.
+
+Denote by $N = \{1, 2, ..., n\}$, the set of DMs, and by $S = \{s_1, s_2, ..., s_m\}$, $m>1$, the set of feasible states. For $k \in N$, let $A_k \subseteq S \times S$ (Cartesian product of $S$ with itself) represent the moves controlled by DM $k$, so that for $s_i, s_j \in S$, $(s_i, s_j) \in A_k$ if and only if DM $k$ can cause the conflict to move (directly) from state $s_i$ to state $s_j$. Then $D_k=(S, A_k)$ is DM $k$'s directed graph. Also, DM $k$'s preferences are recorded by a binary relation $\succsim_k$, with the interpretation that, for $s_i, s_j \in S$, $s_i \succsim_k s_j$ if and only if DM $k$ prefers $s_i$ to $s_j$ ($s_i \succ s_j$), or is indifferent between them ($s_i \sim s_j$). With the notations given above, a Graph Model can be represented as
+$$\langle N,\; S,\; \{(D_k, \succsim_k) : k \in N\} \rangle.$$
+Note that the graph model methodology can handle both transitive and intransitive preferences over the feasible states.
+
+\subsection{Reachable Lists}
+
+The GMCR methodology uses DMs' unilateral improvement lists for its stability calculations. As a basis of the construction of a DM's unilateral improvement list from a given state, as well as to study the countermoves by the opponent(s), it is necessary to record all the states to which a DM can cause the conflict to move unilaterally from an initial state in one step.
+
+\subsubsection{Reachable List of a Decision Maker}
+
+A DM's reachable list from a specified starting state is a record of all the states that the DM can reach in one step. In a graph model, the states that are joined by an arc in $A_k$ beginning at state $s$ form the DM $k$'s reachable list from state $s$. A formal definition is given below.
+\begin{definition}\label{reach-DM}
+\rm {\bf (Reachable List for a DM):} The \emph{reachable list} from a state $s \in S$ for DM $k$ is
+$$R_k(s)=\{s_i \in S \; : \; (s, s_i) \in A_k\}.$$
+\end{definition}
+
+\subsubsection{Reachable List of a Coalition}
+
+The reachable list provided by Definition \ref{reach-DM} is the set of unilateral moves under the control of DM $k$. However, the GMCR methodology takes into account moves and countermoves in its stability calculations. When there are more than two DMs in a model, the countermoves are performed by more than one DM. Hence, the definition of unilateral moves by a group or coalition of DMs is needed.
+
+Assume $n>2$. Any set of DMs, $H \subseteq N$, is called a \emph{coalition}. If $|H|>0$, then the coalition $H$ is non-empty. Throughout the thesis, each coalition $H \subseteq N$ is assumed to be non-empty. If $|H| \geq 2$, then the coalition $H$ is non-trivial.
+
+For $s \in S$, let $R_H(s) \subseteq S$ denote the set of all states reachable from $s$ via a legal sequence of moves by some or all of the DMs in $H$. Note that a sequence of moves for a coalition $H$ is called \emph{legal} if no DM in $H$ moves twice consecutively. For any $s_1 \in R_H(s)$, let $\Omega_H(s, s_1)$ denote the set of all last DMs in legal sequences from $s$ to $s_1$. The reachable list by a coalition can now be defined formally. Note that the coalition $H \subseteq N$ with $|H|=1$ is trivial in the sense that it is equivalent to a single DM, and is excluded from this definition. In fact, if $H = \{k\}$, then $R_H(s)=R_k(s)$.
+
+\begin{definition}\label{reach-coalition}
+\rm {\bf (Reachable List for a Coalition):} Let $s \in S$ and $H \subseteq N$, $|H| \geq 2$. Define the subset $R_H(s) \subseteq S$ inductively as follows:
+
+\begin{enumerate}[(1)]
+\item If $k \in H$ and $s_1 \in R_k(s)$, then $s_1 \in R_H(s)$ and $k \in \Omega_H(s, s_1)$;
+\item If $s_1 \in R_H(s)$, $k \in H$, $s_2 \in R_k(s_1)$, and $\Omega_H(s, s_1) \not = \{k\}$, then $s_2 \in R_H(s)$ and $k \in \Omega_H(s, s_2)$.
+\end{enumerate}
+The set $R_H(s)$ is called the \emph{reachable list} from $s$ for the coalition $H$, and any member of $R_H(s)$ is called a \emph{unilateral move} from $s$ by the coalition $H$.
+\end{definition}
+
+Note that, in Definition \ref{reach-coalition}, the induction stops as soon as no new state ($s_2$) can be added to $R_H(s)$ and $|\Omega_H(s, s_1)|$ cannot be increased for any $s_1 \in R_H(s)$.
+
+Below is an algorithm that implements this definition. The set $R_H(s, i)$ consists of the states achievable by coalition $H$ in at most $i \ge 0$ legal moves, starting from state $s$. For $s_1 \in R_H(s, i), \Omega_H(s, s_1, i)$ denotes the set of all last DMs in legal sequences from $s$ to $s_1$ with at most $i$ moves.
+
+\begin{enumerate}[(1)]
+\item For $i=0$, set $R_H(s, 0) = \{s\}$ and $\Omega_H(s, s_1, 0) = \emptyset$ for all $s_1 \in S$.
+\item Now find $R_H(s, i + 1) \supseteq R_H(s, i)$ and $\Omega_H(s, s_1, i + 1) \supseteq \Omega_H(s, s_1, i)$ for all $s_1 \in S$. Select any $s_2 \in S$ satisfying $s_2 \in R_k(s_1)$ for some $k \in H$ and some $s_1 \in R_H(s, i)$. Then, if $s_2 \not \in R_H(s, i)$ and $\Omega_H(s, s_1, i) \not = \{k\}$, add $s_2$ to $R_H(s, i + 1)$ and $k$ to  $\Omega_H(s, s_2, i+1)$. Also, if $s_2 \in R_H(s, i)$ and $\Omega_H(s, s_1, i) \not = \{k\}$ but $k \not \in \Omega_H(s, s_2, i)$, add $k$ to $\Omega_H(s, s_2, i+1)$. Continue until $R_H(s, i + 1)$ and $\Omega_H(s, s_2, i+1)$ cannot be further increased.
+\item If $R_H(s, i + 1) = R_H(s, i)$ and $\Omega_H(s, s_1, i+1) = \Omega_H(s, s_1, i)$ for all $s_1 \in R_H(s, i)$, stop. Otherwise, increase $i$ by $1$ and repeat step (2).
+\end{enumerate}
+
+\noindent Note that the algorithm stops as soon as $R_H(s, i + 1) = R_H(s, i)$ and, for all $s_1 \in R_H(s, i)$, $\Omega_H(s, s_1, i+1) = \Omega_H(s, s_1, i)$. The corresponding value of $i$ is the maximum length of any legal path for $H$ from $s$.
+
+\subsection{Crisp Preferences}\label{subsec-crisp-pref}
+
+As mentioned earlier, each DM's preference information over feasible states or alternatives is an important input to the GMCR methodology. A crisp preference over feasible states, mathematically a crisp binary relation, reflects the certainty of preference between any two states. A crisp preference is often denoted by $\succsim$, and for DM $k$, it is given by $\succsim_k$. For any $s_i, s_j \in S$, $s_i \succsim_k s_j$ means that DM $k$ finds $s_i$ at least as preferable as $s_j$, and is stated as ``$s_i$ is preferred or indifferent to $s_j$." Therefore, $s_i \succsim_k s_j$ implies that DM $k$ likes $s_i$ better than $s_j$, or doesn't care whether $s_i$ or $s_j$ is chosen. In fact, the symbol ``$\succ$" stands for strict preference and ``$\sim$" for indifference. In summary, $s_i \succsim_k s_j$ indicates that DM $k$ strictly prefers $s_i$ to $s_j$ ($s_i \succ s_j$), or is indifferent between them ($s_i \sim s_j$).
+
+Given a strict crisp preference $\succ$ on $S$, $\prec$ is defined as follows.
+\begin{definition} \rm
+For $s_i, s_j \in S$, $s_i \prec s_j$ if and only if $s_j \succ s_i$.
+\end{definition}
+
+There are other representations of a crisp preference between two states $s_i$ and $s_j$. One uses an index $d_{ij}$ to distinguish three cases of preference or indifference \citep{Garcia&Montero2006}:
+
+$$d_{ij}=\left\{ \begin{array}{rl}
+ 1, & \text{if } s_i \text{ is preferred to } s_j \\
+ 0, & \text{if } s_i \text{ is indifferent to } s_j \\
+ -1, & \text{if } s_j \text{ is preferred to } s_i
+ \end{array}
+ \right..$$
+
+This index can be normalized to take values in the unit interval $[0, 1]$ as follows:
+ \begin{equation}\label{norm-crisp-pref}
+ r_{ij}=\frac{d_{ij}+1}{2}=
+ \left\{
+ \begin{array}{rl}
+ 1, & \text{if } s_i \text{ is preferred to } s_j \\
+ 0.5, & \text{if } s_i \text{ is indifferent to } s_j \\
+ 0, & \text{if } s_j \text{ is preferred to } s_i
+ \end{array}
+ \right..
+ \end{equation}
+
+\subsection{Crisp Stabilities in a two-Decision Maker Graph Model}
+
+In the final part of the GMCR study, the main focus is on examination of the stability of states for a DM. From a stable state, the focal DM has no incentive to deviate in a sense determined by a particular stability definition. The crisp GMCR accounts for crisp stabilities, which are based on crisp preferences described in Subsection \ref{subsec-crisp-pref}. To identify the states that are worthwhile for a DM to move to from a given state, the definition of unilateral improvements by a DM is provided in the following subsection.
+
+\subsubsection{Unilateral Improvements by a Decision Maker}
+
+Note that the GMCR methodology considers moves and countermoves by the opponent(s) in calculating various stabilities. In the case of a two-DM graph model, the focal DM, as well as the opponent, is a single DM. Hence, the definition of a unilateral improvement from a given state by a single DM is needed. A state is a unilateral improvement from an initial state $s \in S$ by a DM if the state is reachable from $s$ by the DM in one step and is preferred to $s$. A formal definition is given below.
+
+\begin{definition}
+\rm {\bf (Unilateral Improvement by a DM):} Recall that $R_k(s)$ represents the set of reachable states from a given initial state $s \in S$ by DM $k \in N$. A state $s_i \in S$ is called a \emph{unilateral improvement} (UI) from $s$ by DM $k$ if $s_i \in R_k(s)$ and $s_i \succ_k s$.
+\end{definition}
+
+\begin{definition}\label{UIL-DM}
+\rm {\bf (Unilateral Improvement List by a DM):} The collection of all UIs from a state $s$ by DM $k$ is called the \emph{unilateral improvement list} (UIL) from $s$ by DM $k$, denoted $R_k^+(s)$. Mathematically,
+$$R_k^+(s)=\{s_i \in R_k(s) \; : \; s_i\succ_k s\}.$$
+\end{definition}
+
+\subsubsection{Crisp Stability Definitions in a two-Decision Maker Graph Model}\label{sssec-crisp-2dm-stab}
+
+As a basis for identifying the states from which a DM does not like to move away, the stability concepts within the GMCR framework are provided here. Note that different DMs may show different behavior patterns in responding to a strategic conflict. For example, they may have different levels of foresight for which some DMs look far ahead before making a decision, while others consider only immediate consequences. Furthermore, DMs may have different perspectives about the risks of moving. Some DMs may be ready to accept temporary dis-improvements in the expectation of achieving a better outcome in the end, while others may wish to avoid all dis-improvements. To capture these varied human behavior and decision techniques formally, a number of stability definitions have been introduced within the GMCR framework of which the four basic definitions are presented below. Note that these definitions are for a two-DM graph model. The stability definitions for a general $n$-DM ($n>2$) graph model are provided in Susubsection \ref{sssec-crisp-n-dm-stab}.
+
+\begin{definition}
+\rm {\bf (Nash Stability or Rationality):} Let $k \in N$ and $s \in S$. State $s$ is \emph{Nash stable} or \emph{rational} (\emph{R}) for DM $k \in N$ if and only if $R_k^+(s)=\varnothing$.
+\end{definition}
+
+As there are two DMs in the model, for the following definitions assume that $N=\{k, l\}$.
+
+\begin{definition}
+\rm {\bf (General Metarationality):} A state $s \in S$ is \emph{general metarational} (\emph{GMR}) for DM $k$ if and only if for every $s_1 \in R_k^+(s)$ there exists an $s_2 \in R_l(s_1)$ such that $s_2 \precsim_k s$.
+\end{definition}
+
+\begin{definition}
+\rm {\bf (Symmetric Metarationality):} A state $s \in S$ is \emph{symmetric metarational} (\emph{SMR}) for DM $k$ if and only if for every $s_1 \in R_k^+(s)$ there exists an $s_2 \in R_l(s_1)$ such that $s_2 \precsim_k s$, and $s_3 \precsim_k s$ for all $s_3 \in R_k(s_2)$.
+\end{definition}
+
+\begin{definition}
+\rm {\bf (Sequential Stability):} A state $s \in S$ is \emph{sequentially stable} (\emph{SEQ}) for DM $k$ if and only if for every $s_1 \in R_k^+(s)$ there exists an $s_2 \in R_l^+(s_1)$ such that $s_2 \precsim_k s$.
+\end{definition}
+
+%Now that the definition of UIs from an initial state for a DM is given above, the next step is to introduce the stability concepts within the GMCR framework.
+
+\subsection{Crisp Stabilities in a Graph Model with More than Two Decision Makers}
+
+The stability definitions provided in Subsubsection \ref{sssec-crisp-2dm-stab} are specifically for a two-DM graph model where the opponent of the focal DM is a single DM. However, in a graph model with more than two DMs, the opponent of the focal DM is a group or coalition of two or more DMs. Hence, the stability definitions given in Subsubsection \ref{sssec-crisp-2dm-stab} will not work for a graph model that has more than two DMs. Accordingly, stability definitions for a general $n$-DM ($n>2$) graph model are needed.
+
+\subsubsection{Unilateral Improvements by a Coalition}
+
+The UIL for a DM, given by Definition \ref{UIL-DM}, is sufficient for defining stabilities for a two-DM graph model as represented in Subsubsection \ref{sssec-crisp-2dm-stab}. However, to extend these stability concepts for a general $n$-DM ($n>2$) graph model, one needs the definition of a UI by a coalition of DMs.
+
+\begin{definition}\label{UI-coal}
+\rm {\bf (Unilateral Improvement by a Coalition):} Let $s \in S$ and $H \subseteq N$, $|H| \geq 2$. Define $R_H^+(s) \subseteq S$ inductively as follows:
+\begin{enumerate}[(1)]
+\item If $k \in H$ and $s_1 \in R_k^+(s)$, then $s_1 \in R_H^+(s)$ and $k \in \Omega_H^+(s, s_1)$, where $\Omega_H^+(s, s_1)$ represents the set of all last DMs in legal sequences from $s$ to $s_1$;
+\item If $s_1 \in R_H^+(s)$, $k \in H$, $s_2 \in R_k^+(s_1)$, and $\Omega_H^+(s, s_1) \not = \{k\}$, then $s_2 \in R_H^+(s)$ and $k \in \Omega_H^+(s, s_2)$.
+\end{enumerate}
+\noindent A \emph{unilateral improvement} (UI) from $s$ by the coalition $H$ is any member of $R_H^+(s)$.
+\end{definition}
+
+Note that the induction in Definition \ref{UI-coal} stops as soon as no new state ($s_2$) can be added to $R_H^+(s)$, and $|\Omega_H^+(s, s_1)|$ cannot be increased for any $s_1 \in R_H^+(s)$.
+
+\subsubsection{Crisp Stability Definitions in an $n$-Decision Maker ($n>2$) Graph Model}\label{sssec-crisp-n-dm-stab}
+
+The definitions of \emph{GMR}, \emph{SMR}, and \emph{SEQ} stabilities for an $n$-DM ($n>2$) graph model are provided here. Note that \emph{Nash} stability does not depend on the responses of the opponents. Therefore, the definition of \emph{Nash} stability for an $n$-DM graph model is the same as for the two-DM case. In the following definitions, $N-k$ denotes the set of DMs other than $k$, or in other words, $k$'s opponents.
+
+\begin{definition}\label{def-gmr}
+\rm {\bf (General Metarationality):} A state $s \in S$ is \emph{general metarational} (\emph{GMR}) for DM $k \in N$ if and only if for every $s_1 \in R_k^+(s)$ there exists an $s_2 \in R_{N-k}(s_1)$ such that $s_2 \precsim_k s$.
+\end{definition}
+
+\begin{definition}\label{def-smr}
+\rm {\bf (Symmetric Metarationality):} A state $s \in S$ is \emph{symmetric metarational} (\emph{SMR}) for DM $k \in N$ if and only if for every $s_1 \in R_k^+(s)$ there exists an $s_2 \in R_{N-k}(s_1)$ such that $s_2 \precsim_k s$, and $s_3 \precsim_k s$ for all $s_3 \in R_k(s_2)$.
+\end{definition}
+
+\begin{definition}\label{def-seq}
+\rm {\bf (Sequential Stability):} A state $s \in S$ is \emph{sequentially stable} (\emph{SEQ}) for DM $k \in N$ if and only if for every $s_1 \in R_k^+(s)$ there exists an $s_2 \in R_{N-k}^+(s_1)$ such that $s_2 \precsim_k s$.
+\end{definition}
+
+\subsubsection{Crisp Equilibrium}
+
+The stability definitions, given in Subsubsections \ref{sssec-crisp-2dm-stab} and \ref{sssec-crisp-n-dm-stab}, characterize a single DM's unwillingness to deviate from a state. However, the GMCR methodology identifies a state as a potential resolution, from which no DM would like to move away, referred to as an equilibrium state. A formal definition is given below.
+\begin{definition}
+\rm A state that is stable for all DMs under a specific stability definition is called an \emph{equilibrium} under that definition.
+\end{definition}
+
+%
+%\subsection{Status Quo Analysis}
+%
+%An important component of a real-world conflict model is the specification of the point in time when the conflict starts \citep{Fraser&Hipel1984}. The situation of the conflict at this starting point is usually called the \emph{status quo} state \citep{Fang-et-al1993}. Status quo analysis provides additional insights into a conflict. Although the general idea for status quo analysis was conceived early in the development of the graph model, a consistent and effective set of definitions and algorithms was not developed until \citet{Li-et-al2004b, Li-et-al2005a, Li-et-al2005b}.
+%
+%The main idea of the status quo analysis is to inspect whether a potential resolution (i.e., an equilibrium state) is attainable from the status quo state, and to analyze how DMs may act and interact to direct a conflict to that attainable resolution. If there are some irreversible moves in the model, some states may be unattainable from a particular status quo state, and the model cannot settle at a state that is unattainable from the status quo state, even if that state is an equilibrium. Therefore, status quo analysis supplies information that can be used in screening equilibrium states, and consequently helps identify the most likely resolutions of the conflict.
+%
+
+\subsection{Coalition Stability Analysis}\label{subsec-coal-stabl-anal}
+
+The old saying ``Many hands make light work" means that working together may make a task easier compared to working individually. In the same way, in decision making---more specifically, in multiple participant-multiple objective decision making---it is logical to raise the question whether there will be a better outcome when a group of DMs joins together to make a decision, even when the DMs have individual objectives that may be in conflict. Coalition formation is often found in various real-world multiple-participant decision situations. For instance, in a debate of the United Nations general assembly on a proposal to help nations affected by greenhouse gas emissions, like-minded countries may work together in support of amendments they prefer, or on the choice to accept or reject the proposal.
+
+\citet{Kuhn-et-al1983} applied some simple concepts of coalition analysis to strategic conflicts within a crisp GMCR structure by introducing rules for formation of a coalition in a conflict, assuming that a coalition would last throughout the dispute. \citet{Kilgour-et-al2001} made the first general approach to developing coalition formation guidelines and formalizing the idea of coalition moves. They introduced coalition stability, parallel to the concept of individual (crisp) Nash stability. Later, \citet{Inohara&Hipel2008a, Inohara&Hipel2008b} developed coalition stability definitions parallel to individual (crisp) general metarationality, symmetric metarationality, and sequential stability, and also characterized general relationships among them. The coalition stability concepts reviewed in this subsection are due to \citep{Kilgour-et-al2001, Inohara&Hipel2008a, Inohara&Hipel2008b}.
+
+Below, $H \subseteq N$ represents a coalition of DMs in $N$, and $\mathcal{P}(N)$, the class of all coalitions of DMs in $N$.
+
+\begin{definition}\label{def-ci}
+\rm {\bf (Coalition Improvement):} A state $s_i \in S$ is a \emph{coalition improvement} from a state $s \in S$ by a coalition $H \subseteq N$ if $s_i \in R_H(s)$ and $s_i \succ_k s$ for all $k \in H$. The \emph{coalition improvement list} from $s$ by the coalition $H$, denoted $R_H^{++}(s)$, is
+$$R_H^{++}(s)=\{s_i \in S \; : \; s_i \in R_H(s) \text{ and } s_i \succ_k s \text{ for all } k \in H\}.$$
+\end{definition}
+
+\begin{definition}
+\rm {\bf (Coalition Nash Stability or Coalition Rationality for a Coalition):} Let $H \in \mathcal{P}(N)$ and $s \in S$. State $s$ is \emph{coalition Nash stable} or \emph{coalition rational} (\emph{CR}) for coalition $H$ if and only if $R_H^{++}(s)=\varnothing$.
+\end{definition}
+
+\begin{definition}
+\rm {\bf (Coalition Nash Stability or coalition Rationality for a DM):} Let $k \in N$ and $s \in S$. State $s$ is \emph{coalition Nash stable} or \emph{coalition rational} (\emph{CR}) for DM $k$ if and only if $s$ is \emph{CR} for all coalitions $H \in \mathcal{P}(N)$ such that $k \in H$.
+\end{definition}
+
+\noindent To define the coalitional versions of \emph{GMR}, \emph{SMR} and \emph{SEQ}, a class coalitional move and class coalitional improvement by a class of coalitions of DM in $N$ must first be defined.
+
+\begin{definition}\label{def-ccm}
+\rm {\bf (Class Coalitional Move):} Let $s \in S$, and $\mathcal{C}$ be a class of coalitions of DMs in $N$, i.e., $\mathcal{C} \subseteq \mathcal{P}(N)$. The \emph{class reachable list} or \emph{set of class coalitional moves} from state $s$ by class $\mathcal{C}$ is defined inductively as the set $R_\mathcal{C}(s)$ that satisfies the following two conditions:
+\begin{enumerate}[(1)]
+\item If $H \in \mathcal{C}$ and $s_1 \in R_H(s)$, then $s_1 \in R_\mathcal{C}(s)$;
+\item If $s_1 \in R_\mathcal{C}(s)$ and $H \in \mathcal{C}$, and $s_2 \in R_H(s_1)$, then $s_2 \in R_\mathcal{C}(s)$.
+\end{enumerate}
+A \emph{class coalitional move} (CCM) from $s$ by the class $\mathcal{C}$ is any member of $R_\mathcal{C}(s)$. Note that, because of the definition of a coalitional unilateral move (Definition \ref{reach-coalition}), no DM in any coalition in $\mathcal{C}$ may move twice consecutively in passing from $s$ to any state in $R_\mathcal{C}(s)$.
+\end{definition}
+
+\begin{definition}\label{def-ccil}
+\rm {\bf (Class Coalitional Improvement):} Let $s \in S $ and $\mathcal{C} \subseteq \mathcal{P}(N)$. The \emph{class improvement list} or \emph{class coalitional improvement list} from state $s$ by class $\mathcal{C}$, denoted $R_\mathcal{C}^{++}(s)$, is defined inductively as follows:
+\begin{enumerate}[(1)]
+\item If $H \in \mathcal{C}$ and $s_1 \in R_H^{++}(s)$, then $s_1 \in R_\mathcal{C}^{++}(s)$;
+\item If $s_1 \in R_\mathcal{C}^{++}(s)$ and $H \in \mathcal{C}$, and $s_2 \in R_H^{++}(s_1)$, then $s_2 \in R_\mathcal{C}^{++}(s)$.
+\end{enumerate}
+A \emph{class coalitional improvement} (CCI) from $s$ by the class $\mathcal{C}$ is any member of $R_\mathcal{C}^{++}(s)$. As in Definition \ref{def-ccm}, this definition ensures that no DM in any coalition in $\mathcal{C}$ may move twice consecutively.
+\end{definition}
+
+\noindent The definitions of the coalitional forms of \emph{GMR}, \emph{SMR} and \emph{SEQ} given by Definitions \ref{def-gmr}, \ref{def-smr} and \ref{def-seq}, respectively, are now provided below.
+
+\begin{definition}\label{def-cgmr-coal}
+\rm {\bf (Coalition General Metarationality for a Coalition):}
+For $H \in \mathcal{P}(N)$, state $s \in S$ is \emph{coalition general metarational} (\emph{CGMR}) for coalition $H$ if and only if for every $s_1 \in R_H^{++}(s)$ there exists a CCM $s_2 \in R_{\mathcal{P}(N-H)}(s_1)$ such that $s_2 \precsim_k s$ for some $k \in H$.
+\end{definition}
+
+\begin{definition}\label{def-cgmr-dm}
+\rm {\bf (Coalition General Metarationality for a DM):} For $k \in N$, state $s \in S$ is \emph{coalition general metarational} (\emph{CGMR}) for DM $k$ if and only if $s$ is \emph{CGMR} for all coalitions $H \in \mathcal{P}(N)$ such that $k \in H$.
+\end{definition}
+
+\begin{definition}\label{def-csmr-coal}
+\rm {\bf (Coalition Symmetric Metarationality for a Coalition):} For $H \in \mathcal{P}(N)$, state $s \in S$ is \emph{coalition symmetric metarational} (\emph{CSMR}) for coalition $H$ if and only if for every $s_1 \in R_H^{++}(s)$ there exists a CCM $s_2 \in R_{\mathcal{P}(N-H)}(s_1)$ such that $s_2 \precsim_k s$ for some $k \in H$, and for every $s_3 \in R_H(s_2)$, $s_3 \precsim_l s$ for some $l \in H$.
+\end{definition}
+
+\begin{definition}\label{def-csmr-dm}
+\rm {\bf (Coalition Symmetric Metarationality for a DM):} For $k \in N$, state $s \in S$ is \emph{coalition symmetric metarational} (\emph{CSMR}) for DM $k$ if and only if $s$ is \emph{CSMR} for all coalitions $H \in \mathcal{P}(N)$ such that $k \in H$.
+\end{definition}
+
+\begin{definition}\label{def-cseq-coal}
+\rm {\bf (Coalition Sequential Stability for a Coalition):}
+For $H \in \mathcal{P}(N)$, state $s \in S$ is \emph{coalition sequentially stable} (\emph{CSEQ}) for coalition $H$ if and only if for every $s_1 \in R_H^{++}(s)$ there exists a CCI $s_2 \in R_{\mathcal{P}(N-H)}^{++}(s_1)$ such that $s_2 \precsim_k s$ for some $k \in H$.
+\end{definition}
+
+\begin{definition}\label{def-cseq-dm}
+\rm {\bf (Coalition Sequential Stability for a DM):} For $k \in N$, state $s \in S$ is \emph{coalition sequentially stable} (\emph{CSEQ}) for DM $k$ if and only if $s$ is \emph{CSEQ} for all coalitions $H \in \mathcal{P}(N)$ such that $k \in H$.
+\end{definition}
+
+\begin{definition}\label{def-ce}
+\rm {\bf (Coalition Equilibrium):} A state $s \in S$ is a \emph{coalition equilibrium} under a specific coalition stability concept if and only if $s$ is coalition stable for each DM under that coalition stability notion. For instance, state $s$ is coalition Nash equilibrium or \emph{CR} equilibrium if and only if it is \emph{CR} stable for each DM in $N$.
+\end{definition}
+
+\subsection{Crisp Option Prioritization}\label{crisp-opn-prioritization}
+
+Each DM's preferences over feasible states, which are inputs to the analysis step of the GMCR methodology and GMCR II \citep{Peng1999, Fang-et-al2003}, a decision support software developed to implement the GMCR, are traditionally modeled by pairwise comparisons of states. However, it may be hard for a DM or an analyst to identify the preferred state from a pair by comparing them, especially when the model has a large number of options. Note that DMs' options, whose feasible selection constitutes a state, characterize a possible solution space of the problem under study. The greater the number of options contained in a model, the larger is the number of criteria needed to compare one state with another. Other techniques used to model preferences between two states include the preference tree \citep{Fraser1993, Fraser1994, Fraser&Hipel1988, Hipel&Meister1994}, option weighting \citep{Fang-et-al2003, Kilgour1997}, and option prioritization \citep{Peng-et-al1997, Peng1999, Fang-et-al2003} (now called, crisp option prioritization). Among these methodologies, crisp option prioritization, which is a generalization of the preference tree, is a very useful preference modeling technique in the GMCR. This technique overcomes the limitations that other methods have, and has been implemented in GMCR II.
+
+In crisp option prioritization, each DM is asked to provide a priority ordered set of preference statements. Each preference statement takes a truth value, either ``True" ($T$) or ``False" ($F$), at each state. A preference statement is composed of options by using logical connectives. It can be non-conditional, conditional, or bi-conditional. A non-conditional preference statement is simple and is given as a combination of options relevant to that particular statement, joined by various connectives such as \emph{negation} (``not", ``---", or ``$\lnot$"), \emph{conjunction} (``and", ``$\&$", or ``$\land$"), and \emph{disjunction} (``or", ``$\mid$", or ``$\lor$"). The priority of operations in a preference statement is often controlled by round parentheses ``(" and ``)". A conditional or bi-conditional preference statement consists of two non-conditional preference statements joined by a connective \emph{implies} (or, \emph{if-then}) (``IF") or \emph{if and only if} (``IFF").
+
+The truth value of a non-conditional preference statement at a state is straightforward. For example, if $O_1$ and $O_2$ represent two options, then the statement $O_1 \land O_2$ is true at a state if both $O_1$ and $O_2$ occur at that state, otherwise $O_1 \land O_2$ is false. However, the truth value of a conditional or bi-conditional preference statement at a state depends on the truth values of its component non-conditional statements. The truth values of these preference statements are determined according to the conditional or bi-conditional truth tables standardized in mathematical logic \citep{Chiswell&Hodges2007}.
+
+For crisp option prioritization, each DM's preference statements, say $\Omega_1$, $\Omega_2$, $...$, $\Omega_q$, are listed in order of priority, which are often represented vertically from the most important to least. For $s\in S$, let $\Omega_t(s)$ ($1\leq t\leq q$) denote the truth value of the preference statement $\Omega_t$ at state $s$. A DM's crisp preference between two states is determined based on the truth values of the preference statements at those states in lexicographic ordering fashion. A state with a truth value ``$T$" of a more important preference statement is preferred to a state having a truth value ``$F$" of the same preference statement, or to a state with a truth value ``T" or ``F" of a less important preference statement. Specifically, a state $s_1 \in S$ is preferred to a state $s_2 \in S$ ($s_1 \neq s_2$) if and only if either $\Omega_1(s_1)=T$ and $\Omega_1(s_2)=F$, or there exists $t$, $1 < t \leq q$, such that
+
+\begin{equation}\label{option-pref-algorithm}
+\begin{array}{c}
+\Omega_1(s_1) = \Omega_1(s_2) \\
+\Omega_2(s_1) = \Omega_2(s_2) \\
+            \vdots             \\
+\Omega_{t-1}(s_1) = \Omega_{t-1}(s_2), \\
+\text{and }\Omega_t(s_1) = T \text{ and } \Omega_t(s_2) = F.
+\end{array}
+\end{equation}
+If there is no such $t$, then either $s_1$ and $s_2$ are indifferent or $s_2$ is preferred to $s_1$. Note that it is a convention in GMCR II that the ``--"s are considered as ``N"s in determining the truth of a preference statement at a composite state \citep{Peng-et-al1997, Peng1999, Fang-et-al2003}.
+
+An equivalent scheme that can result in the same ranking as in (\ref{option-pref-algorithm}) is to assign a ``score" $\Psi(s)$ to each feasible state $s \in S$ according to its truth values when the preference statements are applied. Assume that $q$ is the total number of preference statements for a DM. Denote by $\Psi_t(s)$ the \emph{incremental score} of state $s$ for preference statement $\Omega_t$, $1 \leq t \leq q$. Define
+$$\Psi_t(s)=\left\{ \begin{array}{ll}
+ \frac{1}{2^t}, & \text{if } \Omega_t(s)=T \\
+ 0, & \text{if } \Omega_t(s)=F
+ \end{array}
+ \right.$$
+and
+\begin{equation}\label{crisp-score}
+\Psi(s)=\displaystyle\sum\limits_{t=1}^q \Psi_t(s).
+\end{equation}
+Then the states are ranked according to their scores; a state with a higher score is preferred to a state with a lower score. More specifically, for $s_1, s_2\in S$, $s_1\succ s_2$ if and only if $\Psi(s_1)>\Psi(s_2)$. Furthermore, $s_1\sim s_2$ if and only if $\Psi(s_1)=\Psi(s_2)$. This results in exactly the same ranking as that obtained from the lexicographic ordering. Note that, even though a cardinal score is involved, it only plays a temporary role in determining the ranking; it does not tell anything about the intensity of this ranking.
+
+\section{Fuzzy Preferences with Literature Review}
+
+Failing to order feasible states or alternatives with certainty is the main reason for studying preference uncertainty. Preference uncertainty is modelled qualitatively or quantitatively. Qualitatively, it is represented by linguistic labels, such as good, fair and poor \citep{Herrera&Herrera-Viedma2000, Xu2004a}; while quantitatively, it is given by numbers, such as degrees of preference \citep{Orlovsky1978, Xu2007}. Because of their importance in various decision making techniques, uncertain preference relations have been an active area of research and many variants have been developed over the last few decades.
+
+Widely used uncertain preference relations include multiplicative preferences \citep{Saaty1980, Herrera-et-al2001}, incomplete multiplicative preferences \citep{Harker1987, Nishizawa1997}, interval multiplicative preferences \citep{Islam-et-al1997, Xu2005a}, incomplete interval multiplicative preferences \citep{Xu2006}, triangular fuzzy multiplicative preferences \citep{Chang1996, Mikhailov2003}, incomplete triangular fuzzy multiplicative preferences \citep{Xu2006}, the fuzzy preference relation \citep{Orlovsky1978, Tanino1984, Tanino1988, Chiclana-et-al2001, Xu2007}, the incomplete fuzzy preference relation \citep{Herrera-Viedma-et-al2007, Xu2005b}, interval fuzzy preferences \citep{Jiang2007, Xu2004b}, incomplete interval fuzzy preferences \citep{Xu2006}, triangular fuzzy preferences \citep{Xu2002}, incomplete triangular fuzzy preferences \citep{Xu2006}, linguistic preferences \citep{Herrera&Herrera-Viedma2000, Xu2004a}, and incomplete linguistic preferences \citep{Alonso-et-al2009, Xu2005c}. Among these preference relations, fuzzy preference relations are a convenient way of representing both certain and uncertain relative preferences between two states or alternatives. A fuzzy preference between two states is represented by a preference degree, which is interpreted as the grade of certainty of the preference for one state over the other.
+
+
+\subsection{Literature Review on Fuzzy Preferences}
+
+%A fuzzy preference is defined based on the concept of a fuzzy set \citep{Zadeh1965, Zadeh1973}, and is a generalization of the crisp preference.
+
+\citet{Zadeh1965, Zadeh1973} developed the concepts of a fuzzy logic and fuzzy set as effective tools for mathematically modelling uncertainty or vagueness. Based on Zadeh's notion of fuzzy logic, \citet{Orlovsky1978} proposed a fuzzy preference relation to generalize crisp preference in a decision making situation. He introduced and studied fuzzy preference and its properties, and the fuzzy set of non-dominated alternatives. He established that if the fuzzy preference relation in a fuzzy decision-making problem satisfies some topological properties, then the problem has ``un-fuzzy" (crisp) non-dominated solutions.
+
+Keeping in mind that fuzzy utilities could be a flexible way of representing utilities of states, \citet{Nakamura1986} proposed a method to construct a fuzzy preference, given a set of fuzzy utilities, to allow rational decision making. \citet{Tanino1984} discussed the use of fuzzy preference orderings in group decision making. He defined a fuzzy preference ordering as a fuzzy binary relation satisfying reciprocity and max-min transitivity, and developed group fuzzy preference orderings applicable when individual preferences are represented by utility functions, developing a method for group decision processes analogous to the extended contributive rule.
+
+\citet{Chiclana-et-al1998} introduced a general multipurpose decision model that is able to handle problems with a range of preference information: preference orderings, utility functions, or fuzzy preference relations. First, the preference information is made uniform using fuzzy preference relations, and then selection processes are introduced based on the concept of fuzzy majority \citep{Kacprzyk1986} and on ordered weighted averaging operators \citep{Yager1988}.
+
+\citet{Chiclana-et-al2001} also carried out research on how to integrate multiplicative preference relations into fuzzy multipurpose decision models using preference orderings, utility functions, or fuzzy preference relations. Together with the work in \citep{Chiclana-et-al1998}, the authors provided a more flexible framework to manage different preference structures. This constituted a decision model that approximated real decision situations involving experts from different knowledge areas very well. Also, a number of other fuzzy preference structures and their connections in social choices were discussed in \citep{Banerjee1994, Dutta1987, Richardson1998} and the references contained therein.
+
+\subsection{Fuzzy Sets, Fuzzy Numbers, and Fuzzy Relations}
+
+The concept of a fuzzy preference relation is derived from fuzzy sets, fuzzy numbers, and fuzzy relations. These three notions are briefly described below.
+
+\subsubsection{Fuzzy Sets}
+
+The notion of a fuzzy set was introduced by \citet{Zadeh1965} to generalize the classical idea of a set, now called a \emph{crisp set}. In classical set theory, membership of an element in a set is binary: an element either belongs to the set, or not. In contrast, fuzzy set theory allows the membership of an element to be described by any number in the unit interval, $I = [0, 1] = \{x: 0 \leq x \leq 1\}$, referred to as the degree or grade of membership. A formal definition is given below.
+
+\begin{definition}
+\rm Let $X$ denote a nonempty collection of objects. A \emph{fuzzy set} in $X$ is characterized by a \emph{membership function}, $\delta : X \longrightarrow I$, where, for an $x \in X$, $\delta(x)$ is interpreted as the \emph{degree} or \emph{grade of membership} of $x$ in the fuzzy set.
+\end{definition}
+
+\begin{example}
+\rm The set of tall students in a class can be described as a fuzzy set. For instance, if students $1, 2, \ldots, 10$ are numbered in increasing order of height, one might have $\delta(x) = 0$ for $x = 1, \ldots, 5$, $\delta(6) = 0.4$, $\delta(7) = 0.6$, $\delta(8) = 0.9$, and $\delta(9) = \delta(10) = 1$.
+\end{example}
+
+Note that the closer is the value of $\delta(x)$ to 1, the higher is the grade of membership of $x$ in the fuzzy set. A conventional, or crisp, set is a fuzzy set, in that the membership function is a $0-1$ function, assigning $1$ to each element of the set and $0$ to each element not in the set.
+
+\subsubsection{Fuzzy Numbers}
+
+A fuzzy number is a fuzzy set of a particular form defined on the set of real numbers, $\mathbb{R}$. Recall that, if $c, d \in \mathbb{R}$ satisfy $c \leq d$, then $[c, d] = \{x: c \leq x \leq d\}$ is a (closed) interval of real numbers. The definition of a fuzzy number follows \citep{Goetschel&Voxman86, Klir&Yuan95}:
+
+\begin{definition}\label{def-fn}
+\rm A \emph{fuzzy number} is a fuzzy set in $\mathbb{R}$ defined by a membership function $\delta : \mathbb{R} \longrightarrow I$ with the following properties:
+\begin{itemize}
+\item $\delta$ is upper semi-continuous;
+\item There is an interval $[c, d]$ such that $\delta(x)=0$ for all $x \not \in [c, d]$;
+\item There are real numbers $a$ and $b$ satisfying $c \leq a \leq b \leq d$ such that
+\begin{enumerate}[(i)]
+\item $\delta(x) = 1$ for all $x \in [a, b]$;
+\item If $c \leq x_1 \leq x_2 \leq a$, then $\delta(x_1) \leq \delta(x_2)$;
+\item If $b \leq x_1 \leq x_2 \leq d$, then $\delta(x_1) \geq \delta(x_2)$.
+\end{enumerate}
+\end{itemize}
+\end{definition}
+\noindent Note that $\delta$ is upper semi-continuous if and only if $\{x \in \mathbb{R} \; : \; \delta(x)<\alpha\}$ is an open set in $\mathbb{R}$ for every $\alpha \in (0, 1]$.
+
+\begin{example}
+\rm The set of all real numbers close to $3$ can be thought of as a fuzzy number. For instance, one might choose $c = 2, a = b = 3$, and $d = 4$, with $\delta(x)$ linear on each interval.
+\end{example}
+
+\subsubsection{Fuzzy Relations}
+
+Traditionally, a preference or crisp preference is characterized using a binary relation. In consequence, a fuzzy preference is defined using a fuzzy binary relation or simply a fuzzy relation. A classical or crisp relation indicates that an object $x \in X$ is either related to, or not related to, an object $y \in Y$; so, it is natural that a fuzzy relation assigns a degree or grade to the relation of $x$ to $y$. A formal definition is provided below \citep{Klir&Yuan95}.
+
+\begin{definition}
+\rm Let $X$ and $Y$ denote nonempty collections of objects. A fuzzy relation from $X$ to $Y$, denoted $\mathcal{R}$, is a fuzzy set in $X \times Y$ with membership function:
+$$\mu_{\mathcal{R}} : X \times Y \longrightarrow [0, 1],$$
+where $\mu_{\mathcal{R}}(x, y)$ represents the degree or grade of the relationship of $x \in X$ to $y \in Y$.
+\end{definition}
+
+Note that the sets $X$ and $Y$ may or may not be identical. If $X = Y$, $\mathcal{R}$ is said to be a fuzzy relation on $X$. A fuzzy relation from $X$ to $Y$ is usually represented by a matrix in which the members of $X$ are the row labels and the members of $Y$ are the column labels. The entry in row $x$ and column $y$ represents the degree to which $x$ is related to $y$.
+
+\begin{example}
+\rm The relation ``likes", between two students in a class, can be thought of as a fuzzy relation.
+\end{example}
+
+%\subsection{Fuzzy Preferences}
+
+\subsection{Fuzzy Preference and its Properties}
+
+A fuzzy preference is an important type of fuzzy binary relation. It represents preference between two states or alternatives as a preference degree for the first state over the second, and thus naturally includes both certain and uncertain preferences. A formal definition of a fuzzy preference relation is presented below \citep{Tanino1984, Tanino1988, Chiclana-et-al2001, Xu2007}.
+
+\begin{definition}\label{def-fp}
+\rm Let $S = \{s_1, s_2, \ldots, s_m\}$, $m>1$, denote a set of states or alternatives. A \emph{fuzzy preference} over $S$ is a fuzzy relation on $S$, represented by a matrix $\mathcal{R} =(r_{ij})_{m\times m}$, with membership function $\mu_{\mathcal{R}} : S \times S \longrightarrow [0, 1]$, where $\mu_{\mathcal{R}}(s_i, s_j)=r_{ij}$, the degree of preference for $s_i$ over $s_j$, satisfies
+\begin{center}
+$r_{ij} + r_{ji} = 1$ and $r_{ii} = 0.5$, for all $i,j=1,2, ..., m$.
+\end{center}
+\end{definition}
+\noindent The condition $r_{ij} + r_{ji} = 1$ is referred to as the \emph{additive reciprocity}.
+
+One often writes $r = \mu_{\mathcal{R}}$, so $r(s_i, s_j) = \mu_{\mathcal{R}}(s_i, s_j) = r_{ij}$. Interpretations of the values of $r(s_i, s_j)$ follow:
+
+\begin{enumerate}[(1)]
+\item $r(s_i, s_j) = 1$ indicates that state $s_i$ is definitely preferred to state $s_j$;
+\item $r(s_i, s_j) > 0.5$ implies that state $s_i$ is likely to be preferred to state $s_j$; the larger $r(s_i, s_j)$, the more likely that $s_i$ is preferred to $s_j$;
+\item $ r(s_i, s_j)=0.5 $ means that state $s_i$ is likely to be indifferent to state $s_j$, or that each state is equally likely to be preferred to the other;
+\item $r(s_i, s_j) < 0.5$ indicates that state $s_j$ is likely to be preferred to state $s_i$; the smaller $r(s_i, s_j)$, the more likely that $s_j$ is preferred to $s_i$;
+\item $r(s_i, s_j) = 0$ implies that state $s_j$ is definitely preferred to state $s_i$.
+\end{enumerate}
+
+Note that the amount of preference cannot be inferred from a degree of preference. The degree of preference of one state relative to another is the level of certainty that a DM prefers the first state to the second, and says nothing about how strong this preference may be. Thus, if $s_i$ is definitely preferred to $s_j$, then it is certain that $s_i$ is preferred to $s_j$, but there is no implication about how much more preferred is $s_i$ than $s_j$. For $k \in N$, DM $k$'s fuzzy preference is often denoted by $\mathcal{R}^k$.
+
+\begin{example}\label{exmpl-fp1}
+
+\rm Tom has a cold and would like a hot drink. He prefers coffee from Tim Hortons cafes and tea from Williams cafes, and is indifferent between them. This means that Tom prefers coffee from Tim Hortons to coffee from Williams and tea from Williams to tea from Tim Hortons. However, he is indifferent between coffee from Tim Hortons and tea from Williams.
+
+Tom's new roommate Dave brings Tom a tea from Tim Hortons and a coffee from Williams. Now Tom's preference for ``tea" or ``coffee" is unclear; he does not definitely prefer one to the other. In this case, Tom's preference can be described as a fuzzy preference relation.
+
+If Tom is more likely to take tea, then Tom's preference can be represented as a fuzzy preference with $r^{\text{Tom}}(\text{T}_{\text{T}}, \text{C}_{\text{W}}) > 0.5$, where $r^{\text{Tom}}(\text{C}_{\text{W}}, \text{T}_{\text{T}})$ is defined by $r^{\text{Tom}}(\text{C}_{\text{W}}, \text{T}_{\text{T}}) = 1 - r^{\text{Tom}}(\text{T}_{\text{T}}, \text{C}_{\text{W}})$, in which $\text{T}_{\text{T}}$ means tea from Tim Hortons and $\text{C}_{\text{W}}$ means coffee from Williams. In particular, if $r^{\text{Tom}}(\text{T}_{\text{T}}, \text{C}_{\text{W}}) = 0.7$, then Tom's preference over $\{\text{C}_{\text{W}}, \text{T}_{\text{T}} \}$ can be represented by the following matrix.
+
+\begin{center}
+$\mathcal{R}^{\text{Tom}} = \begin{array}{c}
+\begin{array}{x{10mm}x{10mm}x{10mm}}
+ &$\text{C}_{\text{W}}$&$\text{T}_{\text{T}}$
+ \end{array}\\[3mm]
+\begin{array}{cc}
+\begin{array}{c} \text{C}_{\text{W}} \\[1mm]
+\text{T}_{\text{T}} \end{array} & \left(
+\begin{array}{x{10mm}x{10mm}}
+   0.5 & 0.3 \\[1mm]
+   0.7 & 0.5
+\end{array}
+\right).
+\end{array}
+\end{array}$
+\end{center}
+\end{example}
+
+\begin{example} \label{exmpl-fp2}
+\rm Example~\ref{exmpl-fp1} can be expanded to represent Tom's preferences over ``coffee" or ``tea" from ``Tim Hortons" or ``Williams" and can be represented by the following matrix:
+
+\begin{center}
+$\mathcal{R} = \begin{array}{c}
+\begin{array}{x{7.5mm}x{10mm}x{10mm}x{10mm}x{10mm}}
+ &$\text{C}_{\text{T}}$&$\text{C}_{\text{W}}$&$\text{T}_{\text{T}}$
+ &$\text{T}_{\text{W}}$
+\end{array}\\[3mm]
+\begin{array}{cc}
+\begin{array}{c} \text{C}_{\text{T}} \\[1mm] \text{C}_{\text{W}} \\[1mm]
+\text{T}_{\text{T}} \\[1mm] \text{T}_{\text{W}} \end{array} &
+\left(
+\begin{array}{x{10mm}x{10mm}x{10mm}x{10mm}}
+ 0.5 & 1.0 & 0.8 & 0.5 \\[1mm]
+  0  & 0.5 & 0.3 & 0.1 \\[1mm]
+ 0.2 & 0.7 & 0.5 &  0  \\[1mm]
+ 0.5 & 0.9 & 1.0 & 0.5
+\end{array}
+\right),
+\end{array}
+\end{array}$
+\end{center}
+where $\text{C}_{\text{T}}$, $\text{C}_{\text{W}}$,
+$\text{T}_{\text{T}}$, and $\text{T}_{\text{W}}$ denote
+alternatives: coffee from Tim Hortons, coffee from Williams, tea
+from Tim Hortons, and tea from Williams, respectively.
+\end{example}

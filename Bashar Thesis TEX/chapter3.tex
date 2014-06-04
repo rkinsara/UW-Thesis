@@ -1,0 +1,385 @@
+\chapter{Fuzzy Preferences in a Two-Decision Maker Graph Model}\label{chap-fuz-pref-2dm}
+
+\section{Introduction}
+
+The first step in developing the FGM is to integrate fuzzy preferences into a two-DM graph model. Note that the simplest genuine conflict has two DMs, each of whom has two choices or strategies. To gain fundamental insights into what is actually occurring strategically and what can be done to obtain favorable resolutions, one can investigate such basic, or generic form, conflicts, including the Sustainable Development, Prisoner's Dilemma, and Chicken. For example, in sustainable development disputes, two major groups of agents involved are usually environmental agencies and developers. Environmental agencies are committed to monitoring development activities such that no component of a healthy environment is significantly degraded or destroyed. On the other hand, developers are engaged in activities intended to increase the quality of human life, and are often dominated by their business views of making profits. To study conflicts with two DMs, such as those mentioned above, with uncertain preferences, a fuzzy preference model for two DMs within the GMCR framework is proposed in the current chapter.
+
+In addition to developing the concepts of fuzzy relative certainty of preference, fuzzy satisficing threshold, and fuzzy unilateral improvement as tools for incorporating fuzzy preferences in the GMCR, the four basic fuzzy stability definitions---fuzzy Nash stability, fuzzy general metarationality, fuzzy symmetric metarationality, and fuzzy sequential stability---are introduced here. These fuzzy stabilities are applied to an ongoing sustainable development dispute to demonstrate their applicability. The contributions of this chapter are partly due to the papers by \citet{Bashar-et-al2009a, Bashar-et-al2009b, Bashar-et-al2010a, Bashar-et-al2011}.
+
+\section{Fuzzy Relative Certainty of Preference}\label{sec-frsp}
+
+A fuzzy preference captures preference uncertainty using numbers between $0$ and $1$, indicating pairwise preference degree to which one state is preferred over the other. Fuzzy preference can be thought of as an increasing function of preference degrees for which larger preference degree means more likely preferred. The maximum preference degree, $1.0$, implies definite preference. When a preference degree is less than $1.0$ (but greater than 0) for a DM, he or she perceives that either state of the pair may be preferable to the other, even if he ``leans" toward one of the states. In particular, if $r(s_i, s_j)<1$, then the DM does not definitely prefer state $s_i$ to state $s_j$. Due to additive reciprocity, the number $r(s_j, s_i)=1-r(s_i, s_j)$ can be interpreted as the degree to which state $s_i$ is not preferred over state $s_j$. Hence, the following definition describes the intensity of preference for a state (relative to another), which will be called the fuzzy relative certainty of preference of a DM. Recall that $N$ represents the set of DMs and $S=\{s_1, s_2, ..., s_m\}$, $m>1$, represents the set of feasible states.
+
+\begin{definition} \label{def-frsp}
+\rm Let $k\in N$, and for $s_i, s_j \in S$, let $r^k(s_i, s_j)$ denote the preference degree of state $s_i$ over $s_j$ for DM $k$. Then the $k$-th DM's \emph{fuzzy relative certainty of preference} (FRCP) for state $s_i$ over $s_j$, denoted $\alpha^k(s_i, s_j)$, is $\alpha^k(s_i, s_j) = r^k(s_i, s_j)-r^k(s_j, s_i).$
+\end{definition}
+\noindent The number $\alpha^k(s_i, s_j)$ measures the relative certainty of DM $k$'s preference for state $s_i$ over state $s_j$. It is clear from Definitions \ref{def-fp} and \ref{def-frsp} that for any $k \in N$ and for all $i, j = 1, 2, ..., m$, $-1 \leq \alpha^k(s_i, s_j) \leq 1$. In particular,
+\begin{enumerate}[(1)]
+\item $\alpha^k(s_i, s_j) = 1$ indicates that DM $k$ definitely prefers state $s_i$ to state $s_j$;
+\item $\alpha^k(s_i, s_j) = 0$ means that DM $k$ is equally likely to favor state $s_i$ over state $s_j$, or to favor state $s_j$ over state $s_i$;
+\item $\alpha^k(s_i, s_j) = -1$ indicates that DM $k$ definitely prefers state $s_j$ to state $s_i$.
+\end{enumerate}
+
+Denoting $\alpha_{ij}^k=\alpha^k(s_i, s_j)$ for any $i, j = 1, 2, ..., m$, the $k$-th DM's FRCP over $S$ can be represented by matrix $(\alpha_{ij}^k)_{m \times m}$.
+
+\begin{example}\label{exmpl-frsp}
+\rm Let the matrix
+\begin{center}
+$\mathcal{R}^\text{p} = \begin{array}{c}
+\begin{array}{x{7.5mm}x{10mm}x{10mm}x{10mm}x{10mm}}
+ & $s_1$ & $s_2$ & $s_3$ & $s_4$
+\end{array}\\[3mm]
+\begin{array}{cc}
+\begin{array}{c} s_1 \\[1mm] s_2 \\[1mm] s_3 \\[1mm] s_4 \end{array} &
+\left(
+\begin{array}{x{10mm}x{10mm}x{10mm}x{10mm}}
+ 0.5 & 1.0 & 0.8 & 0.5 \\[1mm]
+  0  & 0.5 & 0.3 & 0.1 \\[1mm]
+ 0.2 & 0.7 & 0.5 &  0  \\[1mm]
+ 0.5 & 0.9 & 1.0 & 0.5
+\end{array}
+\right)
+\end{array}
+\end{array}$
+\end{center}
+represent the (fuzzy) preference of a DM, p, over the set of states $S=\{ s_1, s_2, s_3, s_4 \}$. Then by employing Definition \ref{def-frsp}, p's FRCP over $S$ can be represented by the matrix:
+\begin{center}
+$(\alpha_{ij}^\text{p}) = \begin{array}{c}
+\begin{array}{x{7.5mm}x{10mm}x{10mm}x{10mm}x{10mm}}
+ & $s_1$ & $s_2$ & $s_3$ & $s_4$
+\end{array}\\[3mm]
+\begin{array}{cc}
+\begin{array}{c} s_1 \\[1mm] s_2 \\[1mm] s_3 \\[1mm] s_4 \end{array} &
+\left(
+\begin{array}{x{10mm}x{10mm}x{10mm}x{10mm}}
+ $0$    & $1.0$ & $0.6$  & $0$    \\[1mm]
+ $-1.0$ & $0$   & $-0.4$ & $-0.8$ \\[1mm]
+ $-0.6$ & $0.4$ & $0$    & $-1.0$ \\[1mm]
+ $0$    & $0.8$ & $1.0$  & $0$
+\end{array}
+\right).
+\end{array}
+\end{array}$
+\end{center}
+
+\end{example}
+
+\begin{remark}
+\rm The matrix representing FRCP is skew-symmetric in that, for all $k\in N$ and all $i, j=1, 2, ..., m$, $\alpha^k(s_j, s_i) = -\alpha^k(s_i, s_j)$ and $\alpha^k(s_i, s_i) = 0$.
+\end{remark}
+
+\section{Fuzzy Satisficing Threshold}\label{sec-fst}
+
+In analyzing a graph model, one important task is to determine whether a DM is better off to stay at a focal state or to move to some other states. A DM may wish to achieve a certain amount of confidence in identifying a better state. The fuzzy satisficing threshold of a DM describes his or her criterion to identify a state that is worthwhile. Note that different DMs may have different criteria in choosing states that benefit them. The fuzzy satisficing threshold of a DM is a number that characterizes the level of FRCP required for the DM to find an advantageous state. A formal definition is given below.
+
+\begin{definition}\label{fst}
+\rm For $k \in N$, DM $k$ would be willing to move from state $s \in S$ to state $s_i \in S$ if and only if $\alpha^k(s_i, s) \geq \gamma_k$, where $\gamma_k$ is called the \emph{fuzzy satisficing threshold} (FST) of DM $k$.
+\end{definition}
+
+\noindent The FST is a behavioral parameter that represents the DM's criterion for deciding whether to take advantage of some possible moves. Because of Definition~\ref{def-frsp}, it is reasonable to assume that an FST is positive and does not exceed $1$, i.e., for all $k \in N$, $0 < \gamma_k \leq 1$. If for a DM $k \in N$, $\gamma_k=1$, it means that DM $k$ finds a state worthy only if his or her preference for the state over an initial state is crisp, since $\alpha^k(s_i, s) \geq \gamma_k=1$ implies $r^k(s_i, s)-r^k(s, s_i)=1$ indicating $r^k(s_i, s)=1$ and $r^k(s, s_i)=0$. The FST of a DM may be supplied by the DM himself or herself, determined by an analyst by interviewing the DM, or by other means such as reading background information about the DM.
+
+\section{Fuzzy Unilateral Improvements by a Decision
+\\Maker}\label{sec-fui-dm}
+
+Stability analysis within the GMCR depends fundamentally on which states a DM would move to, given that he or she could do so, starting at some given initial state. In a graph model with fuzzy preference, this choice must depend on the DM's FST as it characterizes the level of FRCP to be required to identify states that are worthy for the DM. A fuzzy unilateral improvement signals a DM's attractiveness to move. More specifically, a fuzzy unilateral improvement for a DM is a state that the DM could and would move to, in other words, a state in the DM's reachable list for which the FRCP over the initial state is not less than the DM's FST. Recall that $R_k(s)$ is the set of states reachable from a given state $s \in S$ for DM $k \in N$ and $\gamma_k$ is the FST of DM $k$.
+
+\begin{definition}\label{def-fui-dm}
+\rm Let $s \in S$ and $k \in N$. A state $s_i \in R_k(s)$ is called a \emph{fuzzy unilateral improvement} (FUI) from $s$ by DM $k$ if and only if $\alpha^k(s_i, s) \geq \gamma_k$.
+\end{definition}
+
+\begin{definition}\label{def-fuil-dm}
+\rm The set of all FUIs from a state $s \in S$ for DM $k$ is called the \emph{fuzzy unilateral improvement list} (FUIL) from $s$ by DM $k$, and is denoted $\widetilde{R}_{k,\, \gamma_k}^+(s)$.
+\end{definition}
+
+\noindent To summarize Definition \ref{def-fuil-dm}, $\widetilde{R}_{k,\, \gamma_k}^+(s)=\{ s_i \in R_k(s) : \alpha^k(s_i, s) \geq \gamma_k \}$. For simplicity, one writes $\widetilde{R}_k^+(s) = \widetilde{R}_{k,\, \gamma_k}^+(s)$.
+
+\begin{example}
+\rm Suppose that the matrix $\mathcal{R}^\text{p}$ in Example~\ref{exmpl-frsp} represents the (fuzzy) preference of a DM, p, over the set of states $S=\{s_1, s_2, s_3, s_4\}$ in a conflict model and that p's reachable list from state $s_3$ is $R_\text{p}(s_3)=\{ s_1, s_2, s_4 \}$. Also suppose that $\gamma_\text{p}=0.5$, that is, the FST of p is $0.5$. Then $s_1$ is an FUI from $s_3$ for p, since $s_1 \in R_\text{p}(s_3)$ and $\alpha^{\text{p}}(s_1, s_3)=0.6 \geq 0.5$, the FST of p. Hence, one can find that the FUIL from $s_3$ for p is
+$$\widetilde{R}_{\text{p},\, 0.5}^+(s_3)=\{ s_1, s_4 \}.$$
+Likewise, if p had FST $0.7$, then his or her FUIL from $s_3$ would be $\widetilde{R}_{\text{p},\, 0.7}^+(s_3)=\{ s_4 \}.$
+\end{example}
+
+\begin{remark}\label{rmk-fui-dm}
+\rm When the FST of a DM is $1.0$, the definitions of a DM's FUI and FUIL coincide with the definitions of a DM's (crisp) UI and (crisp) UIL, respectively.
+\end{remark}
+
+\section{Fuzzy Stabilities for a Two-Decision Maker Graph Model}\label{sec-fuz-stabl-2dm}
+
+The concept of fuzzy stability is incorporated into the GMCR to accommodate fuzzy preference, which is an effective tool in representing both certain and uncertain preference information. Note that in a graph model with two DMs, the opponent of a focal DM is always a single DM. In a strategic conflict, a DM never moves to a state that is not advantageous according to his or her FUIL. If there is an FUI from the current state, a DM may consider the opponent's countermove and also subsequent move before deciding on whether to take advantage of the immediate FUI. Like the crisp GMCR, the FGM takes into account these human behavior in identifying states that represent potential resolutions of a dispute. More specifically, four basic fuzzy stability definitions---fuzzy Nash stability, fuzzy general metarationality, fuzzy symmetric metarationality, and fuzzy sequential stability---are introduced to integrate various kinds of human behavior into graph model fuzzy stability calculations. As there are two DMs in the model, assume that $N=\{k, l\}$; accordingly, the FSTs will be denoted $\gamma_k$ and $\gamma_l$.
+
+\begin{definition}\label{def-fr}
+\rm {\bf (Fuzzy Nash Stability or Fuzzy Rationality):}
+A state $s \in S$ is \emph{fuzzy Nash stable}, or \emph{fuzzy rational} (\emph{FR}) for DM $k$ if and only if
+$$\widetilde{R}_k^+(s)=\varnothing.$$
+\end{definition}
+
+\noindent Under \emph{FR} stability, the focal DM is considered to take into account only of his or her FUIs when deciding whether to move from a given initial state, and ignores any possible responses by the opponent. Thus, state $s$ is \emph{FR} stable for DM $k$ if and only if DM $k$ has no FUIs from $s$.
+
+\begin{definition}
+\rm {\bf (Fuzzy General Metarationality):}\label{def-fgmr-2dm}
+A state $s \in S$ is \emph{fuzzy general metarational} (\emph{FGMR}) for DM $k$ if and only if for every $s_1 \in \widetilde{R}_k^+(s)$ there exists an $s_2 \in R_l(s_1)$ such that $\alpha^k(s_2, s)<\gamma_k$.
+\end{definition}
+
+For \emph{FGMR}, the focal DM asks whether each of his or her FUIs could subsequently be sanctioned by the opponent, using one of the opponent's unilateral moves. Note that the DM does not consider whether the opponent would be better off making this sanctioning move. If the focal DM has no FUIs from state $s$, then $s$ is automatically \emph{FGMR} stable in the sense that there is no FUI from $s$ that cannot subsequently be sanctioned by the opponent using a unilateral move. In particular, \emph{FR} stability implies \emph{FGMR} stability.
+
+\begin{definition}\label{def-fsmr-2dm}
+\rm {\bf (Fuzzy Symmetric Metarationality):} A state $s \in S$ is \emph{fuzzy symmetric metarational} (\emph{FSMR}) for DM $k$ if and only if for every $s_1 \in \widetilde{R}_k^+(s)$ there exists an $s_2 \in R_l(s_1)$ such that $\alpha^k(s_2, s)<\gamma_k$, and $\alpha^k(s_3, s)<\gamma_k$ for all $s_3 \in R_k(s_2)$.
+\end{definition}
+
+In \emph{FSMR} stability, the focal DM looks one more step ahead (in comparison to \emph{FGMR} stability) when deciding whether to take advantage of an FUI. If there is a sanction by the opponent, the focal DM asks if he or she has a unilateral move that escapes the sanction. If the focal DM cannot escape the sanction, then the original state is \emph{FSMR} stable. If the focal DM has no FUIs from the current state, then it is \emph{FSMR} stable in the sense that there is no FUI from the initial state for which a sanction by the opponent can be escaped by the focal DM. In particular, \emph{FR} stability implies \emph{FSMR} stability.
+
+\begin{definition}\label{def-fseq-2dm}
+\rm {\bf (Fuzzy Sequential Stability):} A state $s \in S$ is \emph{fuzzy sequentially stable} (\emph{FSEQ}) for DM $k$ if and only if for every $s_1 \in \widetilde{R}_k^+(s)$ there exists an $s_2 \in \widetilde{R}_l^+(s_1)$ such that $\alpha^k(s_2, s) < \gamma_k$.
+\end{definition}
+
+\emph{FSEQ} stability is the same as \emph{FGMR} stability except that the focal DM considers only sanctions of his or her FUIs that are ``credible" in the sense that they are FUIs for the opponent. Note that the definition of \emph{FSEQ} depends not only on the focal DM's FST, $\gamma_k$, but also on the opponent's FST, $\gamma_l$. If the focal DM has no FUIs from the initial state, then it is \emph{FSEQ} stable in the sense that there is no FUI from the current state that cannot subsequently be sanctioned by the opponent using an FUI. In particular, \emph{FR} stability implies \emph{FSEQ} stability.
+
+\begin{definition}
+\rm {\bf (Fuzzy Equilibrium):} A state $s \in S$ that is fuzzy stable for both DMs $k$ and $l$ under a specific fuzzy stability definition is called a {\em fuzzy equilibrium} (\emph{FE}) under that definition.
+\end{definition}
+
+Note that DMs $k$ and $l$ may have different FSTs in identifying their own fuzzy stable states. Therefore, \emph{FE} corresponding to all the fuzzy stability definitions above, even fuzzy Nash equilibrium, depend on both DMs' FSTs.
+
+\section{Application of Fuzzy Stabilities to the Sustainable Development Conflict}\label{sec-appl-sus-dev}
+
+\subsection{Sustainable Development and Related Issues}
+
+Development is crucial to the advancement of civilization. More specifically, economic development increases standards of living, and sustainable development, as described in \citep{Brundtland1987}, meets the needs of the present without compromising the ability of future generations to meet their own requirements. Although development is essential to fulfil human needs and to improve the quality of life, it must be based on the efficient and responsible use of human, economic and natural resources. Theoretically, development that does not cause significant damage to the planet is possible, but conflicting motivations make it difficult to achieve. One instance is the temptation to improve an economy at the cost of environmental protection, for example, by not treating industrial wastes nor enhancing industrial processes \citep{Gore2006a, Gore2006b, Hipel&Obeidi2005}.
+
+A wide variety of environmental disputes is taking place around the globe on an ongoing basis, including the continuing controversies surrounding the reduction of greenhouse gasses and the preservation of ecosystems \citep{Hipel&Walker2010}. The great sparrow campaign (also known as kill a sparrow campaign, and officially, the four pests campaign) between $1958$ and $1960$ in China is an example of an environmental disaster. Under this campaign, sparrows were killed by peasants to save their grain seeds. However, this action caused populations of harmful insects to balloon, leading to a major ecological imbalance \citep{Shapiro2001}. An example of a recent environmental disaster is the Gulf of Mexico Oil Spill caused by an explosion on a drilling rig off the coast of southeast Louisiana, USA on April 20, 2010 \citep{TNY-times2010, Cntr-Biol-Diversity2011}. More than 200 million gallons of oil fouled the ocean and Gulf coastlines, spreading along more than 1,000 miles of shoreline, and causing the death or harm of more than 82,000 birds, about 6,000 sea turtles, nearly 26,000 marine mammals including dolphins, as well as an unknown but enormous number of fish and invertebrates \citep{Cntr-Biol-Diversity2011}.
+
+\subsection{Application of Fuzzy Stabilities for a Two-Decision Maker Graph Model to the Sustainable Development Conflict}
+
+The Sustainable Development conflict \citep{Hipel2002} is a $2 \times 2$ game having two DMs or players each of whom has two options or strategies \citep{Kilgour&Fraser1988, Fraser&Kilgour1986, Rapoport-et-al1976}. One DM represents the environmental agencies (ENV) and the other potential developers (DEV). ENV consists of government officials, environmentalists, and/or community groups. The main task of ENV is to oversee development activities to ensure that they remain sustainable. This means that the development projects will not only be economically beneficial but also environmentally viable. DEV, on the other hand, is composed of individuals or business enterprises, whose aim is to initiate development projects that will be economically feasible. Generally speaking, DEV's major goal is to make profit. However, DEV often feels some sort of environmental responsibility; some of them may place environmental priorities higher than others.
+
+\begin{table}[h]
+ \centering
+ \caption{States in the Sustainable Development Conflict}
+ \label{sus-dev-states}
+ %\renewcommand{\arraystretch}{2.5}
+\begin{tabular}{cc|x{2cm}|x{2cm}|}
+ \multicolumn{2}{c}{} & \multicolumn{2}{c}{DEV} \\
+ \multicolumn{2}{c}{} & \multicolumn{1}{c}{\underline{S}} & \multicolumn{1}{c}{\underline{U}} \\
+ \cline{3-4}
+ \multirow{6}{*}{ENV} &               &       &       \\
+                      & \underline{P} & $s_1$ & $s_2$ \\
+                      &               &       &       \\
+ \cline{3-4}
+                      &               &       &       \\
+                      & \underline{R} & $s_3$ & $s_4$ \\
+                      &               &       &       \\
+ \cline{3-4}
+\end{tabular}
+\end{table}
+
+In summary, in monitoring development activities and their effects on the environment, ENV can be proactive (\underline{P}) or reactive (\underline{R}). On the other hand, based on the level of responsibility to the environment and society, DEV may practice sustainable development (\underline{S}) or unsustainable development (\underline{U}). The model is presented in Table \ref{sus-dev-states} in which each cell represents one of the four possible states. For example, state $s_1$ indicates the situation in which ENV is proactive and DEV practices sustainable development. Figures \ref{moves-env} and \ref{moves-dev} show how ENV and DEV can cause the conflict to move from one state to another. For example, ENV can move from state $s_1$ to state $s_3$ by changing its strategy from proactive to reactive, but cannot move from $s_1$ to $s_2$.
+
+\begin{figure}[h]
+\centering
+\includegraphics[scale=0.85]{env(new)}
+\caption{Possible Moves by Environmental Agencies (ENV)}\label{moves-env}
+\end{figure}
+
+\begin{figure}[h]
+\centering
+\includegraphics[scale=0.85]{dev(new)}
+\caption{Possible Moves by Developers (DEV)}\label{moves-dev}
+\end{figure}
+
+The Graph Model of the Sustainable Development conflict studied here is similar to the one investigated in \citep{Hipel2002} and \citep{Hipel&Walker2010}, except that in this study, preference uncertainties between some states are considered for both ENV and DEV. For example, when DEV practices sustainable development, ENV may not have enough reason to definitely prefer state $s_1$ over state $s_3$, even though, by nature, ENV may want to be proactive rather than reactive. For DEV, when ENV is proactive, it may be unsure which of states $s_1$ and $s_2$ is better (even though it may want to choose unsustainable development instead of sustainable development) because it is unaware about ENV's plans in administering relevant environmental regulations. Taking these and other preference uncertainties into account, a typical fuzzy preference model for ENV and DEV is constructed, and is represented in Table \ref{fuz-pref-ENV-DEV} by matrices $\mathcal{R}^{\text{ENV}}$ and $\mathcal{R}^{\text{DEV}}$. In particular, the number $0.75$ in $\mathcal{R}^{\text{ENV}}$ represents ENV's preference degree of being proactive over reactive when DEV practices sustainable development. Using Definition \ref{def-frsp}, the FRCPs for ENV and DEV are calculated, and are represented by matrices $\alpha^{\text{ENV}}$ and $\alpha^{\text{DEV}}$ in Table \ref{frsp-ENV-DEV}.
+
+\begin{table}[!t]
+ \caption{Fuzzy Preferences of Environmental Agencies (ENV) and Developers (DEV)}
+ \centering
+ \renewcommand{\arraystretch}{1.3}
+\begin{tabular}{c}
+
+\noalign{\hrule height 1.2pt}
+
+$ \begin{array}{c}
+  \mbox{} \\[2.5mm]
+  \mathcal{R}^{\rm ENV}=\\
+ \end{array}
+ \begin{array}{c}
+   \begin{array}{x{8mm}x{8mm}x{8mm}x{8mm}x{8mm}}
+ & $s_1$ & $s_2$ & $s_3$ & $s_4$
+   \end{array}\\[2mm]
+\begin{array}{cc}
+\begin{array}{c} s_1 \\ s_2 \\ s_3 \\ s_4 \end{array}
+ & \left(
+\begin{array}{x{8mm}x{8mm}x{8mm}x{8mm}}
+ 0.5  & 1.0 & 0.75 & 1.0 \\
+ 0    & 0.5 & 0    & 1.0 \\
+ 0.25 & 1.0 & 0.5  & 1.0 \\
+ 0    & 0   & 0    & 0.5
+\end{array}
+\right)
+\end{array}
+\end{array}$
+
+\\[19mm]
+
+$ \begin{array}{c}
+  \mbox{} \\[2.5mm]
+  \mathcal{R}^{\rm DEV}=\\
+ \end{array}
+ \begin{array}{c}
+   \begin{array}{x{8mm}x{8mm}x{8mm}x{8mm}x{8mm}}
+ & $s_1$ & $s_2$ & $s_3$ & $s_4$
+   \end{array}\\[2mm]
+\begin{array}{cc}
+\begin{array}{c} s_1 \\ s_2 \\ s_3 \\ s_4 \end{array}
+ & \left(
+\begin{array}{x{8mm}x{8mm}x{8mm}x{8mm}}
+ 0.5  & 0.25 & 0   & 0   \\
+ 0.75 & 0.5  & 0.7 & 0   \\
+ 1.0  & 0.3  & 0.5 & 0   \\
+ 1.0  & 1.0  & 1.0 & 0.5
+\end{array}
+\right)
+\end{array}
+\end{array}$
+\\[16.3mm]
+
+\noalign{\hrule height 1.2pt}
+
+\end{tabular}
+\label{fuz-pref-ENV-DEV}
+\end{table}
+
+\begin{table}[h]
+ \caption{Fuzzy Relative Certainty of Preferences of Environmental Agencies (ENV) and Developers (DEV)}
+ \centering
+ \renewcommand{\arraystretch}{1.3}
+\begin{tabular}{c}
+
+\noalign{\hrule height 1.2pt}
+
+$ \begin{array}{c}
+  \mbox{} \\[2.5mm]
+  \alpha^{\rm ENV}=\\
+  \end{array}
+ \begin{array}{c}
+   \begin{array}{x{8mm}x{8mm}x{8mm}x{8mm}x{8mm}}
+ & $s_1$ & $s_2$ & $s_3$ & $s_4$
+   \end{array}\\[2mm]
+\begin{array}{cc}
+\begin{array}{c} s_1 \\ s_2 \\ s_3 \\ s_4 \end{array}
+ & \left(
+\begin{array}{x{8mm}x{8mm}x{8mm}x{8mm}}
+  $0$   &  $1.0$ &  $0.5$ & $1.0$   \\
+ $-1.0$ &  $0$   & $-1.0$ & $1.0$   \\
+ $-0.5$ &  $1.0$ &  $0$   & $1.0$   \\
+ $-1.0$ & $-1.0$ & $-1.0$ & $0$
+\end{array}
+\right)
+\end{array}
+\end{array}$
+
+\\[19mm]
+
+$ \begin{array}{c}
+  \mbox{} \\[2.5mm]
+  \alpha^{\rm DEV}=\\
+ \end{array}
+ \begin{array}{c}
+   \begin{array}{x{8mm}x{8mm}x{8mm}x{8mm}x{8mm}}
+ & $s_1$ & $s_2$ & $s_3$ & $s_4$
+   \end{array}\\[2mm]
+\begin{array}{cc}
+\begin{array}{c} s_1 \\ s_2 \\ s_3 \\ s_4 \end{array}
+ & \left(
+\begin{array}{x{8mm}x{8mm}x{8mm}x{8mm}}
+  $0$   & $-0.5$ & $-1.0$ & $-1.0$   \\
+  $0.5$ &  $0$   &  $0.4$ & $-1.0$   \\
+  $1.0$ & $-0.4$ &  $0$   & $-1.0$   \\
+  $1.0$ &  $1.0$ &  $1.0$ &  $0$
+\end{array}
+\right)
+\end{array}
+\end{array}$
+\\[16.3mm]
+\noalign{\hrule height 1.2pt}
+
+\end{tabular}
+\label{frsp-ENV-DEV}
+\end{table}
+
+A fuzzy stability analysis is carried out by applying the \emph{FR}, \emph{FGMR}, \emph{FSMR}, and \emph{FSEQ} stability definitions introduced in Section \ref{sec-fuz-stabl-2dm} to the sustainable development model. The results are presented in Table \ref{sus-dev-fsr} in which ENV or DEV in a cell indicates that the state in the corresponding row is fuzzy stable for the indicated DM but not for the opponent while \emph{FE} indicates that the state is a fuzzy equilibrium, under the indicated fuzzy stability definition. In this analysis, four sets of FSTs for ENV and DEV---(i) $\gamma_{\rm ENV}=0.4$, $\gamma_{\rm DEV}=0.3$; (ii) $\gamma_{\rm ENV}=0.6$, $\gamma_{\rm DEV}=0.3$; (iii) $\gamma_{\rm ENV}=0.4$, $\gamma_{\rm DEV}=0.6$; and (iv) $\gamma_{\rm ENV}=0.6$, $\gamma_{\rm DEV}=0.6$---are considered.
+
+\begin{table}[h!]
+\centering \caption{Fuzzy Stability Results of the Sustainable Development Conflict}
+\footnotesize
+%\small
+\setlength{\tabcolsep}{3pt}
+\renewcommand{\arraystretch}{1.4}
+\begin{tabular}{c|x{20mm}!{\vrule width 1.3pt} x{20mm}|x{20mm}|x{20mm}|x{20mm}}
+
+\noalign{\hrule height 1.3pt}
+
+FSTs & States & \emph{FR} & \emph{FGMR} & \emph{FSMR} & \emph{FSEQ} \\
+
+\noalign{\hrule height 1.3pt}
+
+\multirow{4}{25mm}{$\gamma_{\rm ENV}=0.4$ $\gamma_{\rm DEV}=0.3$}
+
+ & $s_1$ &   ENV     &   ENV     &   ENV     &   ENV     \\\cline{2-6}
+ & $s_2$ & \emph{FE} & \emph{FE} & \emph{FE} & \emph{FE} \\\cline{2-6}
+ & $s_3$ &           &   ENV     &   ENV     &   ENV     \\\cline{2-6}
+ & $s_4$ &   DEV     &   DEV     &   DEV     &   DEV     \\
+
+\noalign{\hrule height 1.3pt}
+
+\multirow{4}{25mm}{$\gamma_{\rm ENV}=0.6$ $\gamma_{\rm DEV}=0.3$}
+
+ & $s_1$ &   ENV     &   ENV     &   ENV     &   ENV     \\\cline{2-6}
+ & $s_2$ & \emph{FE} & \emph{FE} & \emph{FE} & \emph{FE} \\\cline{2-6}
+ & $s_3$ &   ENV     &   ENV     &   ENV     &   ENV     \\\cline{2-6}
+ & $s_4$ &   DEV     &   DEV     &   DEV     &   DEV     \\
+
+\noalign{\hrule height 1.3pt}
+
+\multirow{4}{25mm}{$\gamma_{\rm ENV}=0.4$ $\gamma_{\rm DEV}=0.6$}
+
+ & $s_1$ & \emph{FE} & \emph{FE} & \emph{FE} & \emph{FE} \\\cline{2-6}
+ & $s_2$ & \emph{FE} & \emph{FE} & \emph{FE} & \emph{FE} \\\cline{2-6}
+ & $s_3$ &           & \emph{FE} & \emph{FE} &   DEV     \\\cline{2-6}
+ & $s_4$ &   DEV     &   DEV     &   DEV     &   DEV     \\
+
+\noalign{\hrule height 1.3pt}
+
+\multirow{4}{25mm}{$\gamma_{\rm ENV}=0.6$ $\gamma_{\rm DEV}=0.6$}
+
+ & $s_1$ & \emph{FE} & \emph{FE} & \emph{FE} & \emph{FE} \\\cline{2-6}
+ & $s_2$ & \emph{FE} & \emph{FE} & \emph{FE} & \emph{FE} \\\cline{2-6}
+ & $s_3$ &   ENV     & \emph{FE} & \emph{FE} & \emph{FE} \\\cline{2-6}
+ & $s_4$ &   DEV     &   DEV     &   DEV     &   DEV     \\
+
+\noalign{\hrule height 1.3pt}
+
+\end{tabular}
+\label{sus-dev-fsr}
+\end{table}
+
+It can be seen from Table \ref{sus-dev-fsr} that when satisficing criteria of both ENV and DEV are weak, that is, for smaller FSTs, state $s_2$ is the only \emph{FE} under all four fuzzy stability definitions. This result is similar to the one found in \citep{Hipel2002} for the case of typical developers who are not concerned about environmental impacts of their activities. State $s_2$, in which environmental agencies are proactive and developers practice unsustainable development, represents a reasonable resolution for these developers. An increase in the FST of ENV does not significantly change the fuzzy stability results. However, when the FST of DEV is increased from $0.3$ to $0.6$, state $s_1$ also becomes a \emph{FE} under all four fuzzy stability definitions. Recall that state $s_1$ represents a circumstance in which environmental agencies are proactive and developers practice sustainable development. Note that $s_1$ is the outcome predicted in \citep{Hipel2002} for the case of more environmentally responsible developers.
+
+When the DEV's FST increases, that is, when developers do not see moves as improvements unless they are relatively certain to be better off, they may end up choosing to stay either at state $s_1$ or $s_2$. This indicates that when environmental agencies are proactive, developers do not have enough incentive to move away from either of these two states even though $s_2$ is likely to be preferred to state $s_1$. A move from $s_1$ is not sufficiently likely to satisfy developers' desire for improvement. This represents developers' ``stickiness" in moving to a reachable state implying the likely indifference between states $s_1$ and $s_2$. In this case, state $s_3$, being an \emph{FGMR}, \emph{FSMR} and \emph{FSEQ} equilibrium, is also a potential resolution if both ENV and DEV are farsighted in identifying the benefits of possible moves.
+
+\section{Summary}
+
+A new framework for the GMCR, the FGM, is developed to handle strategic conflicts in which DMs have fuzzy preferences over the feasible states. This makes it possible to use all forms of DMs' preference information---certain or uncertain---in a graph model. Within FGM, the four basic crisp graph model stability definitions, \emph{R}, \emph{GMR}, \emph{SMR}, and \emph{SEQ} for a two-DM graph model are redefined as \emph{FR}, \emph{FGMR}, \emph{FSMR}, and \emph{FSEQ}, respectively, and called fuzzy stabilities. The FST, a parameter, is introduced to take into account the interacting DMs' satisficing behavior and is incorporated into the fuzzy stability definitions.
+
+When the fuzzy stability definitions developed in this chapter are applied to the well-known sustainable development conflict, the analysis provides new insights into the dispute. The predicted equilibria in two different cases of a previous study (developers being less or more environmentally responsible) are obtained from the same fuzzy preference model. The analysis also finds that developers' satisficing behavior has more impact on the solutions than the satisficing behavior of environmental agencies.
+
+
+%The fuzzy stabilities for a two-DM graph model are applied to the well-known sustainable development conflict.
+
+
+%[1] Bashar, M.A., Hipel, K.W., and Kilgour, D.M., 2010. ``Fuzzy preferences in a two-decision maker graph model," \emph{Proceedings of the 2010 IEEE International Conference on Systems, Man, and Cybernetics}, 2964-2970.
+%
+%and
+%
+%[2] Bashar, M.A., Kilgour, D.M., and Hipel, K.W., 2011. ``Fuzzy preferences in the sustainable development conflict," \emph{Proceedings of the 2011 IEEE International Conference on Systems, Man, and Cybernetics}, 3483-3488.
+%
+%will go here.
+

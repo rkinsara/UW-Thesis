@@ -1,0 +1,225 @@
+% T I T L E   P A G E
+% -------------------
+
+\pagestyle{empty}
+\pagenumbering{roman}
+
+\begin{titlepage}
+   \begin{center}
+      \vspace*{-3.5mm}
+
+        \Huge
+        {\bf Fuzzy Preferences in the Graph Model for Conflict Resolution}
+
+      \vspace{10mm}
+
+        \normalsize
+        by \\
+
+        \vspace{7mm}
+
+        \Large
+        Md. Abul Bashar \\
+
+        \vspace{20mm}
+
+        \normalsize
+        A thesis \\
+        presented to the University of Waterloo \\
+        in fulfillment of the \\
+        thesis requirement for the degree of \\
+        Doctor of Philosophy \\
+        in \\
+        Systems Design Engineering \\
+
+        \vspace{20mm}
+
+        Waterloo, Ontario, Canada, 2012 \\
+
+        \vspace{7mm}
+
+        \copyright\ Md. Abul Bashar 2012 \\
+        \end{center}
+\end{titlepage}
+
+\pagestyle{plain}
+\setcounter{page}{2}
+
+\cleardoublepage
+
+
+
+% D E C L A R A T I O N   P A G E
+% -------------------------------
+
+\noindent
+I hereby declare that I am the sole author of this thesis. This is a true copy of the thesis, including any required final revisions, as accepted by my examiners.
+
+\bigskip
+
+\noindent
+I understand that my thesis may be made electronically available to the public.
+
+\hspace{7mm}
+
+\noindent Md. Abul Bashar
+
+\cleardoublepage
+
+
+%\newpage
+
+% A B S T R A C T
+% ---------------
+
+\begin{center}
+  \textbf{\LARGE{Abstract}}
+\end{center}
+
+A \emph{F}uzzy Preference Framework for the \emph{G}raph \emph{M}odel for Conflict Resolution (FGM) is developed so that real-world conflicts in which decision makers (DMs) have uncertain preferences can be modeled and analyzed mathematically in order to gain strategic insights. The graph model methodology constitutes both a formal representation of a multiple participant-multiple objective decision problem and a set of analysis procedures that provide insights into them. Because crisp or definite preference is a special case of fuzzy preference, the new framework of the graph model can include---and integrate into the analysis---both certain and uncertain information about DMs' preferences. In this sense, the FGM is an important generalization of the existing graph model for conflict resolution.
+
+One key contribution of this study is to extend the four basic graph model stability definitions to models with fuzzy preferences. Together, fuzzy Nash stability, fuzzy general metarationality, fuzzy symmetric metarationality, and fuzzy sequential stability provide a realistic description of human behavior under conflict in the face of uncertainty. A state is fuzzy stable for a DM if a move to any other state is not sufficiently likely to yield an outcome the DM prefers, where sufficiency is measured according to a fuzzy satisficing threshold that is characteristic of the DM. A fuzzy equilibrium, an outcome that is fuzzy stable for all DMs, therefore represents a possible resolution of the conflict. To demonstrate their applicability, the fuzzy stability definitions are applied to a generic two-DM sustainable development conflict, in which a developer plans to build or operate a project inspected by an environmental agency. This application identifies stable outcomes, and thus clarifies the necessary conditions for sustainability. The methodology is then applied to an actual dispute with more than two DMs concerning groundwater contamination that took place in Elmira, Ontario, Canada, again uncovering valuable strategic insights.
+
+To investigate how DMs with fuzzy preferences can cooperate in a strategic conflict, coalition fuzzy stability concepts are developed within FGM. In particular, coalition fuzzy Nash stability, coalition fuzzy general metarationality, coalition fuzzy symmetric metarationality, and coalition fuzzy sequential stability are defined, for both a coalition and a single DM. These concepts constitute a natural generalization of the corresponding non-cooperative fuzzy preference-based definitions for Nash stability, general metarationality, symmetric metarationality, and sequential stability, respectively. As a follow-up analysis of the non-cooperative fuzzy stability results and to demonstrate their applicability, the coalition fuzzy stability definitions are applied to the aforementioned Elmira groundwater contamination conflict. These new concepts can be conveniently utilized in the study of practical problems in order to gain strategic insights and to compare conclusions derived from both cooperative and non-cooperative stability notions.
+
+A fuzzy option prioritization technique is developed within the FGM so that uncertain preferences of DMs in strategic conflicts can be efficiently modeled as fuzzy preferences by using the fuzzy truth values they assign to preference statements about feasible states. The preference statements of a DM express desirable combinations of options or courses of action, and are listed in order of importance. A fuzzy truth value is a truth degree, expressed as a number between $0$ and $1$, capturing uncertainty in the truth of a preference statement at a feasible state. It is established that the output of a fuzzy preference formula, developed based on the fuzzy truth values of preference statements, is always a fuzzy preference relation. The fuzzy option prioritization methodology can also be employed when the truth values of preference statements at feasible states are formally based on Boolean logic, thereby generating a crisp preference over feasible states that is the same as would be found using the existing crisp option prioritization approach. Therefore, crisp option prioritization is a special case of fuzzy option prioritization. To demonstrate how this methodology can be used to represent fuzzy preferences in real-world problems, the new fuzzy option prioritization technique is applied to the Elmira aquifer contamination conflict. It is observed that the fuzzy preferences obtained by employing this technique are very close to those found using the rather complicated and tedious pairwise comparison approach.
+
+\cleardoublepage
+
+
+%\newpage
+
+% A C K N O W L E D G E M E N T S
+% -------------------------------
+
+\begin{center}
+  \textbf{\LARGE{Acknowledgements}}
+\end{center}
+
+First and foremost, I would like to express my deep gratitude to my supervisors, Professor Keith W. Hipel and Professor D. Marc Kilgour, for their continuous guidance, unreserved support, valuable insights, and encouragement. The time and effort, they spent throughout my PhD research, have contributed significantly to its success and completion, and will be forever appreciated. I am extremely grateful to them for their genuine guidance for my smooth transition from a background in pure mathematics to a specialization in engineering. Truly, all my gains in Engineering is owing to their fine assistance and support. It is almost impossible to express my appreciation to them in words.
+
+I wish to convey my sincere thanks to Professor Ni-Bin Chang for being the External Examiner of my PhD thesis and for his suggestions to improve it. I am most thankful to my other PhD examination committee members, Professor Fakhri Karray, Dr. John Zelek, and Dr. Kevin Li, for their valuable time, useful comments from different perspectives, and prompt support whenever needed. Their helpful advice and suggestions have significantly enhanced my research.
+
+My special thanks go to Sheila Hipel and Conrad Hipel for their help in improving the English of my writing whenever needed. I would also like to extend my gratitude to my friends and colleagues, among whom are Ye (Richard) Chen, Haiyan Xu, Qian Wang, Yi (Ginger) Ke, Michele Bristow, Yasser Matbouli, Rami Kinsara, Young-Jae Kim, and Hanbin (Eric) Kuang to name a few, for their enormous support and help during this journey.
+
+I would like to express my sincere thanks to the the Natural Science and Engineering Research Council of Canada for providing me with full financial support throughout my PhD studies from the NSERC Strategic Grant project entitled ``Systems Engineering Approaches for Brownfield Redevelopment" as well as from the NSERC Discovery Grants of Professor Keith Hipel and Professor Marc Kilgour. I wish to express my tribute to the Department of Systems Design Engineering for providing me with a stimulating research environment. I also owe special thanks to Ms. Vicky Lawrence and Ms. Colleen Richardson of Systems Design Engineering for their assistance whenever requested.
+
+I am greatly indebted to my parents, siblings, and relatives for their unchanging love, endless patience, and understanding. My deepest gratitude is for my wife, Pushpa, for her loving support, understanding, and encouragement, which were indispensable for the completion of my PhD studies. My endless love goes to my son, Tashfiq Aiman Bashar, and daughter, Tazmeen Aairah Bashar, who are too young to understand what their dad has been doing for all these years at university, sometimes, day and night, instead of being with them as they deserve. Thanks to them for their patience.
+
+\cleardoublepage
+
+
+%\newpage
+
+% D E D I C A T I O N
+% -------------------
+
+\begin{center}
+  \textbf{\LARGE{Dedication}}
+\end{center}
+
+To my son, Tashfiq Aiman Bashar, and daughter, Tazmeen Aairah Bashar.
+
+\cleardoublepage
+
+
+%\newpage
+
+% T A B L E   O F   C O N T E N T S
+% ---------------------------------
+
+\renewcommand\contentsname{Table of Contents}
+\tableofcontents
+\cleardoublepage
+\phantomsection     % allows hyperref to link to the correct page
+
+
+%\newpage
+
+% L I S T   O F   T A B L E S
+% ---------------------------
+
+\addcontentsline{toc}{chapter}{List of Tables}
+\listoftables
+\cleardoublepage
+\phantomsection		% allows hyperref to link to the correct page
+
+
+%\newpage
+
+% L I S T   O F   F I G U R E S
+% -----------------------------
+
+\addcontentsline{toc}{chapter}{List of Figures}
+\listoffigures
+\cleardoublepage
+\phantomsection		% allows hyperref to link to the correct page
+
+
+%\newpage
+
+% L I S T   O F   S Y M B O L S
+% -----------------------------
+
+\addcontentsline{toc}{chapter}{Acronyms}
+
+\begin{longtable}[t]{p{18mm}p{132mm}}
+% \centering
+%\renewcommand{\arraystretch}{1.3}
+\multicolumn{2}{x{15cm}}{\textbf{\LARGE{Acronyms}}} \\
+              &  \\
+              &  \\
+CCFIL         & class coalitional fuzzy improvement list \\
+CCI           & class coalitional improvement \\
+CCM           & class coalitional move \\
+\emph{CFE}    & coalition fuzzy equilibrium \\
+\emph{CFGMR}  & coalition fuzzy general metarational \\
+CFI           & coalition fuzzy improvement \\
+CFIL          & coalition fuzzy improvement list \\
+\emph{CFR}    & coalition fuzzy Nash stable or coalition fuzzy rational \\
+\emph{CFSEQ}  & coalition fuzzy sequentially stable \\
+\emph{CFSMR}  & coalition fuzzy symmetric metarational \\
+\emph{CGMR}   & coalition general metarational \\
+\emph{CR}     & coalition Nash stable or coalition rational \\
+\emph{CSEQ}   & coalition sequentially stable \\
+\emph{CSMR}   & coalition symmetric metarational \\
+DEV           & developers \\
+DM            & decision maker \\
+ENV           & environmental agencies \\
+\emph{FE}     & fuzzy equilibrium \\
+FGM           & \emph{F}uzzy Preference Framework for the \emph{G}raph \emph{M}odel for Conflict Resolution\\
+\emph{FGMR}   & fuzzy general metarational \\
+\emph{FR}     & fuzzy Nash stable or fuzzy rational \\
+FRCP          & fuzzy relative certainty of preference \\
+\emph{FSEQ}   & fuzzy sequentially stable \\
+\emph{FSMR}   & fuzzy symmetric metarational \\
+FST           & fuzzy satisficing threshold \\
+FUI           & fuzzy unilateral improvement \\
+FUIL          & fuzzy unilateral improvement list \\
+GMCR          & Graph Model for Conflict Resolution \\
+GMCR II       & decision support system of GMCR \\
+\emph{GMR}    & general metarational \\
+L             & Local Government \\
+M             & The Ontario Ministry of the Environment \\
+NDMA          & N-nitroso demethylamine \\
+\underline{P} & proactive \\
+\emph{R}      & Nash stable or rational \\
+\underline{R} & reactive \\
+\underline{S} & sustainable development \\
+\emph{SEQ}    & sequentially stable \\
+\emph{SMR}    & symmetric metarational \\
+U             & Uniroyal Chemical Ltd. \\
+\underline{U} & unsustainable development \\
+UI            & unilateral improvement \\
+UIL           & unilateral improvement list \\
+\end{longtable}
+
+
+\cleardoublepage
+
+
+% \newpage
+
+% Change page numbering back to Arabic numerals
+\pagenumbering{arabic}
+

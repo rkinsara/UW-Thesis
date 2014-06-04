@@ -1,0 +1,300 @@
+\chapter{Fuzzy Option Prioritization}\label{chap-fop}
+
+\section{Introduction}
+
+In any decision making technique, DMs' preference information, expressed implicitly or explicitly, is an essential component. Preference information may be given in various forms, for instance as utilities (as in classical game theory \citep{VonNeumann&Morgenstern1944}), as fuzzy utilities (as in fuzzy decision making \citep{Nakamura1986, De-Wilde2004}), via crisp option prioritization (as in the crisp GMCR \citep{Hipel-et-al1997, Peng-et-al1997, Peng1999, Hipel-et-al2001, Fang-et-al2003}), or simply as pairwise relative preferences over the feasible states or scenarios (as in the GMCR \citep{Kilgour-et-al1987, Fang-et-al1993}). In whatever form a DM's preference information is provided, the objective is always to represent a preference relation over the feasible states or alternatives.
+
+Crisp option prioritization is a methodology to model a DM's preference over feasible states within a graph model structure using his or her priority list of combinations of courses of action, referred to as preference statements \citep{Peng-et-al1997, Peng1999, Fang-et-al2003}. To be more specific, a DM's preference statements are composed of options using logical connectives such as ``and", ``or", and ``if--then", and listed from the most important to least. The option prioritization methodology takes into account the truth value (``true" or ``false") of each preference statement at each feasible state. Note that in calculating a DM's preferences, a more important preference statement dominates a less important one, and the truthfulness of a preference statement dominates its falsity. For example, in the Elmira model, the most important preference statement of L is ``U does not close its operations in Elmira"; so any state or scenario in which U continues its operations in Elmira is preferred by L to any state in which U closes its operations.
+
+Note that the FGM developed in Chapters \ref{chap-fuz-pref-2dm} and \ref{chap-fp-ndm-gm}, extending the crisp GMCR, as well as the coalition fuzzy stabilities introduced in Chapter \ref{chap-cfsa}, take into account a DM's fuzzy preferences. But, like crisp preferences, modeling fuzzy preferences by pairwise comparison of states is difficult, and even impractical, for larger problems. Until now, there is no single procedure to model a DM's fuzzy preference within a graph model framework. In this chapter, a fuzzy version of the crisp graph model option prioritization methodology, called fuzzy option prioritization, is developed by assuming fuzzy truth values of preference statements at feasible states to model DMs' fuzzy preferences for use in the analysis step of the FGM. The original research carried out in this chapter is the extension of the paper by \citet{Bashar-et-al2012c}.
+
+\section{Fuzzy Truth Values and Fuzzy Scores}\label{sec-ftv-fs}
+
+Preference uncertainty is an important issue in modeling and analyzing a real-world decision problem. When preference uncertainty is incurred in a multiple participant-multiple objective decision problem, preference statements, as modeled for the crisp option prioritization technique, developed in \citep{Peng-et-al1997, Peng1999, Fang-et-al2003} and described in Subsection \ref{crisp-opn-prioritization}, may not be assessed to be precisely ``true" or ``false" at some feasible states. Note that an earlier version of crisp option prioritization was first introduced by \citet{Fraser&Hipel1988}, discussed by \citet{Fraser1993, Fraser1994}, and then generalized for use within GMCR by \citet{Peng-et-al1997, Peng1999, Hipel-et-al1997, Fang-et-al2003}.
+
+A limitation of preference modeling by crisp option prioritization technique is that it assesses a preference statement based only on whether it occurs (i.e., ``true") or not (i.e., ``false") at a state, and does not consider other courses of action that are present in that state but not included in that particular preference statement. These courses of action may influence the truth value of the preference statement at that state. For example, in the Elmira dispute, L may consider the preference statement ``insisting on the application of the original control order" in modeling its preferences. It may be reasonable to restrict the truth value of this preference statement to either ``true" or ``false" at states in which U is delaying the appeal process. However, at a state in which U accepts a control order (original or modified), the truth value of this preference statement may not be precisely ``true" or ``false". Accordingly, to make the crisp option prioritization a more useful preference elicitation technique, a more flexible and realistic truth value of a preference statement is needed.
+
+In the circumstances described above, it may be reasonable to represent the truth value of a preference statement at a state by a numerical value taken from the closed unit interval $[0, 1]$, referred to as a \emph{truth degree} or \emph{degree of truth}, called a \emph{fuzzy truth value}. A truth degree of $1$ for a preference statement at a state indicates that the preference statement is true, while a truth degree of $0$ implies that the preference statement is false. Note that fuzzy truth value is the main concept behind fuzzy logic and fuzzy set, introduced by \citet{Zadeh1965}, that has a wide variety of applications in engineering, decision sciences, and other areas \citep{Bellman&Zadeh1970, Bojadziev&Bojadziev2007, Ross2010}.
+
+A lower truth degree of a preference statement at a particular state indicates less suitability, while a higher truth degree implies more suitability of the statement in the circumstances of the state. If $\sigma_t(s)=\sigma(\Omega_t, s)$ denotes the fuzzy truth value of a preference statement $\Omega_t$ at a given state $s \in S$, then $\sigma_t(s)=0$ (that is, the truth degree of the preference statement $\Omega_t$ at state $s$ is $0$) means that the statement $\Omega_t$ does not make any sense at $s$, which is equivalent to the fact that $\Omega_t$ is ``false" at $s$, that is, $\Omega_t(s)=F$. Likewise, $\sigma_t(s)=1$ is equivalent to $\Omega_t(s)=T$.
+
+Recall from Subsection \ref{crisp-opn-prioritization} that $\Omega_1, \Omega_2, ..., \Omega_q$ represent a DM's preference statements listed in order of importance from most to least. For $1\leq t\leq q$, let $\widetilde{\Psi}_t(s)$ denote the \emph{fuzzy incremental score} of a state $s \in S$ for preference statement $\Omega_t$, defined by
+\begin{equation}\label{formula-fuz-incr-score}
+\widetilde{\Psi}_t(s)=\frac{1}{2^t}\sigma_t(s).
+\end{equation}
+
+\noindent Now, let $\widetilde{\Psi}(s)$ denote the \emph{fuzzy score} of a state $s\in S$. Then define
+\begin{equation}\label{formula-fuz-score}
+\widetilde{\Psi}(s)=\displaystyle\sum\limits_{t=1}^q \widetilde{\Psi}_t(s).
+\end{equation}
+\noindent In (\ref{formula-fuz-score}), the fuzzy truth values of preference statements at the feasible states, as assumed for preference uncertainty, are taken into account to calculate fuzzy scores for the states. The fuzzy scores of the feasible states will be used in a formula, developed in the following section, to calculate a preference degree for each pair of states.
+
+\section{Fuzzy Preference Elicitation}\label{sec-fpe}
+
+The crisp option prioritization, representing a crisp preference ordering of feasible states for a DM lexicographically or by using the scores calculated by employing the Equation \ref{crisp-score}, is a standard ranking methodology if there is no preference uncertainty and the states are assessed according to the preference statements of the DM using Boolean or classical logic. However, because preference uncertainty is the main justification for the assumption of fuzzy truth values in the assessment of preference statements at feasible states, the crisp preference ordering of states using the fuzzy scores as given by (\ref{formula-fuz-score}) is not enough to capture the vagueness in preferences. Rather, the cardinal values of the fuzzy scores should be used to identify the preference intensity between two states. A function $r : S \times S \longrightarrow [0, 1]$ is defined below to express this preference information.
+
+% Note that preference uncertainty is the main justification for the assumption of fuzzy truth values in the assessment of preference statements at feasible states. In (\ref{formula-fuz-score}), fuzzy truth values are accumulated to calculate fuzzy scores for the states. But unlike the crisp option prioritization, the crisp preference ordering of states using the fuzzy scores is not enough to capture the vagueness in preferences. These fuzzy scores may be utilized to model a fuzzy preference over the feasible states.
+\begin{equation}\label{fp-eq}
+\begin{array}{l}
+ r(s_i, s_j)=
+ \left\{ \begin{array}{ll}
+ \frac{1}{2}+\frac{1}{2} \frac{\widetilde{\Psi}(s_i)-\widetilde{\Psi}(s_j)}{\text{max}\{{\mid \Psi(s_i)-\Psi(s_j) \mid}, {\mid \widetilde{\Psi}(s_i)-\widetilde{\Psi}(s_j) \mid}\}}, & \text{if } \widetilde{\Psi}(s_i) \neq \widetilde{\Psi}(s_j) \\
+ 0.5, & \text{otherwise},
+ \end{array}
+ \right.
+\end{array}
+\end{equation}
+where for an $s \in S$, $\Psi(s)$ and $\widetilde{\Psi}(s)$ are defined by (\ref{crisp-score}) and (\ref{formula-fuz-score}), respectively. The following theorem establishes that the function defined by (\ref{fp-eq}) represents a fuzzy preference relation over the set of feasible states, $S$.
+
+\begin{theorem}
+\rm The fuzzy relation $\mathcal{R}=(r_{ij})_{m \times m}$ on $S$, with membership function
+$$\mu_{\mathcal{R}} : S \times S \longrightarrow [0, 1]$$
+defined by $\mu_{\mathcal{R}}(s_i, s_j)=r_{ij}=r(s_i, s_j)$, where $r(s_i, s_j)$ is given by (\ref{fp-eq}), is a fuzzy preference relation on $S$.
+\end{theorem}
+
+\noindent {\bf Proof:} First we show that for any $s_i, s_j \in S$, $\mu_{\mathcal{R}}(s_i, s_j)=r_{ij}=r(s_i, s_j) \in [0, 1]$.
+
+\noindent Let $s_i, s_j \in S$. If $\widetilde{\Psi}(s_i)=\widetilde{\Psi}(s_j)$, then by (\ref{fp-eq}), $r(s_i, s_j)=0.5$. If $\widetilde{\Psi}(s_i) \neq \widetilde{\Psi}(s_j)$, then from the fact that
+$${\mid \widetilde{\Psi}(s_i)-\widetilde{\Psi}(s_j) \mid} \leq \text{max}\{{\mid \Psi(s_i)-\Psi(s_j) \mid}, {\mid \widetilde{\Psi}(s_i)-\widetilde{\Psi}(s_j) \mid}\},$$
+we obtain
+$$-1 \leq \frac{\widetilde{\Psi}(s_i)-\widetilde{\Psi}(s_j)}{\text{max}\{{\mid \Psi(s_i)-\Psi(s_j) \mid}, {\mid \widetilde{\Psi}(s_i)-\widetilde{\Psi}(s_j) \mid}\}} \leq 1,$$
+and hence,
+$$0 \leq \frac{1}{2}+\frac{1}{2} \frac{\widetilde{\Psi}(s_i)-\widetilde{\Psi}(s_j)}{\text{max}\{{\mid \Psi(s_i)-\Psi(s_j) \mid}, {\mid \widetilde{\Psi}(s_i)-\widetilde{\Psi}(s_j) \mid}\}} \leq 1,$$
+that is, $0 \leq r(s_i, s_j) \leq 1$. Accordingly, $\mu_{\mathcal{R}}(s_i, s_j)=r_{ij}=r(s_i, s_j) \in [0, 1]$, for all $s_i, s_j \in S$.
+
+Next we show that $\mu_{\mathcal{R}}(s_i, s_j)+\mu_{\mathcal{R}}(s_j, s_i)=1$, for any $s_i, s_j \in S$. For $s_i, s_j \in S$ for which $\widetilde{\Psi}(s_i)=\widetilde{\Psi}(s_j)$, the above identity is obvious, since in this case $r(s_i, s_j)=r(s_j, s_i)=0.5$, and hence, $\mu_{\mathcal{R}}(s_i, s_j)=\mu_{\mathcal{R}}(s_j, s_i)=0.5$. For $s_i, s_j \in S$ satisfying $\widetilde{\Psi}(s_i) \neq \widetilde{\Psi}(s_j)$, we obtain that
+\begin{equation*}
+\begin{array}{rcl}
+\mu_{\mathcal{R}}(s_i, s_j)+\mu_{\mathcal{R}}(s_j, s_i)
+&=&r(s_i, s_j)+r(s_j, s_i) \\
+&=&\frac{1}{2}+\frac{1}{2}\frac{\widetilde{\Psi}(s_i)-\widetilde{\Psi}(s_j)}{\text{max}\{{\mid \Psi(s_i)-\Psi(s_j) \mid}, {\mid \widetilde{\Psi}(s_i)-\widetilde{\Psi}(s_j) \mid}\}}+ \\
+& & \frac{1}{2}+\frac{1}{2} \frac{\widetilde{\Psi}(s_j)-\widetilde{\Psi}(s_i)}{\text{max}\{{\mid \Psi(s_j)-\Psi(s_i) \mid}, {\mid \widetilde{\Psi}(s_j)-\widetilde{\Psi}(s_i) \mid}\}} \\
+&=&1.
+\end{array}
+\end{equation*}
+
+\noindent Finally, $\mu_{\mathcal{R}}(s_i, s_i)=r_{ii}=r(s_i, s_i)=0.5$, from (\ref{fp-eq}). Hence, $\mathcal{R}=(r_{ij})_{m \times m}$ is a fuzzy preference relation on $S$. \qed
+
+\begin{theorem}\label{thm-cop-sc-fop}
+\rm Crisp option prioritization is a special case of fuzzy option prioritization. Specifically, if the truth value of each preference statement at each feasible state is based on Boolean logic, then preferences over feasible states obtained by employing fuzzy option prioritization are crisp and are the same as would be found by using crisp option prioritization.
+\end{theorem}
+
+{\bf Proof:} Assume that the truth value of each preference statement $\Omega_t$, $t=1, 2, ..., q$, at each state in $S$ is based on Boolean logic.
+Then for any $s\in S$,
+$$\sigma_t(s)=\left\{ \begin{array}{ll}
+ 1, & \text{if } \Omega_t(s)=T \\
+ 0, & \text{if } \Omega_t(s)=F
+ \end{array}
+ \right..$$
+Hence, $\widetilde{\Psi}_t(s)=\frac{1}{2^t}\sigma_t(s)=\Psi_t(s)$. Accordingly,
+$$\widetilde{\Psi}(s)=\displaystyle\sum\limits_{t=1}^q \widetilde{\Psi}_t(s)=\displaystyle\sum\limits_{t=1}^q \Psi_t(s)=\Psi(s).$$
+
+For $s_i, s_j \in S$, by crisp option prioritization, $s_i \succ s_j$, or $s_i \sim s_j$, or $s_i \prec s_j$ if and only if $\Psi(s_i)>\Psi(s_j)$, or $\Psi(s_i)=\Psi(s_j)$, or $\Psi(s_i)<\Psi(s_j)$, respectively. Now, if $\Psi(s_i)>\Psi(s_j)$, then since $\widetilde{\Psi}(s_i)=\Psi(s_i)$ and $\widetilde{\Psi}(s_j)=\Psi(s_j)$, we can find from (\ref{fp-eq}) that
+\begin{equation*}
+ \begin{array}{rcl}
+ r(s_i, s_j)&=& \frac{1}{2}+\frac{1}{2} \frac{\widetilde{\Psi}(s_i)-\widetilde{\Psi}(s_j)}{\text{max}\{{\mid \Psi(s_i)-\Psi(s_j) \mid}, {\mid \widetilde{\Psi}(s_i)-\widetilde{\Psi}(s_j) \mid}\}} \\
+            &=& \frac{1}{2}+\frac{1}{2} \frac{\Psi(s_i)-\Psi(s_j)}{\text{max}\{{\mid \Psi(s_i)-\Psi(s_j) \mid}, {\mid \Psi(s_i)-\Psi(s_j) \mid}\}} \\
+            &=& \frac{1}{2}+\frac{1}{2}=1,
+ \end{array}
+\end{equation*}
+which is equivalent to $s_i \succ s_j$.
+
+If $\Psi(s_i)=\Psi(s_j)$, then by (\ref{fp-eq}), $r(s_i, s_j)=0.5$, which is equivalent to $s_i \sim s_j$. Finally, if $\Psi(s_i)<\Psi(s_j)$, then by (\ref{fp-eq}),
+\begin{equation*}
+ \begin{array}{rcl}
+ r(s_i, s_j)&=&\frac{1}{2}+\frac{1}{2} \frac{\Psi(s_i)-\Psi(s_j)}{\text{max}\{{\mid \Psi(s_i)-\Psi(s_j) \mid}, {\mid \Psi(s_i)-\Psi(s_j) \mid}\}} \\
+            &=&\frac{1}{2}-\frac{1}{2}=0,
+ \end{array}
+\end{equation*}
+which is equivalent to $s_i \prec s_j$.
+This completes the proof. \qed
+
+\section{Application of Fuzzy Option Prioritization to the \\Elmira Groundwater Contamination Conflict}\label{sec-appl-fop}
+
+To demonstrate how the fuzzy option prioritization methodology can be employed to model fuzzy preferences in a real-world multiple participant-multiple objective decision problem, it is applied to the Elmira groundwater contamination conflict described in Section \ref{sec-stabl-appl-elmira}. Recall from Section \ref{sec-stabl-appl-elmira} that in Elmira dispute, the uncertain preferences of U and L were modeled as fuzzy preferences by complicated and time consuming pairwise comparison of states, represented in Table \ref{prfncs-UR-LG} by matrices $\mathcal{R}^\text{U}$ and $\mathcal{R}^\text{L}$, respectively. In this section, the uncertain preferences of U and L are modeled as fuzzy preferences by using the systematic fuzzy option prioritization technique developed in this chapter. The methodology also generates a crisp preference for M as expected.
+
+\citet{Peng1999} developed a set of preference statements for each of the DMs, M, U and L, of the Elmira dispute to apply the crisp option prioritization for eliciting preferences. In this study, the preference statements of M, U and L are considered to be the same as in \citep{Peng1999}, which are presented in Tables \ref{pref-statement-MoE}, \ref{pref-statement-UR} and \ref{pref-statement-LG}, respectively. In these tables, preference statements are listed vertically from most to least important. Recall that crisp option prioritization \citep{Fang-et-al2003, Peng-et-al1997, Peng1999} is a methodology that is used to order feasible states lexicographically based on truth values, ``true" or ``false", of preference statements at each state.
+
+\begin{table}[t]
+\centering
+\caption{Lexicographic Preference Statements and Interpretations for the Ontario Ministry of the Environment (M) in the Elmira Conflict}
+\footnotesize
+\setlength{\tabcolsep}{3pt}
+\renewcommand{\arraystretch}{1.6}
+\begin{tabular}[t]{>{\hfill}p{35mm}p{2mm}p{110mm}}
+\noalign{\hrule height 1.3pt}
+Preference Statement & & Interpretation \\
+\noalign{\hrule height 1.3pt}
+$-O_4$           & & Concerned about the provincial economy, M does not want U to abandon its operations in Elmira. \\
+$O_3$            & & M wants U to accept a control order, original or modified. \\
+$-O_2$           & & M does not want the procedure delayed. \\
+$-O_1$           & & M prefers that the original control order not be modified. \\
+$O_5$ IFF $-O_1$ & & M would like L to support the original control order if and only if it does not modify the order. \\
+\noalign{\hrule height 1.3pt}
+\end{tabular}
+\label{pref-statement-MoE}
+\end{table}
+
+\begin{table}[t]
+\centering
+\caption{Lexicographic Preference Statements and Interpretations for Uniroyal Chemical Ltd. (U) in the Elmira Conflict}
+\footnotesize
+\setlength{\tabcolsep}{3pt}
+\renewcommand{\arraystretch}{1.6}
+\begin{tabular}[t]{>{\hfill}p{35mm}p{2mm}p{110mm}}
+\noalign{\hrule height 1.3pt}
+Preference Statement & & Interpretation \\
+\noalign{\hrule height 1.3pt}
+$O_3$ IFF $O_1$  & & U would accept the control order if and only if it is modified. \\
+$-O_4$           & & U does not want to abandon its operations in Elmira. \\
+$-O_5$           & & U does not want L to insist on the application of the original control order. \\
+$O_2$ IFF $-O_5$ & & U would like to delay the procedure if and only if L's attitude is softened. \\
+\noalign{\hrule height 1.3pt}
+\end{tabular}
+\label{pref-statement-UR}
+\end{table}
+
+\begin{table}[t]
+\centering
+\caption{Lexicographic Preference Statements and Interpretations for Local Government (L) in the Elmira Conflict}
+\footnotesize
+\setlength{\tabcolsep}{3pt}
+\renewcommand{\arraystretch}{1.6}
+\begin{tabular}[t]{>{\hfill}p{35mm}p{2mm}p{110mm}}
+\noalign{\hrule height 1.3pt}
+Preference Statement & & Interpretation \\
+\noalign{\hrule height 1.3pt}
+$-O_4$           & & Concerned about the negative impacts on local economy, L does not want U to abandon its operations in Elmira. \\
+$-O_1$           & & L prefers that the original control order not be modified. \\
+$O_3$ IF $-O_1$  & & L wants U to accept the control order if it is not modified. \\
+$O_5$ IF $O_1$   & & L would insistently ask for the original control order if M plans to modify it. \\
+$-O_2$           & & L does not want the procedure delayed. \\
+$O_5$            & & L insists on the application of the original control order. \\
+\noalign{\hrule height 1.3pt}
+\end{tabular}
+\label{pref-statement-LG}
+\end{table}
+
+Unlike Peng's assumption in \citep{Peng1999}, the truth values of some of the preference statements of U and L at some states may not be concluded as exactly ``true" or ``false" because of the presence of some specific combinations of courses of actions in those states. For Example, according to Boolean logic, the truth value of U's preference statement $\Omega_2$ ($-O_4$, meaning that U prefers not to abandon its operations in Elmira) is ``true" at state $s_3$ in which U accepts the original control order. However, when U has to accept the original control order, it may not prefer to choose ``not abandon" with $100\%$ truth (that is, a degree of truth $1$), even if it would rather not abandon; instead, it may prefer to choose ``not abandon" with some degree of truth between $0$ and $1$. A similar argument may be given for L when judging truthfulness of the preference statement $\Omega_6$ ($O_5$, meaning that L tends to insist on the application of the original control order in any circumstances) at state $s_4$, where a modified control order is accepted by U without pressure from L. Specifically, if M modifies the original control order and U accepts it, as described by state $s_4$, L may take into account U's possible threat of abandoning its operations in Elmira, and prefer to assign a non-zero truth degree to $\Omega_6$ at $s_4$, rather than a truth value of ``false" (equivalent to a truth degree of $0$) in accordance with Boolean logic.
+
+The above circumstances necessitate the consideration of fuzzy truth values of some preference statements at some states to calibrate preferences of U and L in the Elmira conflict. By taking these and similar situations into account, fuzzy truth values are assigned to the preference statements of U and L at each feasible state, which are presented in Table \ref{fuz-truth-val-MoE-UR-LG}. Recall that a truth degree of $1$ indicates the absolute truth of a preference statement (which is equivalent to the truth value ``true"), while a truth degree of $0$ means the absolute falsity (equivalent to the truth value ``false"). As is also explained in Section \ref{sec-stabl-appl-elmira}, M is a provincial authority that looks after the environmental issues of the entire Province of Ontario. Its interest regarding the Elmira conflict may not be as closely connected to the dispute as the more local DMs, U and L, and may therefore be considered to have precisely defined preferences. Hence, by examining the preference statements listed in Table \ref{pref-statement-MoE}, one can ascertain that the truth value of each of these statements at each feasible state is Boolean logic-based, ``true" or ``false", which is also presented in Table \ref{fuz-truth-val-MoE-UR-LG}.
+
+In Tables \ref{pref-statement-MoE}, \ref{pref-statement-UR} and \ref{pref-statement-LG}, there are a total of $5$, $4$ and $6$ preference statements for M, U and L, respectively. Since there is exactly one truth degree for one preference statement at a given state, M, U and L have $5$, $4$ and $6$ truth degrees, respectively, at each state. The first, second and third columns of Table \ref{fuz-truth-val-MoE-UR-LG} list these truth degrees as $5$-tuples, $4$-tuples and $6$-tuples, respectively, in which the truth degrees appear in the decreasing order of importance of the preference statements. That is, the first entry of a $4$-tuple represents the truth degree of the most important preference statement of U at a state, while the last entry is the truth degree of the least important preference statement. For example, in the $4$-tuple $(0, 0.7, 1, 0)$ in the third row and third column of Table \ref{fuz-truth-val-MoE-UR-LG}, the first entry $0$ is the truth degree of the most important preference statement ``$O_3$ IFF $O_1$" of U at state $s_3$, the second entry $0.7$ is the truth degree of the second most important preference statement ``$-O_4$", and so on.
+
+\begin{table}[!h]
+\centering
+\caption{Fuzzy Truth Values of the Preference Statements of the Ontario Ministry of the Environment (M), Uniroyal Chemical Ltd. (U), and Local Government (L) in the Elmira Conflict}
+\footnotesize
+\setlength{\tabcolsep}{3pt}
+\renewcommand{\arraystretch}{1.4}
+\begin{tabular}[t]{x{1.2cm}|x{4.3cm}|x{4.3cm}|x{4.3cm}}
+
+\noalign{\hrule height 1.3pt}
+\multirow{2}{1.2cm}{State ($s$)} & \multicolumn{3}{x{12.9cm}}{Fuzzy Truth Values of Preference Statements (Most Important to Least) at State $s$} \\\cline{2-4}
+      & M               & U                   & L                        \\
+\noalign{\hrule height 1.3pt}
+$s_1$ & (1, 0, 0, 1, 0) & (1, 1, 1, 1)        & (1, 1, 0, 1, 0, 0)       \\
+$s_2$ & (1, 0, 0, 0, 1) & (0.25, 1, 1, 1)     & (1, 0, 1, 0, 0, 0)       \\
+$s_3$ & (1, 1, 1, 1, 0) & (0, 0.7, 1, 0)      & (1, 1, 1, 1, 1, 0.5)     \\
+$s_4$ & (1, 1, 1, 0, 1) & (1, 1, 1, 0)        & (1, 0.2, 1, 0.7, 1, 0.7) \\
+$s_5$ & (1, 0, 0, 1, 1) & (1, 0.65, 0, 0)     & (1, 1, 0, 1, 0, 1)       \\
+$s_6$ & (1, 0, 0, 0, 0) & (0.25, 1, 0.4, 0.5) & (1, 0, 1, 1, 0, 1)       \\
+$s_7$ & (1, 1, 1, 1, 1) & (0, 0.7, 0, 1)      & (1, 1, 1, 0.9, 1, 0.5)   \\
+$s_8$ & (1, 1, 1, 0, 0) & (1, 1, 0, 1)        & (1, 0.2, 1, 0.5, 1, 0.5) \\
+$s_9$ & (0, 0, 1, 1, 0) & (1, 0.35, 1, 0)     & (0, 1, 0, 1, 1, 0)       \\
+\noalign{\hrule height 1.3pt}
+\end{tabular}
+\label{fuz-truth-val-MoE-UR-LG}
+\end{table}
+
+\begin{table}[!t]
+   \centering
+   \caption{Preferences of the Ontario Ministry of the Environment (M) in the Elmira Conflict: Most to Least Preferred}
+   \setlength{\tabcolsep}{3pt}
+   \renewcommand{\arraystretch}{1.3}
+\begin{tabular}{x{1cm}x{1cm}x{1cm}x{1cm}x{1cm}x{1cm}x{1cm}x{1cm}x{1cm}}
+
+\noalign{\hrule height 1.3pt}
+
+   $s_7$ & $s_3$ & $s_4$ & $s_8$ & $s_5$ & $s_1$ & $s_2$ & $s_6$ & $s_9$ \\
+
+\noalign{\hrule height 1.3pt}
+
+\end{tabular}
+\label{pref-MoE}
+\end{table}
+
+\begin{table}[!t]
+ \caption{Fuzzy Preferences of Uniroyal Chemical Ltd. (U) and Local Government (L) in the Elmira Conflict}
+ \centering
+ \renewcommand{\arraystretch}{1.3}
+\begin{tabular}{c}
+
+\noalign{\hrule height 1.3pt}
+
+{ \footnotesize $\underline{\mathcal{R}}^\text{U} = \begin{array}{c}
+\begin{array}{x{9mm}x{9mm}x{9mm}x{9mm}x{9mm}x{9mm}x{9mm}x{9mm}x{9mm}x{9mm}}
+ &$s_1$&$s_2$&$s_3$&$s_4$&$s_5$&$s_6$&$s_7$&$s_8$&$s_9$
+\end{array}\\[3mm]
+\begin{array}{cc}
+\begin{array}{c} s_1 \\[1mm] s_2 \\[1mm]s_3 \\[1mm] s_4 \\[1mm]
+s_5 \\[1mm] s_6 \\[1mm] s_7 \\[1mm] s_8 \\[1mm] s_9 \end{array} &
+\left(
+\begin{array}{x{9mm}x{9mm}x{9mm}x{9mm}x{9mm}x{9mm}x{9mm}x{9mm}x{9mm}}
+ 0.5   & 0.875  & 1.0    & 1.0    & 1.0    & 0.85   & 1.0    & 1.0    & 0.86   \\[1mm]
+ 0.125 & 0.5    & 1.0    & 0.1429 & 0.34   & 0.7833 & 1.0    & 0.1667 & 0.1    \\[1mm]
+ 0     & 0      & 0.5    & 0      & 0.0167 & 0      & 1.0    & 0      & 0      \\[1mm]
+ 0     & 0.8571 & 1.0    & 0.5    & 1.0    & 0.835  & 1.0    & 1.0    & 0.825  \\[1mm]
+ 0     & 0.66   & 0.9833 & 0      & 0.5    & 0.7063 & 0.9857 & 0      & 0.3    \\[1mm]
+ 0.15  & 0.2167 & 1.0    & 0.165  & 0.2938 & 0.5    & 1.0    & 0.1833 & 0.1583 \\[1mm]
+ 0     & 0      & 0      & 0      & 0.0143 & 0      & 0.5    & 0      & 0      \\[1mm]
+ 0     & 0.8333 & 1.0    & 0      & 1.0    & 0.8167 & 1.0    & 0.5    & 0.7667 \\[1mm]
+ 0.14  & 0.9    & 1.0    & 0.175  & 0.7    & 0.8417 & 1.0    & 0.2333 & 0.5
+\end{array}
+\right)
+\end{array}
+\end{array}$ }
+
+\\
+\\
+
+{ \footnotesize $\underline{\mathcal{R}}^\text{L} = \begin{array}{c}
+\begin{array}{x{9mm}x{9mm}x{9mm}x{9mm}x{9mm}x{9mm}x{9mm}x{9mm}x{9mm}x{9mm}}
+ &$s_1$&$s_2$&$s_3$&$s_4$&$s_5$&$s_6$&$s_7$&$s_8$&$s_9$
+\end{array}\\[3mm]
+\begin{array}{cc}
+\begin{array}{c} s_1 \\[1mm] s_2 \\[1mm]s_3 \\[1mm] s_4 \\[1mm]
+s_5 \\[1mm] s_6 \\[1mm] s_7 \\[1mm] s_8 \\[1mm] s_9 \end{array} &
+\left(
+\begin{array}{x{9mm}x{9mm}x{9mm}x{9mm}x{9mm}x{9mm}x{9mm}x{9mm}x{9mm}}
+ 0.5    & 1.0    & 0      & 0.665  & 0      & 1.0   & 0.0409 & 0.93   & 1.0   \\[1mm]
+ 0      & 0.5    & 0      & 0      & 0      & 0     & 0.0196 & 0      & 1.0   \\[1mm]
+ 1.0    & 1.0    & 0.5    & 0.845  & 1.0    & 1.0   & 0.7    & 0.9933 & 1.0   \\[1mm]
+ 0.335  & 1.0    & 0.155  & 0.5    & 0.3045 & 1.0   & 0.181  & 0.6    & 1.0   \\[1mm]
+ 1.0    & 1.0    & 0      & 0.6955 & 0.5    & 1.0   & 0.045  & 0.9417 & 1.0   \\[1mm]
+ 0      & 1.0    & 0      & 0      & 0      & 0.5   & 0.025  & 0      & 1.0   \\[1mm]
+ 0.9591 & 0.9804 & 0.3    & 0.819  & 0.955  & 0.975 & 0.5    & 0.95   & 0.989 \\[1mm]
+ 0.07   & 1.0    & 0.0067 & 0.4    & 0.0583 & 1.0   & 0.05   & 0.5    & 1.0   \\[1mm]
+ 0      & 0      & 0      & 0      & 0      & 0     & 0.011  & 0      & 0.5
+\end{array}
+\right)
+\end{array}
+\end{array}$ }
+\\[16mm]
+\noalign{\hrule height 1.3pt}
+
+\end{tabular}
+\label{prfncs-UR-LG}
+\end{table}
+
+Now one employs Equation \ref{formula-fuz-score} to calculate a fuzzy score for each state in $S$ for M, U and L. Next, these fuzzy scores are used in (\ref{fp-eq}) to find the fuzzy preference degrees for M, U and L. From the results, it is clear that the preferences of M are crisp, represented by Table \ref{pref-MoE} from most preferred on the left to least preferred on the right, and are the same as found in \citep{Peng1999}, because the truth values of the preference statements of M at feasible states are assumed to be Boolean. This same preferences of M are also considered in the fuzzy stability analysis of the Elmira dispute in Section \ref{sec-stabl-appl-elmira} as well as in the coalition fuzzy stability analysis in Section \ref{sec-cfs-appl}. However, the application of Equation \ref{fp-eq} generates fuzzy preferences for U and L as preference degrees for one state over another, which are represented by matrices $\underline{\mathcal{R}}_\text{U}$ and $\underline{\mathcal{R}}_\text{L}$ in Table \ref{prfncs-UR-LG}.
+
+As is also mentioned earlier, fuzzy preferences of U and L are modeled in Section \ref{sec-stabl-appl-elmira} as matrices $\mathcal{R}_\text{U}$ and $\mathcal{R}_\text{L}$ by pairwise comparison of feasible states for use in the fuzzy stability analysis of the Elmira dispute. One can verify that the fuzzy preferences $\underline{\mathcal{R}}_\text{U}$ and $\underline{\mathcal{R}}_\text{L}$, as obtained here, are very close to $\mathcal{R}_\text{U}$ and $\mathcal{R}_\text{L}$, respectively. In particular, with the same sets of FSTs, as considered in Section \ref{sec-stabl-appl-elmira}, fuzzy stability results are also the same. As the objective of this chapter is to develop an efficient technique to model fuzzy preferences of DMs involved in a dispute and not to make an analysis, the details of the fuzzy stability results are not shown here.
+
+It may be mentioned that it was hard to model the fuzzy preferences of U and L in Section \ref{sec-stabl-appl-elmira} by comparing the states pairwise. However, the fuzzy option prioritization methodology developed in this chapter can do this job without difficulty, and the fuzzy preference outputs are very close to those obtained by a pairwise comparison of states. It follows that the new methodology can utilize human judgements on preference statements at feasible states efficiently and generate a fuzzy preference that is reasonably close to the one obtained by systematic but tedious pairwise comparison of states. Since the truth values of preference statements of M at feasible states are all based on Boolean logic, the methodology provides a crisp preference ordering of states for M, exactly the same as in \cite{Peng1999} from crisp option prioritization.
+
+\section{Summary}
+
+The fuzzy option prioritization methodology is developed to aid the modeling of uncertain preferences as fuzzy preferences within the framework of the GMCR. Equation \ref{formula-fuz-incr-score} is introduced to represent fuzzy incremental score of a state for a preference statement while (\ref{formula-fuz-score}) gives the overall fuzzy score of a state for a DM, both capturing preference uncertainty via fuzzy truth values of the DM's preference statements at feasible states. The fuzzy scores of states are then utilized to define a fuzzy relation in (\ref{fp-eq}), which is established later as a fuzzy preference relation. It is also proved that the fuzzy option prioritization methodology generalizes the existing crisp option prioritization technique in the sense that the crisp option prioritization is a special case of the fuzzy option prioritization.
+
+When applied to the Elmira groundwater contamination conflict, the methodology not only models fuzzy preferences for the DMs efficiently so that they are close to those that were obtained by detailed human pairwise comparison of states, but also accomplishes it without difficulty. Of course, fuzzy preferences may be modeled by pairwise comparison of states for small problems. But, for larger conflicts, modeling fuzzy preferences by pairwise comparison of states is unrealistic and may be impossible. However, fuzzy option prioritization can be applied to a conflict model of any size to model DMs' fuzzy preferences. The methodology is based on simple calculations and can be easily implemented using a small computer program.

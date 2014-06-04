@@ -1,0 +1,103 @@
+\chapter{Introduction}\label{chap-intro}
+
+Decision making, in the sense of choosing a course of action from available states or alternatives, is one of the most common activities in life. It ranges from simple everyday decisions to strategic decisions in war. To make decisions easier, a number of methodologies have been developed, including linear and non-linear optimization \citep{Bartholomew-Biggs2008, Chang2010, Taha1971}, multiple-criteria decision analysis (MCDA) \citep{Chang2010, Figueira-et-al2005, Hipel-et-al1993}, game theory \citep{VonNeumann&Morgenstern1944}, fuzzy decision making \citep{Nakamura1986, De-Wilde2004}, and the Graph Model for Conflict Resolution (GMCR) \citep{Fang-et-al1993, Kilgour-et-al1987}. Depending on the number of decision makers (DMs) and objectives, decision making techniques are divided into four main categories: (i) single participant-single objective (such as most operations research models), (ii) single participant-multiple objective (such as MCDA methods), (iii) multiple participant-single objective (such as team theory), and (iv) multiple participant-multiple objective (such as GMCR) decision making.
+
+Strategic conflict is a common phenomenon in multiple participant-multiple objective decision making situations, and is observed whenever humans interact through their decisions \citep{Hipel2002, Hipel2009a, Hipel2009b, Kilgour&Eden2010}. For example, two or more individuals or groups may have (i) opposing objectives, as when a seller tries to get a high price while the buyer aims for a low price, or (ii) differing strategies, as when one political party wants to remove the current ruler through a peaceful protest while another would like a revolution. Other human activities that incorporate strategic conflict include bargaining settings, meetings, military actions, and peace-keeping activities \citep{Kilgour&Hipel2005}.
+
+A number of formal methodologies have been developed to facilitate the analysis of strategic conflicts and to advise on possible resolutions. These methodologies, which include game theory \citep{VonNeumann&Morgenstern1944}, metagame analysis \citep{Howard1971}, conflict analysis \citep{Fraser&Hipel1984}, drama theory \citep{Howard1999}, and GMCR \citep{Kilgour-et-al1987, Fang-et-al1993}, share many characteristics. They all provide means to represent and analyze conflict situations with at least two DMs, each of whom has multiple options and multiple objectives, which imply distinctive preferences over the outcomes.
+
+Among these methodologies, conflict resolution researchers and practitioners praise GMCR because of its simplicity and flexibility \citep{Kilgour&Hipel2005}. Its advantages include its ability to model both irreversible and common moves. It provides a flexible framework for defining, comparing, and characterizing various stability concepts, and is easy to apply to real-world disputes. The GMCR methodology has been used for resolving conflicts, including many arising in engineering, such as water resources management, sustainable development, and environmental engineering \citep{Hipel-et-al2001, Hipel-et-al2008a, Hipel-et-al2008b, Hipel&Obeidi2005, Kilgour&Hipel2005}. The methodology can also be applied to disputes arising in other areas, such as in social and political sciences, economics and business.
+
+A graph model is a structure describing systematically the main characteristics of a conflict, which may be either current or historical. The major components of a graph model are the DMs, the possible states of the conflict, the movements among states that each DM controls, and each DM's preferences over the available states. Often, a DM's choices are represented as options or courses of action, any combination of which can be selected \citep{Howard1971, Kilgour-et-al1987, Fang-et-al1993}.
+
+To apply the GMCR methodology, there are two steps: modeling and analysis. In the modeling step, feasible states and moves among them are usually constructed using options \citep{Kilgour-et-al1987, Fang-et-al1993}, although states can be defined in other ways. A feasible state is a feasible combination of options, selected or not selected, and a move is a change of options for a DM. In the analysis step, states are assessed for stability employing a number of stability definitions developed to account for the diversity of decision styles, including four basic stabilities: Nash stability or rationality (\emph{R}) \citep{Nash1950, Nash1951}, general metarationality (\emph{GMR}) \citep{Howard1971}, symmetric metarationality (\emph{SMR}) \citep{Howard1971}, and sequential stability (\emph{SEQ}) \citep{Fraser&Hipel1984}. Note that a state is stable for a DM if that DM would not choose to move away from it. A state that is stable for all DMs is called an equilibrium of the model; if it forms, it is predicted to persist.
+
+To demonstrate how a real-world decision problem is formulated within the GMCR framework, consider the environmental conflict in Elmira (a small town in Southern Ontario, Canada) that began in late 1989 when the Ontario Ministry of the Environment (M) found that an underground aquifer was contaminated by a carcinogen. The main suspect was a chemical company in Elmira, Uniroyal Chemical Ltd. (U), which produced the same carcinogen as a by-product. M issued a Control Order demanding that U take necessary measures to remedy the contamination. However, U appealed the control order. The Local Government (L) was another DM of the dispute, as it attempted to represent local interests. These DMs had differing objectives; for example, M wanted to require U to rectify the contamination, while U wanted the control order lifted or at least modified. The conflict is modeled as a graph model, in which each DM has one or more options that it either selects or not. For instance, to attempt to reach a preferable outcome, U could \emph{delay} the appeal process, \emph{accept} the original control order, or \emph{abandon} its Elmira operation. This interesting conflict will be examined at various locations in this thesis to demonstrate, test and refine the new ideas put forward.
+
+%Preference uncertainty may in fact characterize UR and LG, due to their limitations in choosing an option confidently in some circumstances. Further details of this conflict model are described in Section \ref{sec-appl} in which the dispute is formally modeled and analyzed using the new fuzzy preference methodology developed in this thesis.
+
+
+
+
+\section{Research Motivation}
+
+Preference information is crucial to the identification of states that are stable for a particular DM. Existing stability definitions for the GMCR are based only on relative preferences, expressed using the binary relations ``is (strictly) preferred to" and ``is indifferent to"; that is, preference input is assumed to be crisp \citep{Fang-et-al1993}. A limitation of the existing GMCR (here called the crisp GMCR) is that its associated stability definitions cannot accommodate uncertainty or vagueness in DMs' preferences, which is a major issue in many real-world multiple participant-multiple objective decision problems. DMs may be unclear or uncertain about the preferences between two states, perhaps reflecting cultural and educational backgrounds, personal habits, lack of information, and the inherent vagueness of human judgment. For example, in the Elmira conflict model, U may be in doubt about the desirability of abandoning its Elmira operation. More specifically, the preference of U for a state in which U delays the appeal process and L insists on the application of the original control order, relative to a state in which U abandons its operation, may be uncertain.
+
+Among various formal approaches to modeling uncertainty, probability theory \citep{Feller1968, Feller1971} and fuzzy logic \citep{Zadeh1965, Zadeh1973} are two widely used platforms. These two concepts are different in meaning, and have both strengths and limitations with respect to their realms of applicability. Probability theory is a model of ``randomness”, and is effectively used in areas in which probabilistic models can be calibrated using available data sets for applications such as weather forecasting, simulating possible future events, trend analysis, quality control, and risk assessment. Fuzzy logic is based on ``linguistic intelligence”, and is intended to describe a system, event, or entity, for which quantitative data may be scarce or some of the information may be qualitative in nature. A key application area of fuzzy logic is control systems, as in antilock braking mechanisms, automatic washers, air conditioners, and subway trains. Note that certainty or uncertainty of preferences between two states or scenarios is characterized by a DM's choice and is not based on chance. A DM's choice is more likely to reflect linguistic intelligence, thereby making fuzzy logic a potential tool to model uncertain preferences within the framework of the graph model.
+
+A number of questions arise. Which types of preference uncertainties are encountered in conflict models? Was there any attempt to use preference uncertainties in the stability calculations within the GMCR framework? If there is a development of the GMCR to handle preference uncertainties, how useful is it? Is there a suitable generalized preference structure by which various uncertain preference information can be modeled? Is it possible to develop the GMCR framework so that it can be used to calculate stability of states incorporating various types of preference uncertainties that may be encountered in real-world conflict models?
+
+Only two attempts have been found to incorporate DMs' uncertain preferences into the GMCR from different points of view. \citet{Li-et-al2004a} introduced a new preference structure for the graph model that includes uncertain or unknown preference in the comparison of two states. They considered the situation in which a DM, for the time being, might be uncertain about the preference between two states, but knew that with full information he or she would strictly prefer one state to the other, or be indifferent. The modified stability definitions for \emph{R}, \emph{GMR}, \emph{SMR}, and \emph{SEQ} were also introduced to accommodate this incomplete binary preference structure into the GMCR. Then, a partial stability analysis could be carried out, with a plan to modify (sharpen) it if more complete preference information became available later.
+
+A fuzzy approach was developed in \citep{Al-Mutairi-et-al2008} to model uncertainty in the preferences of DMs involved in a conflict. The authors divided the fuzzy domain of preferences into five regions with linguistic labels: much more preferred, more preferred, indifferent, less preferred, and much less preferred. Based on these divisions, and adapting the concepts of strong and weak stability proposed by \citet{Hamouda-et-al2004, Hamouda-et-al2006}, they introduced an analogous strong and weak stability, and hence strong and weak equilibrium, to suggest possible resolutions of the conflict.
+
+However, the above two approaches fail to accommodate uncertainty about preferences between two states in any general sense. For example, a DM may wish to express his or her preference as a degree or grade of the preference for one state over another. When a fuzzy truth value is assumed in the option prioritization, a novel preference modeling technique within the GMCR framework, as an assessment of the truth of a preference statement at a feasible state in the case of uncertainty, a fuzzy score (which is a real number calculated using fuzzy information, as demonstrated in Chapter \ref{chap-fop} of this thesis) may be obtained for each state as a measure of preference. Sometimes a DM may be able to provide a crisp cardinal utility for some states but not others, to which he or she assigns a \emph{fuzzy utility}, i.e., a utility in the form of a fuzzy number.
+
+When information is lacking, a DM may wish to employ a fuzzy multi-criteria decision making technique by using fuzzy weights for the criteria according to which the states are being judged. A participating DM then finds a fuzzy weighted sum (which is a fuzzy number) for each state as a measure of preference. For all of these cases preference between two states is not crisp, but some fuzzy preference information is available. By pairwise comparisons of the fuzzy numbers or scores it may be possible to obtain, for each pair of states, a degree of preference for one state over another. The formal representation of these degrees of preference for one state over another would constitute a fuzzy preference relation.
+
+In the representation of fuzzy preferences, the highest preference degree is $1.0$, which implies definite preference (or, in other words, crisp preference), and the lowest degree is $0$, which implies definite reverse preference. The degree $0.5$ indicates that the states, which are being compared, are likely to be indifferent. The interpretation of other degrees in the unit interval, $[0, 1]$, follows accordingly. Hence, a crisp or certain preference relation is a special case of a fuzzy preference relation.
+
+The objective of this research is to develop a new framework for the graph model that considers fuzzy preference instead of crisp preference as a basic input. The GMCR will then be applicable to decision problems having both certain and uncertain preference information.
+
+\section{Research Objectives}
+
+The main objective of this research is to develop a fuzzy preference methodology for the GMCR to broaden its applicability in strategic conflicts. The proposed comprehensive methodology aims to characterize, accommodate, and analyze potential human interactions in strategic conflict within the paradigm of the GMCR, including fuzzy preferences. The specific goals of this study are listed below.
+
+\begin{enumerate}
+  \item To develop a Fuzzy Preference Framework for the GMCR (FGM) to incorporate uncertain preferences in conflict resolution.
+    \begin{itemize}
+      \item Introduce the concept of fuzzy relative certainty of preference to make fuzzy preference useable in stability calculations carried out within the GMCR methodology.
+      \item Propose the idea of fuzzy satisficing threshold to take into account various DMs' satisficing behavior in strategic conflicts.
+      \item Introduce the definition of fuzzy unilateral improvement to identify states to which a DM wish to move, if such a move is permitted.
+      \item Propose definitions of the four basic fuzzy stabilities, specifically, fuzzy Nash stability or fuzzy rationality (\emph{FR}), fuzzy general metarationality (\emph{FGMR}), fuzzy symmetric metarationality (\emph{FSMR}), and fuzzy sequential stability (\emph{FSEQ}), as well as the definitions of the associated fuzzy equilibria, for two-DM graph models.
+      \item Extend the the same four fuzzy stability definitions as well as the definitions of the associated fuzzy equilibria for a two-DM graph model to an $n$-DM ($n>2$) case.
+      \item Establish that the crisp graph model is a special case of the FGM.
+    \end{itemize}
+
+  \item To develop coalition fuzzy stability concepts as a follow-up analysis technique within the FGM.
+    \begin{itemize}
+      \item Introduce the ideas of a coalition fuzzy improvement and a class coalitional fuzzy improvement.
+      \item Propose the definitions of coalition fuzzy stabilities, specifically the coalitional fuzzy Nash stability or coalition fuzzy rationality (\emph{CFR}), coalitional fuzzy general metarationality (\emph{CFGMR}), coalitional fuzzy symmetric metarationality (\emph{CFSMR}), and coalition fuzzy sequential stability (\emph{CFSEQ}), for a coalition.
+      \item Put forward the definitions of the \emph{CFR}, \emph{CFGMR}, \emph{CFSMR}, and \emph{CFSEQ}, for a DM, and then define the associated coalition fuzzy equilibria.
+    \end{itemize}
+
+  \item To develop the fuzzy option prioritization technique to model fuzzy preferences for DMs within the GMCR framework.
+    \begin{itemize}
+      \item Assume fuzzy truth values of preference statements at feasible states to capture preference uncertainty.
+      \item Calculate a fuzzy score for each state as a measure of preference by using fuzzy truth values of preference statements at feasible states.
+      \item Propose a formula to compute a fuzzy preference degree for one state over another, thereby establishing a fuzzy preference relation over the set of feasible states.
+    \end{itemize}
+
+  \item To apply the fuzzy preference methodologies for the GMCR to real-world disputes.
+    \begin{itemize}
+      \item Apply the two-DM case of the FGM to the sustainable development conflict.
+      \item Apply the $n$-DM ($n>2$) case of the FGM to the Elmira groundwater contamination conflict.
+      \item Carry out the coalition fuzzy stability analysis on the Elmira groundwater contamination conflict.
+      \item Apply the fuzzy option prioritization technique to the Elmira groundwater contamination conflict for eliciting (crisp or fuzzy) preferences of the DMs.
+    \end{itemize}
+
+\end{enumerate}
+
+\section{Outline of the Thesis}
+
+The graph model fuzzy preference methodology is illustrated in Figure \ref{fig-fgm}. As depicted in the figure, the general steps to apply this methodology to a real-world dispute are: (i) modeling, (ii) fuzzy stability analysis, and (iii) follow-up analysis (if needed). Each step is accomplished by employing one or more techniques. For example, in the modeling step, fuzzy option prioritization is employed to represent DMs’ crisp or fuzzy preferences.
+
+\begin{figure}[!h]
+\centering
+\includegraphics[scale=0.95]{fgm(new)}
+\caption{Fuzzy Preferences in the Graph Model for Conflict Resolution}
+\label{fig-fgm}
+\end{figure}
+
+The outline of the thesis is as follows. The present chapter mainly describes the motivation and objectives of this research. The existing GMCR methodology is reviewed in the first part of Chapter \ref{chap-back-lit}, briefly describing its modeling components and four basic stability concepts, while in the second part, the concept of a fuzzy preference relation and its main properties are discussed. The contributions of this PhD research are clustered into the rest of the chapters.
+
+\begin{figure}[!h]
+\centering
+\includegraphics[scale=0.9]{outline(new)}
+\caption{Thesis Outline}
+\label{outline}
+\end{figure}
+
+In Chapter \ref{chap-fuz-pref-2dm}, a fuzzy preference framework for a two-DM graph model is developed to introduce four basic fuzzy stability concepts and apply them to simple conflicts with two DMs exhibiting uncertain preferences. Addressing the necessity of fuzzy stability definitions for a more general $n$-DM ($n>2$) graph model, the fuzzy preference framework is then extended in Chapter \ref{chap-fp-ndm-gm} to accommodate graph models with any number of DMs, definitely generalizing the associated fuzzy stability definitions. To further analyze the individual level fuzzy stabilities introduced in Chapters \ref{chap-fuz-pref-2dm} and \ref{chap-fp-ndm-gm}, the coalition fuzzy stability concepts are developed in Chapter \ref{chap-cfsa}.
+
+A fuzzy option prioritization methodology is formalized in Chapter \ref{chap-fop} to facilitate the modeling of fuzzy preferences for DMs in strategic conflicts that feature uncertain preferences for DMs. The main contributions of this thesis are compiled in Section \ref{sec-concl} while a number of directions for potential future research is listed in Section \ref{sec-fw}. The outline of the thesis is also summarized in Figure \ref{outline}.

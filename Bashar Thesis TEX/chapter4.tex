@@ -1,0 +1,401 @@
+\chapter{Fuzzy Preferences in an $n$-Decision Maker ($n>2$) Graph Model}\label{chap-fp-ndm-gm}
+
+\section{Introduction}
+
+The fuzzy preference framework for the GMCR developed in Chapter \ref{chap-fuz-pref-2dm} is specifically applicable to a conflict with only two DMs. However, the number of DMs in a real-world dispute is not limited to two; for example, the Elmira groundwater contamination dispute has three DMs. To study strategic conflicts with more than two DMs, at least one of whom has uncertain preferences over feasible states, a general fuzzy preference framework within the structure of the GMCR is developed in this chapter. More specifically, the concept of a fuzzy unilateral improvement (FUI) by a coalition of DMs is introduced and the four basic fuzzy stability definitions---\emph{FR}, \emph{FGMR}, \emph{FSMR}, and \emph{FSEQ}---for a two-DM case are extended to an $n$-DM ($n>2$) graph model.
+
+The fuzzy stability definitions given in Section \ref{sec-fuz-stabl-2dm} apply only to two-DM graph models. In such a model, the opponent of a focal DM is an individual. But in a graph model with more than two DMs, the ``opponent" of a focal DM may not be an individual DM but could be a coalition of two or more DMs. Except for fuzzy Nash stability, the vital issue in fuzzy stability determination is whether any possible response by the opponent(s) would constitute a sanction. The fuzzy stability definitions in Section \ref{sec-fuz-stabl-2dm} apply the criteria provided by Definition \ref{def-fui-dm} to identify FUIs from a given state by an individual DM.
+
+Note that the \emph{FSEQ} stability is defined based on countermoves by the opponent(s) that are credible in the sense that the opponent(s)' moves are taken into account only if they benefit the opponent(s). To facilitate the definition of \emph{FSEQ} stability for a graph model with more than two DMs, the definition of an FUI by a coalition of DMs is given in the next section. Subsequently, fuzzy stability definitions are generalized in the context of an $n$-DM ($n>2$) graph model, and are presented in Section \ref{sec-fuz-stabl-ndm}. The fuzzy stabilities developed in Section \ref{sec-fuz-stabl-ndm} are then applied to the Elmira groundwater contamination dispute---a three-DM conflict---to demonstrate the applicability of the generalized FGM. Part of the research in this chapter is based upon the papers by \citet{Bashar-et-al2010b, Bashar-et-al2010c, Bashar-et-al2012b, Hipel-et-al2011}.
+
+%To carry out fuzzy stability analysis for a graph model with more than two DMs, it is necessary to define FUIs from an initial state by a coalition of DMs.
+%
+%Within the GMCR framework, DMs are divided into the focal DM and the opponent(s). It is clear that in a graph model with more than two DMs, the opponent of the focal DM is a coalition of two or more DMs.
+%
+%As mentioned earlier, the stability concepts within the GMCR, other than the Nash stability, take into account various moves and countermoves by the opponent(s). In a graph model with more than two DMs, the opponent of the focal DM is a coalition of two or more DMs. Because the \emph{FSEQ} stability considers only countermoves by the opponent that are credible in the sense that the opponent will move only if such a move is worthwhile, the definition of a FUI by a coalition of DMs is needed.
+
+\section{Fuzzy Unilateral Improvements by a Coalition}\label{sec-fui-coal}
+
+Definition \ref{def-fui-dm} provides criteria to identify states that benefit a single DM who is willing to move to an advantageous state or to make a credible sanctioning move. This case is clear and straightforward. However, the identification of states that benefit a coalition of DMs is complicated and depend not only on the FUIs of the coalition members but also on their joint unilateral moves and countermoves. The next definition integrates the idea of a coalitional unilateral move, given by Definition \ref{reach-coalition}, with the individual FUIs of Definition \ref{def-fui-dm}.
+
+\begin{definition}\label{def-fui-coal}
+\rm {\bf (Fuzzy Unilateral Improvements by a Coalition):}
+Let $s \in S$ and $H \subseteq N$, $|H| \geq 2$. Let $H=\{1, 2, ..., p\}$ and define $\gamma_H = (\gamma_1, \gamma_2, ..., \gamma_p)$. Now, define the subset $\widetilde{R}_{H, \gamma_H}^+(s)\subseteq S$ inductively by the following:
+
+\begin{enumerate}[(1)]
+\item If $k \in H$ and $s_1 \in \widetilde{R}_k^+(s)$, then $s_1 \in \widetilde{R}_{H, \gamma_H}^+(s)$ and $k \in \widetilde{\Omega}_{H,\, \gamma_H}^+(s, s_1)$, where $\widetilde{\Omega}_{H, \gamma_H}^+(s, s_1)$ denotes the set of all last DMs in legal sequences from $s$ to $s_1$;
+\item If $s_1 \in \widetilde{R}_{H, \gamma_H}^+(s)$, $k \in H$, $s_2 \in \widetilde{R}_k^+(s_1)$, and $\widetilde{\Omega}_{H, \gamma_H}^+(s, s_1) \not = \{k\}$, then $s_2 \in \widetilde{R}_{H, \gamma_H}^+(s)$ and $k \in \widetilde{\Omega}_{H, \gamma_H}^+(s, s_2)$.
+\end{enumerate}
+\noindent A \emph{fuzzy unilateral improvement} (FUI) from $s$ by the coalition $H$ is any member of $\widetilde{R}_{H, \gamma_H}^+(s)$.
+
+\end{definition}
+
+Note that the induction stops in Definition \ref{def-fui-coal} as soon as (i) $\widetilde{R}_{H, \gamma_H}^+(s)$ cannot be augmented by any new state, $s_2$, and (ii)  $|\widetilde{\Omega}_{H, \gamma_H}^+(s, s_1)|$ cannot be increased beyond $1$ for any $s_1 \in \widetilde{R}_{H, \gamma_H}^+(s)$. As in Definition \ref{reach-coalition}, Definition \ref{def-fui-coal} imposes the requirement that all sequences of moves be legal in the sense that no DM ever moves twice consecutively. Also note that Definition \ref{def-fui-coal} depends essentially on the FSTs of all DMs in $H$, since a new state $s_2$ is added to $\widetilde{R}_{H, \gamma_H}^+(s)$ only if it belongs to $\widetilde{R}_k^+(s_1) = \widetilde{R}_{k, \gamma_k}^+(s_1)$ for a suitable $s_1$ and $k$. For simplicity, one writes $\widetilde{R}_H^+(s) = \widetilde{R}_{H, \gamma_H}^+(s)$. It is important to note that if $|H|=1$, such as $H = \{k\}$, then $\widetilde{R}_H^+(s)=\widetilde{R}_k^+(s)$.
+
+\begin{remark}\label{rmk-fui-coal}
+\rm When $\gamma_k=1.0$ for all $k \in H$, that is, when the FST of each DM in the coalition is $1$, the definition of a coalition's FUI coincides with the definition of a coalition's (crisp) UI.
+\end{remark}
+
+
+\section{Fuzzy Stabilities for an $n$-Decision Maker ($n>2$) Graph Model}\label{sec-fuz-stabl-ndm}
+
+Now that the definition of FUIs from a given initial state by a coalition of DMs in a graph model with fuzzy preferences is introduced, appropriate fuzzy stabilities for an $n$-DM ($n>2$) graph model can be defined. Note that fuzzy Nash stability does not depend on the responses of the opponents, so the definition of fuzzy Nash stability for an $n$-DM graph model is unchanged from the two-DM case.
+
+The definitions of the remaining three basic fuzzy stabilities for models with $n > 2$ DMs and fuzzy preference, namely fuzzy general metarationality, fuzzy symmetric metarationality, and fuzzy sequential stability, are now put forward. In these definitions, $N - k$ represents the coalition of all DMs other than $k$ or, in other words, $k$'s opponents. Thus, $R_{N-k}(s)$ and $\widetilde{R}_{N-k}^+(s)$ represent the unilateral moves and FUIs, respectively, from $s$ by DM $k$'s opponents.
+
+\begin{definition}\label{def-fgmr-ndm}
+\rm {\bf (Fuzzy General Metarationality):} A state $s \in S$ is \emph{fuzzy general metarational} (\emph{FGMR}) for DM $k \in N$ if and only if for every $s_1 \in \widetilde{R}_k^+(s)$ there exists an $s_2 \in R_{N-k}(s_1)$ such that $\alpha^k(s_2, s)<\gamma_k$.
+\end{definition}
+
+In \emph{FGMR} stability, the focal DM inquires whether each of his or her potential FUIs is sanctioned by the opponents using a coalitional unilateral move, even if this move hurts any of the opponents. If the focal DM has no FUI from the current state, the state is automatically \emph{FGMR} stable in the sense that there is no FUI that cannot be sanctioned by the opponents using a coalitional unilateral move.
+
+\begin{definition}\label{def-fsmr-ndm}
+\rm {\bf (Fuzzy Symmetric Metarationality):} A state $s \in S$ is \emph{fuzzy symmetric metarational} (\emph{FSMR}) for DM $k \in N$ if and only if for every $s_1 \in \widetilde{R}_k^+(s)$ there exists an $s_2 \in R_{N-k}(s_1)$ such that $\alpha^k(s_2, s)<\gamma_k$, and $\alpha^k(s_3, s)<\gamma_k$ for all $s_3 \in R_k(s_2)$.
+\end{definition}
+
+\noindent For \emph{FSMR} stability, if any of the FUIs of the focal DM is sanctioned by a coalitional unilateral move of the opponents, the focal DM asks whether he or she can escape the sanction using a unilateral move. If the focal DM cannot escape the sanction, the current state is \emph{FSMR} stable for the DM. For the situation where the focal DM has no FUI from the current state, the state is \emph{FSMR} stable in the sense that there is no FUI from the initial state for which a sanction by the opponents (as a coalition) can be escaped by the focal DM.
+
+\begin{definition}\label{def-fseq-ndm}
+\rm {\bf (Fuzzy Sequential Stability):} A state $s \in S$ is \emph{fuzzy sequentially stable} (\emph{FSEQ}) for DM $k \in N$ if and only if for every $s_1 \in \widetilde{R}_k^+(s)$ there exists an $s_2 \in \widetilde{R}_{N-k}^+(s_1)$ such that $\alpha^k(s_2, s) < \gamma_k$.
+\end{definition}
+
+\emph{FSEQ} stability is the same as \emph{FGMR} stability except that while considering the sanction of each of his or her potential FUIs, the focal DM takes into account only credible sanctions (i.e., FUIs) by the opponents (as a coalition). If the focal DM has no FUI from the current state, the state is \emph{FSEQ} stable in the sense that there is no FUI from the initial state that cannot be sanctioned by the opponents using a coalitional FUI. Note that \emph{FSEQ} stability depends on all DMs' FSTs  because $\widetilde{R}_{N-k}^+(s_1)$ appears in this definition.
+
+\noindent From above, one can summarize that if there is no FUI from an initial state, the state is automatically \emph{FGMR}, \emph{FSMR}, and \emph{FSEQ} stable. But by definition, if there is no FUI from a given state, the state is \emph{FR} stable. Therefore, it can be concluded that \emph{FR} stability implies \emph{FGMR}, \emph{FSMR}, and \emph{FSEQ} stability.
+
+\begin{definition}
+\rm {\bf (Fuzzy Unstable):} A state is \emph{fuzzy unstable} for a DM under a specific fuzzy stability definition if the state is not fuzzy stable for that DM under that definition.
+\end{definition}
+
+\begin{definition}
+\rm {\bf (Fuzzy Equilibrium):} A state $s \in S$ that is fuzzy stable for all DMs under a specific fuzzy stability definition is called a \emph{fuzzy equilibrium} (\emph{FE}) under that definition. In particular, state $s$ is \emph{fuzzy Nash equilibrium} if $s$ is \emph{FR} stable for all DMs in $N$. Note that the \emph{FE} corresponding to all the fuzzy stability definitions above, even fuzzy Nash equilibrium, depend on all DMs' FSTs.
+\end{definition}
+
+When the FST of each DM in a graph model is $1.0$, the definitions of \emph{FR}, \emph{FGMR}, \emph{FSMR}, \emph{FSEQ}, and \emph{FE} coincide with the definitions of \emph{R}, \emph{GMR}, \emph{SMR}, \emph{SEQ}, and crisp equilibrium, respectively. This follows the following theorem.
+
+\begin{theorem}\label{thm-cgm-sc-fgm}
+\rm The crisp GMCR is a special case of the FGM.
+\end{theorem}
+
+
+\section{Application of Fuzzy Stabilities to the Elmira
+\\Groundwater Contamination Conflict}\label{sec-stabl-appl-elmira}
+
+In this section, the fuzzy stability concept is applied to a real-world environmental conflict that took place in Elmira, a small town in Ontario, Canada. First, a brief background of the dispute is presented. Next, the dispute is modelled within the structure of the FGM followed by a fuzzy stability analysis.
+
+\subsection{Background of the Elmira Groundwater Contamination
+\\Conflict}
+
+Elmira, a town with about 10,000 residents renowned for its annual maple syrup festival, is located in an agricultural region of southwestern Ontario, Canada, roughly equally distant from three Great Lakes: Lake Ontario, Lake Erie, and Lake Huron. Domestic water supplies for the town are sourced mainly from an underground aquifer. In late 1989, the Ontario Ministry of the Environment (now the Ministry of Environment and Energy), labeled ``M", found that the aquifer was contaminated by a carcinogen, N-nitroso demethylamine (NDMA), causing a major environmental crisis \citep{Hipel-et-al1993a, Sanderson-et-al1995, Conestoga1999}.
+
+NDMA is formed by the combination of nitrates and amines and belongs to the nitrosamine group of chemicals. It is highly water soluble and a potent carcinogen. NDMA was found in two well fields in Elmira at concentrations of 40 ppb and 1.5 ppb (parts per billion). Although at that time there were no official NDMA drinking water guidelines, the Ontario Environmental Appeal Board stated in 1992 that concentrations of NDMA in drinking water should not exceed 0.009 ppb. Suspicion fell on Uniroyal Chemical Ltd., called ``U", which since 1942 had been operating a pesticide and rubber products plant in Elmira that had a history of environmental problems, and was associated with NDMA-producing processes \citep{Sanderson-et-al1995, Conestoga1999}.
+
+M issued a control order under the Environmental Protection Act of Ontario, requiring that U take immediate and expensive measures to rectify the contamination. In reply, U appealed the control order. The Local Government, labeled ``L", consisting of the Regional Municipality of Waterloo and the Township of Woolwich, felt that it should take a position as the authority responsible for protecting local interests, and sought legal and technical advice from independent consultants.
+
+\subsection{A Graph Model of the Elmira Groundwater Contamination Conflict}\label{subsec-elmira-model}
+
+The graph model of the Elmira conflict considered here is based on the situation in mid-1991 \citep{Hipel-et-al1993a}. At that time, the control order was still under appeal, and the situation had not changed for more than one year. The main DMs in the dispute, M, U and L, each had distinctive objectives. M aimed to carry out what it saw as its mandate as efficiently as possible, U wanted the control order lifted or at least modified, while L wanted to protect both its citizens and industrial base.
+
+\begin{table}[h]
+\centering
+\caption{Decision Makers, Options, and Feasible States for the Elmira Conflict}
+\small
+\setlength{\tabcolsep}{3pt}
+\renewcommand{\arraystretch}{1.1}
+
+\begin{tabular}[t]{lx{4mm}x{10mm}x{10mm}x{10mm}x{10mm}x{10mm}x{10mm}x{10mm}x{10mm}x{10mm}}
+
+  \noalign{\hrule height 1.2pt}
+
+   {\bf M}        & &   &   &   &   &   &   &   &   &    \\\cline{1-1}
+   $O_1$: Modify  & & N & Y & N & Y & N & Y & N & Y & -- \\\cline{1-1}
+   {\bf U}        & &   &   &   &   &   &   &   &   &    \\\cline{1-1}
+   $O_2$: Delay   & & Y & Y & N & N & Y & Y & N & N & -- \\
+   $O_3$: Accept  & & N & N & Y & Y & N & N & Y & Y & -- \\
+   $O_4$: Abandon & & N & N & N & N & N & N & N & N & Y  \\\cline{1-1}
+   {\bf L}        & &   &   &   &   &   &   &   &   &    \\\cline{1-1}
+   $O_5$: Insist  & & N & N & N & N & Y & Y & Y & Y & -- \\[0.5mm]
+
+  \noalign{\hrule height 1.2pt}
+   States     & & $s_1$ & $s_2$ & $s_3$ & $s_4$ & $s_5$ & $s_6$ & $s_7$ & $s_8$ & $s_9$ \\[0.5mm]
+  \noalign{\hrule height 1.2pt}
+
+\end{tabular}
+\label{tbl-dm-ops-sts}
+\end{table}
+
+To secure a desirable outcome, each DM had one or more options or courses of action. The DMs, their main options, and feasible states are represented in Table \ref{tbl-dm-ops-sts}. The ``modify" option for M means that M could modify the original control order to make it more favorable to U. As are also listed in the first column of Table \ref{tbl-dm-ops-sts}, U could \emph{delay} the appeal process, \emph{accept} the original control order as is, or simply \emph{abandon} its operations in Elmira; and L could \emph{insist} on the application of the original control order. In Table \ref{tbl-dm-ops-sts}, states are defined by indicating options selected by the controlling DM with ``Y" and options not selected with ``N"; the symbol ``--" means that the state is the same whether ``Y" or ``N" is chosen. Although there are 32 mathematically possible states, only 9 states were considered feasible due to various option constraints \citep{Fang-et-al1993, Hipel-et-al1993a, Hipel-et-al1999, Kilgour-et-al2001}. For example, U can select only one option at a time out of the available three---delay, accept, and abandon.
+
+\begin{figure}[ht]
+\centering
+\includegraphics[scale=0.85]{elmira(new)}
+\caption{Unilateral Moves in Elmira Conflict}
+\label{elmira}
+\end{figure}
+
+Figure \ref{elmira}, the integrated graph for the model of the Elmira conflict in Table \ref{tbl-dm-ops-sts}, shows all unilateral moves. The nodes of the graph represent feasible states and the labels on the arcs indicate the controlling DM. The arrowhead(s) of an arc indicate the allowable move directions. Note that the model includes both reversible and irreversible moves; for example, the move between states $s_1$ and $s_5$ by L is reversible while the move from $s_1$ to $s_3$ by U is irreversible.
+
+Note that M, a provincial authority that is responsible for environmental issues in the entire Province of Ontario, might not be as closely connected to the Elmira dispute as the more local DMs, U and L, and may therefore have more precisely defined preferences. Hence, the preference of M over the feasible states is assumed to be crisp and shown in Table \ref{prfncs-MoE}, listed as the most preferred state on the left to the least preferred on the right, which is identical to \citep{Hipel-et-al1993a, Hipel-et-al1999, Kilgour-et-al2001}.
+
+But in the present study, possible preference uncertainty of U and L over some states is taken into account and its effects are assessed. For example, U may be in doubt about the desirability of abandoning its Elmira operation. More specifically, the preference of U for state $s_5$, where U delays the appeal process and L insists on the application of the original control order, over state $s_9$, where U abandons its operation, may be uncertain. Although L would like to insist on the application of the original control order, it may be uncertain about its preference when a control order (original or modified) is accepted by U. Thus, when M modifies the original control order and U accepts it, L may be unsure whether state $s_8$ (insist) or $s_4$ (not) is better. L may not find enough reason to definitely prefer state $s_8$ over $s_4$ as assumed in \citep{Hipel-et-al1993a, Hipel-et-al1999, Kilgour-et-al2001}; rather, it may lean toward $s_4$ over $s_8$.
+
+\begin{table}[!t]
+   \centering
+   \caption{Preference of the Ontario Ministry of the Environment (M) in the Elmira Conflict: Most to Least Preferred}
+   \setlength{\tabcolsep}{3pt}
+   \renewcommand{\arraystretch}{1.3}
+\begin{tabular}{x{10mm}x{10mm}x{10mm}x{10mm}x{10mm}x{10mm}x{10mm}x{10mm}x{10mm}}
+
+\noalign{\hrule height 1.3pt}
+   $s_7$ & $s_3$ & $s_4$ & $s_8$ & $s_5$ & $s_1$ & $s_2$ & $s_6$ & $s_9$ \\
+\noalign{\hrule height 1.3pt}
+
+\end{tabular}
+\label{prfncs-MoE}
+\end{table}
+
+
+\begin{table}[!t]
+ \caption{Fuzzy Preferences of Uniroyal Chemical Ltd. (U) and Local Government (L) in the Elmira Conflict}
+ \centering
+ \renewcommand{\arraystretch}{1.3}
+\begin{tabular}{c}
+
+\noalign{\hrule height 1.3pt}
+{ \footnotesize $\mathcal{R}^\text{U} = \begin{array}{c}
+\begin{array}{x{9mm}x{9mm}x{9mm}x{9mm}x{9mm}x{9mm}x{9mm}x{9mm}x{9mm}x{9mm}}
+ &$s_1$&$s_2$&$s_3$&$s_4$&$s_5$&$s_6$&$s_7$&$s_8$&$s_9$
+\end{array}\\[3mm]
+\begin{array}{cc}
+\begin{array}{c} s_1 \\[1mm] s_2 \\[1mm]s_3 \\[1mm] s_4 \\[1mm] s_5 \\[1mm] s_6 \\[1mm] s_7 \\[1mm] s_8 \\[1mm] s_9 \end{array} &
+\left(
+\begin{array}{x{9mm}x{9mm}x{9mm}x{9mm}x{9mm}x{9mm}x{9mm}x{9mm}x{9mm}}
+ 0.5 & 1.0  & 1.0  & 1.0 & 1.0 & 1.0 & 1.0  & 1.0 & 1.0  \\[1mm]
+   0 & 0.5  & 0.85 &   0 & 0.4 & 0.7 & 0.9  &   0 & 0.2  \\[1mm]
+   0 & 0.15 & 0.5  &   0 &   0 &   0 & 0.8  &   0 & 0.1  \\[1mm]
+   0 & 1.0  & 1.0  & 0.5 & 1.0 & 1.0 & 1.0  & 1.0 & 0.9  \\[1mm]
+   0 & 0.6  & 1.0  &   0 & 0.5 & 0.7 & 1.0  & 0.1 & 0.3  \\[1mm]
+   0 & 0.3  & 1.0  &   0 & 0.3 & 0.5 & 1.0  &   0 & 0.2  \\[1mm]
+   0 & 0.1  & 0.2  &   0 &   0 &   0 & 0.5  &   0 & 0.05 \\[1mm]
+   0 & 1.0  & 1.0  &   0 & 0.9 & 1.0 & 1.0  & 0.5 & 0.7  \\[1mm]
+   0 & 0.8  & 0.9  & 0.1 & 0.7 & 0.8 & 0.95 & 0.3 & 0.5
+\end{array}
+\right)
+\end{array}
+\end{array}$ }
+
+\\
+\\
+
+{ \footnotesize $\mathcal{R}^\text{L} = \begin{array}{c}
+\begin{array}{x{9mm}x{9mm}x{9mm}x{9mm}x{9mm}x{9mm}x{9mm}x{9mm}x{9mm}x{9mm}}
+ &$s_1$&$s_2$&$s_3$&$s_4$&$s_5$&$s_6$&$s_7$&$s_8$&$s_9$
+\end{array}\\[3mm]
+\begin{array}{cc}
+\begin{array}{c} s_1 \\[1mm] s_2 \\[1mm]s_3 \\[1mm] s_4 \\[1mm] s_5 \\[1mm] s_6 \\[1mm] s_7 \\[1mm] s_8 \\[1mm] s_9 \end{array} &
+\left(
+\begin{array}{x{9mm}x{9mm}x{9mm}x{9mm}x{9mm}x{9mm}x{9mm}x{9mm}x{9mm}}
+ 0.5 & 1.0 &   0  & 0.8  &   0  & 1.0 &   0  & 0.7 & 1.0 \\[1mm]
+   0 & 0.5 &   0  &   0  &   0  &   0 &   0  &   0 & 1.0 \\[1mm]
+ 1.0 & 1.0 & 0.5  & 1.0  & 1.0  & 1.0 & 0.65 & 1.0 & 1.0 \\[1mm]
+ 0.2 & 1.0 &   0  & 0.5  & 0.25 & 1.0 &   0  & 0.6 & 1.0 \\[1mm]
+ 1.0 & 1.0 &   0  & 0.75 & 0.5  & 1.0 &   0  & 0.7 & 1.0 \\[1mm]
+   0 & 1.0 &   0  &   0  &   0  & 0.5 &   0  &   0 & 1.0 \\[1mm]
+ 1.0 & 1.0 & 0.35 & 1.0  & 1.0  & 1.0 & 0.5  & 1.0 & 1.0 \\[1mm]
+ 0.3 & 1.0 &   0  & 0.4  & 0.3  & 1.0 &   0  & 0.5 & 1.0 \\[1mm]
+   0 &   0 &   0  &   0  &   0  &   0 &   0  &   0 & 0.5
+\end{array}
+\right)
+\end{array}
+\end{array}$ }
+\\[16mm]
+\noalign{\hrule height 1.3pt}
+
+\end{tabular}
+\label{prfncs-UR-LG}
+\end{table}
+
+Taking these and other possible preference uncertainties of U and L into account, a fuzzy preference model for U and L has been developed, as represented by matrices $\mathcal{R}^{\rm U}$ and $\mathcal{R}^{\rm L}$ in Table~\ref{prfncs-UR-LG}. For example, the number $0.7$ in the $9$-th row and $5$-th column of $\mathcal{R}^{\rm U}$ represents the degree of preference of state $s_9$ over state $s_5$ for U, while the number $0.6$ in the $4$-th row and $8$-th column of $\mathcal{R}^{\rm L}$ represents L's preference degree for state $s_4$ over state $s_8$. To demonstrate how the satisficing behavior of DMs within an FGM influences fuzzy stabilities, four sets of FSTs of the DMs are considered. The FSTs used in the analysis are: (i) $\gamma_{\rm M}=1.0, \gamma_{\rm U}=0.4, \gamma_{\rm L}=0.2$; (ii) $\gamma_{\rm M}=1.0, \gamma_{\rm U}=0.4, \gamma_{\rm L}=0.3$; (iii) $\gamma_{\rm M}=1.0, \gamma_{\rm U}=0.6, \gamma_{\rm L}=0.2$; and (iv) $\gamma_{\rm M}=1.0, \gamma_{\rm U}=0.6, \gamma_{\rm L}=0.3$. Note that in each case $\gamma_{\rm M}=1.0$, since the preference of M is crisp.
+
+\subsection{Fuzzy Stability Analysis of the Elmira Groundwater
+\\Contamination Conflict}\label{subsec-fsa-elmira}
+
+To carry out a fuzzy stability analysis of the Elmira conflict model described above means to apply the fuzzy stability definitions in order to identify states with high degrees of stability. The results are presented in Table \ref{tbl-fsa}, where a $\surd$ in a cell indicates that the state in the corresponding row is fuzzy stable for the indicated DM, or a fuzzy equilibrium, under the indicated fuzzy stability definition. Note that the fuzzy stabilities are calculated for each of the four sets of FSTs mentioned in Subsection \ref{subsec-elmira-model}.
+
+\begin{table}[!h]
+\centering
+\caption{Fuzzy Stability Results of the Elmira Groundwater Contamination Conflict}
+\scriptsize
+\setlength{\tabcolsep}{3pt}
+\renewcommand{\arraystretch}{1.32}
+\begin{tabular}{c|c!{\vrule width 1.3pt}
+x{6mm}|x{6mm}|x{6mm}|x{6mm}!{\vrule width 1.3pt}
+x{6mm}|x{6mm}|x{6mm}|x{6mm}!{\vrule width 1.3pt}
+x{6mm}|x{6mm}|x{6mm}|x{6mm}!{\vrule width 1.3pt}
+x{6mm}|x{6mm}|x{6mm}|x{6mm}}
+
+\noalign{\hrule height 1.3pt}
+
+\multirow{2}{*}{FSTs} & \multirow{2}{*}{States} &
+\multicolumn{4}{c!{\vrule width 1.3pt}}{\emph{FR}} &
+\multicolumn{4}{c!{\vrule width 1.3pt}}{\emph{FGMR}} &
+\multicolumn{4}{c!{\vrule width 1.3pt}}{\emph{FSMR}} &
+\multicolumn{4}{c}{\emph{FSEQ}} \\
+\cline{3-18}
+ & & M & U & L & \emph{FE} & M & U & L & \emph{FE} & M & U & L & \emph{FE} & M & U & L & \emph{FE} \\
+
+\noalign{\hrule height 1.3pt}
+
+\multirow{9}{1.5cm}{$\gamma_{\rm M}=1.0$ $\gamma_{\rm U}=0.4$ $\gamma_{\rm L}=0.2$}
+
+ &$s_1$&$\surd$&$\surd$&       &       &$\surd$&$\surd$&$\surd$&$\surd$
+       &$\surd$&$\surd$&$\surd$&$\surd$&$\surd$&$\surd$&$\surd$&$\surd$ \\\cline{2-18}
+ &$s_2$&$\surd$&       &       &       &$\surd$&       &$\surd$&
+       &$\surd$&       &$\surd$&       &$\surd$&       &$\surd$&        \\\cline{2-18}
+ &$s_3$&$\surd$&       &$\surd$&       &$\surd$&       &$\surd$&
+       &$\surd$&       &$\surd$&       &$\surd$&       &$\surd$&        \\\cline{2-18}
+ &$s_4$&$\surd$&$\surd$&$\surd$&$\surd$&$\surd$&$\surd$&$\surd$&$\surd$
+       &$\surd$&$\surd$&$\surd$&$\surd$&$\surd$&$\surd$&$\surd$&$\surd$ \\\cline{2-18}
+ &$s_5$&$\surd$&       &$\surd$&       &$\surd$&       &$\surd$&
+       &$\surd$&       &$\surd$&       &$\surd$&       &$\surd$&        \\\cline{2-18}
+ &$s_6$&$\surd$&       &$\surd$&       &$\surd$&       &$\surd$&
+       &$\surd$&       &$\surd$&       &$\surd$&       &$\surd$&        \\\cline{2-18}
+ &$s_7$&$\surd$&       &       &       &$\surd$&       &$\surd$&
+       &$\surd$&       &$\surd$&       &$\surd$&       &$\surd$&        \\\cline{2-18}
+ &$s_8$&$\surd$&$\surd$&       &       &$\surd$&$\surd$&$\surd$&$\surd$
+       &$\surd$&$\surd$&$\surd$&$\surd$&$\surd$&$\surd$&       &        \\\cline{2-18}
+ &$s_9$&$\surd$&$\surd$&$\surd$&$\surd$&$\surd$&$\surd$&$\surd$&$\surd$
+       &$\surd$&$\surd$&$\surd$&$\surd$&$\surd$&$\surd$&$\surd$&$\surd$ \\[1mm]
+
+\noalign{\hrule height 1.3pt}
+
+\multirow{9}{1.5cm}{$\gamma_{\rm M}=1.0$ $\gamma_{\rm U}=0.4$ $\gamma_{\rm L}=0.3$}
+
+ &$s_1$&$\surd$&$\surd$&       &       &$\surd$&$\surd$&$\surd$&$\surd$
+       &$\surd$&$\surd$&$\surd$&$\surd$&$\surd$&$\surd$&$\surd$&$\surd$ \\\cline{2-18}
+ &$s_2$&$\surd$&       &       &       &$\surd$&       &$\surd$&
+       &$\surd$&       &$\surd$&       &$\surd$&       &$\surd$&        \\\cline{2-18}
+ &$s_3$&$\surd$&       &$\surd$&       &$\surd$&       &$\surd$&
+       &$\surd$&       &$\surd$&       &$\surd$&       &$\surd$&        \\\cline{2-18}
+ &$s_4$&$\surd$&$\surd$&$\surd$&$\surd$&$\surd$&$\surd$&$\surd$&$\surd$
+       &$\surd$&$\surd$&$\surd$&$\surd$&$\surd$&$\surd$&$\surd$&$\surd$ \\\cline{2-18}
+ &$s_5$&$\surd$&       &$\surd$&       &$\surd$&       &$\surd$&
+       &$\surd$&       &$\surd$&       &$\surd$&       &$\surd$&        \\\cline{2-18}
+ &$s_6$&$\surd$&       &$\surd$&       &$\surd$&       &$\surd$&
+       &$\surd$&       &$\surd$&       &$\surd$&       &$\surd$&        \\\cline{2-18}
+ &$s_7$&$\surd$&       &       &       &$\surd$&       &$\surd$&
+       &$\surd$&       &$\surd$&       &$\surd$&       &$\surd$&        \\\cline{2-18}
+ &$s_8$&$\surd$&$\surd$&$\surd$&$\surd$&$\surd$&$\surd$&$\surd$&$\surd$
+       &$\surd$&$\surd$&$\surd$&$\surd$&$\surd$&$\surd$&$\surd$&$\surd$ \\\cline{2-18}
+ &$s_9$&$\surd$&$\surd$&$\surd$&$\surd$&$\surd$&$\surd$&$\surd$&$\surd$
+       &$\surd$&$\surd$&$\surd$&$\surd$&$\surd$&$\surd$&$\surd$&$\surd$ \\[1mm]
+
+\noalign{\hrule height 1.3pt}
+
+\multirow{9}{1.5cm}{$\gamma_{\rm M}=1.0$ $\gamma_{\rm U}=0.6$ $\gamma_{\rm L}=0.2$}
+
+ &$s_1$&$\surd$&$\surd$&       &       &$\surd$&$\surd$&$\surd$&$\surd$
+       &$\surd$&$\surd$&$\surd$&$\surd$&$\surd$&$\surd$&       &        \\\cline{2-18}
+ &$s_2$&$\surd$&       &       &       &$\surd$&       &$\surd$&
+       &$\surd$&       &$\surd$&       &$\surd$&       &$\surd$&        \\\cline{2-18}
+ &$s_3$&$\surd$&       &$\surd$&       &$\surd$&       &$\surd$&
+       &$\surd$&       &$\surd$&       &$\surd$&       &$\surd$&        \\\cline{2-18}
+ &$s_4$&$\surd$&$\surd$&$\surd$&$\surd$&$\surd$&$\surd$&$\surd$&$\surd$
+       &$\surd$&$\surd$&$\surd$&$\surd$&$\surd$&$\surd$&$\surd$&$\surd$ \\\cline{2-18}
+ &$s_5$&$\surd$&$\surd$&$\surd$&$\surd$&$\surd$&$\surd$&$\surd$&$\surd$
+       &$\surd$&$\surd$&$\surd$&$\surd$&$\surd$&$\surd$&$\surd$&$\surd$ \\\cline{2-18}
+ &$s_6$&$\surd$&       &$\surd$&       &$\surd$&       &$\surd$&
+       &$\surd$&       &$\surd$&       &$\surd$&       &$\surd$&        \\\cline{2-18}
+ &$s_7$&$\surd$&       &       &       &$\surd$&       &$\surd$&
+       &$\surd$&       &$\surd$&       &$\surd$&       &$\surd$&        \\\cline{2-18}
+ &$s_8$&$\surd$&$\surd$&       &       &$\surd$&$\surd$&$\surd$&$\surd$
+       &$\surd$&$\surd$&$\surd$&$\surd$&$\surd$&$\surd$&       &        \\\cline{2-18}
+ &$s_9$&$\surd$&$\surd$&$\surd$&$\surd$&$\surd$&$\surd$&$\surd$&$\surd$
+       &$\surd$&$\surd$&$\surd$&$\surd$&$\surd$&$\surd$&$\surd$&$\surd$ \\[1mm]
+
+\noalign{\hrule height 1.3pt}
+
+\multirow{9}{1.5cm}{$\gamma_{\rm M}=1.0$ $\gamma_{\rm U}=0.6$ $\gamma_{\rm L}=0.3$}
+
+ &$s_1$&$\surd$&$\surd$&       &       &$\surd$&$\surd$&$\surd$&$\surd$
+       &$\surd$&$\surd$&$\surd$&$\surd$&$\surd$&$\surd$&       &        \\\cline{2-18}
+ &$s_2$&$\surd$&       &       &       &$\surd$&       &$\surd$&
+       &$\surd$&       &$\surd$&       &$\surd$&       &$\surd$&        \\\cline{2-18}
+ &$s_3$&$\surd$&       &$\surd$&       &$\surd$&       &$\surd$&
+       &$\surd$&       &$\surd$&       &$\surd$&       &$\surd$&        \\\cline{2-18}
+ &$s_4$&$\surd$&$\surd$&$\surd$&$\surd$&$\surd$&$\surd$&$\surd$&$\surd$
+       &$\surd$&$\surd$&$\surd$&$\surd$&$\surd$&$\surd$&$\surd$&$\surd$ \\\cline{2-18}
+ &$s_5$&$\surd$&$\surd$&$\surd$&$\surd$&$\surd$&$\surd$&$\surd$&$\surd$
+       &$\surd$&$\surd$&$\surd$&$\surd$&$\surd$&$\surd$&$\surd$&$\surd$ \\\cline{2-18}
+ &$s_6$&$\surd$&       &$\surd$&       &$\surd$&       &$\surd$&
+       &$\surd$&       &$\surd$&       &$\surd$&       &$\surd$&        \\\cline{2-18}
+ &$s_7$&$\surd$&       &       &       &$\surd$&       &$\surd$&
+       &$\surd$&       &$\surd$&       &$\surd$&       &$\surd$&        \\\cline{2-18}
+ &$s_8$&$\surd$&$\surd$&$\surd$&$\surd$&$\surd$&$\surd$&$\surd$&$\surd$
+       &$\surd$&$\surd$&$\surd$&$\surd$&$\surd$&$\surd$&$\surd$&$\surd$ \\\cline{2-18}
+ &$s_9$&$\surd$&$\surd$&$\surd$&$\surd$&$\surd$&$\surd$&$\surd$&$\surd$
+       &$\surd$&$\surd$&$\surd$&$\surd$&$\surd$&$\surd$&$\surd$&$\surd$ \\[1mm]
+
+\noalign{\hrule height 1.3pt}
+% \multicolumn{17}{l}{\scriptsize{FSTs---Fuzzy Satisficing Thresholds}}\\
+% \multicolumn{17}{l}{\scriptsize{\emph{FE}---Fuzzy Equilibrium}}\\
+\end{tabular}
+\label{tbl-fsa}
+\end{table}
+
+As can be seen from Table \ref{tbl-fsa}, when weaker satisficing criteria for U and L, such as $\gamma_{\rm U}=0.4$ and $\gamma_{\rm L}=0.2$, are considered, the two predicted equilibria (states $s_5$ and $s_8$) of the analysis in \citep{Hipel-et-al1993a, Hipel-et-al1999, Kilgour-et-al2001} disappear for \emph{FR} and \emph{FSEQ} stability types. However, there is a new fuzzy equilibrium at state $s_4$. For stronger satisficing criteria for U and L, that is, for increased FSTs, states $s_5$ and $s_8$ join the fuzzy equilibrium list. For \emph{FSEQ}, when moves and countermoves determined using DMs' FUIs become relevant, state $s_1$ is no longer fuzzy stable for L when the FST of U is increased. That is, increasing $\gamma_{\rm U}$ from $0.4$ to $0.6$ unblocks L's FUI from $s_1$ to $s_5$, causing state $s_1$ to be \emph{FSEQ} unstable for L.
+
+As is clear from Table \ref{tbl-fsa}, states $s_4$ and $s_9$ have a high degree of stability---they are \emph{FE} (fuzzy stable for all DMs) under all four fuzzy stability definitions for each of the four sets of FSTs. The addition of state $s_5$ to the \emph{FE} list results from the increase of U's FST from $0.4$ to $0.6$, while the inclusion of state $s_8$ as a \emph{FE} results from the increase of L's FST from $0.2$ to $0.3$. It should be noted that state $s_9$, where U closes its operation in Elmira, is the least preferred for both M and L as can be seen from their preference representations. Moreover, as depicted in Figure \ref{elmira}, U alone controls the movement of the dispute to state $s_9$, which is not its most preferred state, and seems relatively unlikely to happen.
+
+In state $s_5$, U delays the appeal process while L insists on application of the original control order. In this circumstance, the DMs are working to reach a reasonable (win-win) resolution, so it seems that, like the original analysis \citep{Hipel-et-al1993a}, state $s_5$ cannot be a likely outcome. State $s_1$, which is similar to state $s_5$ except that L does not insist on application of the original control order, also cannot be likely. Thus, the alternatives are state $s_8$, where M modifies the original control order and U accepts it as modified, despite the objection of L, and state $s_4$, which is the same as state $s_8$ except that L does not raise any objection.
+
+\begin{table}[!t]
+\centering
+\caption{Comparison of the Stability Results between the Crisp GMCR and FGM Analyses of the Elmira Groundwater Contamination Conflict}
+\footnotesize
+\setlength{\tabcolsep}{3pt}
+\renewcommand{\arraystretch}{1.4}
+\begin{tabular}[t]{x{1.5cm}|p{7cm}|p{7cm}}
+
+\noalign{\hrule height 1.3pt}
+
+ {\bf States} & {\bf Stability Results in the Previous Analysis (using the Crisp GMCR \citep{Hipel-et-al1993a, Hipel-et-al1999, Kilgour-et-al2001})} & {\bf Stability Findings in the Present Analysis (using the FGM)} \\
+
+\noalign{\hrule height 1.3pt}
+
+ $s_1$ & \emph{GMR} and \emph{SMR} equilibrium. & \emph{FGMR}, \emph{FSMR} and \emph{FSEQ} equilibrium for each of the four sets of FSTs except that for larger FST of U, the state becomes \emph{FSEQ} unstable for L. \\\hline
+
+ $s_4$ & \emph{GMR} and \emph{SMR} equilibrium. & \emph{FE} under all four fuzzy stability definitions for each of the four sets of FSTs---{\bf one of the recommended resolutions}. \\\hline
+
+ $s_5$ & Equilibrium under all four stability definitions. & \emph{FE} under all four fuzzy stability definitions for only larger FST of U. \\\hline
+
+ $s_8$ & Equilibrium under all four stability definitions---{\bf recommended resolution}. & \emph{FE} under all four
+ fuzzy stability definitions for only larger FST of L. For smaller FST of L, it is only an \emph{FGMR} and \emph{FSMR}
+ equilibrium---{\bf one of the recommended resolutions}. \\\hline
+
+ $s_9$ & Equilibrium under all four stability definitions. & \emph{FE} under all four fuzzy stability definitions for each of the four sets of FSTs---{\bf relatively unlikely to happen}. \\[0.5mm]
+
+\noalign{\hrule height 1.3pt}
+
+\end{tabular}
+\label{tbl-comparison}
+\end{table}
+
+Thus, if L would move to a reachable state that is relatively less favorable, that is, if its satisficing criterion is weak, the most reasonable resolution is state $s_4$. However, as L becomes stricter about making only more favorable moves, that is, if L's satisficing criterion is high, the outcome is either state $s_4$ or $s_8$. Note that L controls the movement between states $s_4$ and $s_8$. Therefore, which of these two equilibria is more likely depends greatly on how sensitive L is toward U's interests. Recall that the objective of L was not only to care for its citizens but also to safeguard its financial base. Furthermore, U controls threats from states $s_4$ and $s_8$ to abandon its Elmira operation. Thus, L has good reasons to be conciliatory to U. If this is the case, then the most likely resolution is state $s_4$; otherwise, state $s_8$ would be most likely. The role of L in this model is definitely a new insight into the conflict; earlier analyses (e.g., \citep{Hipel-et-al1993a}) concluded that, despite its efforts, L had essentially no effect on the outcome. A comparison of these results with the findings from the previous crisp graph model analysis of the Elmira groundwater contamination conflict \citep{Hipel-et-al1993a, Hipel-et-al1999, Kilgour-et-al2001} is presented in Table \ref{tbl-comparison}.
+
+
+\section{Summary}
+
+A FGM is developed for the general situation of the $n$-DM ($n>2$) graph model to incorporate preference uncertainty into conflict decision making. Within this framework, three basic fuzzy stability definitions---\emph{FGMR}, \emph{FSMR}, and \emph{FSEQ}---are introduced. Since \emph{FR} stability does not depend on the responses by the opponents, the \emph{FR} stability definition for an $n$-DM model is the same as for the two-DM case. Moreover, when there are two DMs in a model ($|N|=2$), the fuzzy stabilities given by Definitions \ref{def-fgmr-ndm}, \ref{def-fsmr-ndm} and \ref{def-fseq-ndm} coincide with the Definitions \ref{def-fgmr-2dm}, \ref{def-fsmr-2dm} and \ref{def-fseq-2dm}, respectively, since in this case the coalition $H=N-k \subset N$ of the opponents of the focal DM $k$ is trivial. In particular, if $H=N-k=\{l\}$, then $R_{N-k}(s)=R_l(s)$ and $\widetilde{R}_{N-k}^+(s)=\widetilde{R}_l^+(s)$. Hence, it follows that the fuzzy stability definitions provided in Section \ref{sec-fuz-stabl-ndm} constitute a set of fuzzy stability criteria that can be applied to a graph model with any number of DMs.
+
+When applied to the Elmira groundwater contamination conflict, the fuzzy stability analysis leads to some different predictions from the original analysis and provides new insights. The outcomes can be interpreted not only as predictions, but also as answers to ``What-If?" questions. In particular, the final outcome depends on how much L cares about U's interests. If L is strict in pursuing its own objectives, the final outcome may be $s_8$, which does not add any value compared to the other possible outcome, $s_4$, but creates a gap between these two DMs. On the other hand, if L is more sympathetic to U's interests, the outcome may be $s_4$.
+
+% The purpose of this exercise is to demonstrate the applicability of the FPFGMCR.
+
+%In \emph{FGMR}, the focal DM checks whether each of his or her FUIs could subsequently be sanctioned by the opponent, using one of the opponent's unilateral moves. Note that the DM does not consider whether the opponent would be better off making this sanctioning move. If the focal DM has no FUIs from state $s$, then $s$ is automatically \emph{FGMR} stable in the sense that there is no FUI from $s$ that cannot subsequently be sanctioned by the opponent using a unilateral move. In particular, \emph{FR} stability implies \emph{FGMR} stability.
+
+%With the definition of FUIs by a coalition of DMs in a Graph Model with fuzzy preferences, appropriate fuzzy stabilities for an $n$-DM ($n>2$) Graph Model can be defined.
+
+% Within a Graph Model, states are examined to ascertain whether an individual DM finds it advantageous to stay at the current state or to move to a better state. If the DM chooses to stay at the current state, the state is called fuzzy stable. In the identification of fuzzy stable states, the DM may take various moves and counter moves by the opponent(s) into account, reflecting the DM's foresight and behavioral patterns. To accommodate common human behavior under conflict within the Graph Model fuzzy stability analysis, the definitions of fuzzy Nash stability, fuzzy general metarationality, fuzzy symmetric metarationality, and fuzzy sequential stability are introduced in \citep{Bashar-et-al2010, Bashar-et-al2011a, Bashar-et-al2011b}, which are provided below. In these definitions, other than fuzzy Nash stability, $N - k$ represents the coalition of all DMs other than $k$ or, in other words, $k$'s opponents. Thus, $R_{N-k}(s)$ and $\widetilde{R}_{N-k}^+(s)$ will represent the unilateral moves and FUIs, respectively, from $s$ by DM $k$'s opponents.
+
+% Bashar, M.A., Kilgour, D.M., and Hipel, K.W., 2012. ``Fuzzy preferences in the graph model for conflict resolution," \emph{IEEE Transactions on Fuzzy Systems}, {\bf PP}(99), DOI: 10.1109/TFUZZ.2012.2183603, Date of Publication: January 10, 2012.
