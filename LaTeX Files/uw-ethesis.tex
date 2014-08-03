@@ -240,7 +240,7 @@
         \vspace*{0.5cm}
 
         \Huge
-        {\bf Negotiations and Third Party Intervention in Conflict Resolution; GMCR+ A new DSS}
+        {\bf  Negotiations  Support System with Third Party Intervention}
 
         \vspace*{0.5cm}
 
@@ -266,7 +266,7 @@
 
         \vspace*{0.5cm}
 
-        Waterloo, Ontario, Canada, 2013 \\
+        Waterloo, Ontario, Canada, 2014 \\
 
         \vspace*{0.5cm}
 
@@ -551,9 +551,9 @@ On the other hand, the authors suggest that mediation strategies include communi
 
 %%%%%%%%%%%%%%%%%%%%%
 
-\section{The Graph Model for Conflict Resolution (GMCR)}
+\chapter{The Graph Model for Conflict Resolution (GMCR)}
 The Graph Model for Conflict Resolution (GMCR) has been developed and expanded since the mid-1980s \citep{kilgour2005}. GMCR is a tool to strategically analyze moves and counter moves in a conflict in order to predict the most likely outcome. 
-\subsection{Procedure}
+\section{Procedure}
 The basic procedure of GMCR involves two main stages: modeling and analysis. In the modeling stage, the user identifies the conflict parameters which include:
 \begin{itemize}
 \item Decision makers (DMs)
@@ -583,7 +583,7 @@ The following diagram in Figure \ref{fig:procedure_or} illustrates the basic GMC
 \end{figure}
 \end{center}
 
-\subsection{Notation and Definitions}
+\section{Notation and Definitions}
 The graph model representing a real world conflict includes DMs, options, and preferences. These parameters are formally defined as follows:
 
 \begin{definition}
@@ -620,7 +620,7 @@ $$R_i^+(s)=\{s_a \in R_i(s) \quad : \quad s_a\succ_i s\}.$$
 
 The move in one step by DM $i$ from a state $s_a$ to a state in the unilateral improvement list $\{s_b\in S\}$ is called a unilateral improvement (UI).
 
-\subsection{Stability Definitions and Solution Concepts}
+\section{Stability Definitions and Solution Concepts}
 
 The main goal of the graph model for conflict resolution is to predict the stability of each state for each DM. There are four basic solution concepts according to which a state can be assessed for stability: Nash stability (sometimes called rationality), sequential stability (SEQ), general metarationality (GMR), and  symmetric metarationality (SMR). 
 
@@ -668,11 +668,11 @@ Sometimes the graph model for conflict resolution is referred to as a 3-tuple or
 
 %%%%%%%%%%%%%%%%%%%%%
 
-\subsection{Follow-Up Analysis}
+\section{Follow-Up Analysis}
 
 To take the basic analysis further, a number of follow-up analyses may be undertaken to test the reliability of the predicted outcomes and whether they are achievable from the status quo or not.
 
-\subsubsection{Sensitivity Analysis}
+\subsection{Sensitivity Analysis}
 
 Since many conflict parameters are subjective, it may be essential to test different scenarios in order to determine the robustness of the conflict model. Sensitivity analysis also points out how different parameters can influence the stability results. The most common type of sensitivity analysis is the change of preference since it is the most difficult parameter to obtain and determine. Other sensitivity analysis types include:
 
@@ -687,7 +687,7 @@ Since many conflict parameters are subjective, it may be essential to test diffe
 
 %%%%%%%%%%%%%%%%%%%%%
 
-\subsubsection{Status Quo analysis}
+\subsection{Status Quo analysis}
 
 Every real world conflict has a starting point from which the conflict evolves. This point or state is called \emph{status quo} \citep{fang1993}. Depending on the status quo, a potential equilibrium may or may not be reached. \citet{li2004squo,li2005squo} developed algorithms and formal definitions to inspect the attainability of a potential resolution (\emph{equilibrium}) from a certain state (\emph{status quo}).
 
@@ -698,7 +698,7 @@ Every real world conflict has a starting point from which the conflict evolves. 
 
 %%%%%%%%%%%%%%%%%%%%%
 
-\chapter{Strategic Investigations of Water Conflicts in the Middle East using GMCR}
+\chapter{Strategic Investigations of Water Conflicts in the Middle East}
 \label{sec:example1}
 It was noted earlier in the introduction that a recent study on water conflicts emphasized the effect of third party intervention in bringing about a resolution. This study will be summarized in this section. An in-depth analysis and background can be found in \citet{HipelRami}.
 
@@ -1063,7 +1063,7 @@ The \emph{inverse problem} for a desired equilibrium state $s_E \in S$ is to fin
 A more formal definition according to each solution concept will follow.
 
 
-\subsection{Algorithm}
+\subsection{Algorithm for extensive enumerations}
 
 In order to implement the inverse approach, two approaches were investigated. The first one was the brute-force method. As the name suggests, this method tests each possible preference profile for each DM against the desired equilibrium. Since the number of possible preference rankings is fairly large, a decision support system was designed to test the concept. The number of iterations required for a model, assuming strict ordinal preferences, is given by $(m!)^{n}$ where $m$ is the number of feasible states and $n$ is the number of DMs.  If the combination of preference vectors for all DMs (i.e. preference profile) achieves the desired equilibrium, it will be saved into a list. The second algorithm was designed after observing the pattern produced by the brute-force method. It was clear that results followed certain rules which can be defined more formally, as outlined in the following subsections. %The pseudo-codes for both algorithms will be given in the decision support system section below.%
 
@@ -1185,7 +1185,7 @@ In other words, state 2 will be the resolution to the conflict if and only if (1
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\chapter{GMCR+ DSS}
+\chapter{Comprehensive Decision Support System}
 
 The introduction of the inverse approach makes the need for a decision support system obvious. Solving problems by hand is possible but tiresome, time consuming, and error-prone. First, a code to test each preference profile was developed. This is called the Brute-Force method
 The matrix approach to GMCR allows for faster processing \citep{xu2007matrix,xu2009}. The last decision support system, GMCR II, was developed by Xiaoyoung (John) Peng back in 1999 \citep{peng1999decision}. Until recently, no significant update was made to the decision support system, even though, the program had issues that sometimes caused it to crash or display error messages.
